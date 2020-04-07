@@ -4,7 +4,7 @@ screenSize(800, 600)
 playsprite = newSprite("szkielet/preview.png")
 
 
-xspeed = 0
+xspeed = 10
 yspeed = 0
 a = Player(playsprite)
 colour = parseColour('black')
