@@ -3,6 +3,7 @@ from player import *
 screenSize(800, 600)
 playsprite = newSprite("szkielet/preview.png")
 
+//test
 
 xspeed = 10
 yspeed = 0
