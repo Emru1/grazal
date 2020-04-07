@@ -1,5 +1,6 @@
 from pygame_functions import *
 
+
 class Player:
     sprite = pygame.sprite.Sprite
 
@@ -9,7 +10,7 @@ class Player:
     def show(self):
         showSprite(self.sprite)
 
-    def display(self, x, y):
+    def move(self, x, y):
         moveSprite(self.sprite, x, y)
 
 
