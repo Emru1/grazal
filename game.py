@@ -1,13 +1,17 @@
 from player import *
+from map import *
+from Box2D import *
+
+world = b2World()
+body = b2BodyDef()
+
 
 screenSize(800, 600)
 playsprite = newSprite("szkielet/preview.png")
 
-//test
-
 xspeed = 10
 yspeed = 0
-a = Player(playsprite)
+a = Szkielet(playsprite, body)
 colour = parseColour('black')
 setBackgroundColour(colour)
 a.show()
@@ -19,11 +23,11 @@ while True:
     if True:
         if keyPressed("up"):
             yspeed -= 1
-        elif keyPressed("down"):
+        if keyPressed("down"):
             yspeed += 1
-        elif keyPressed("left"):
+        if keyPressed("left"):
             xspeed -= 1
-        elif keyPressed('right'):
+        if keyPressed('right'):
             xspeed += 1
 
     if xspeed > 300:
