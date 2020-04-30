@@ -1,6 +1,19 @@
 from map.tile import Tile
+import string
+
 
 class Map:
+
+    def token_to_tile(self, token):
+        tile = []
+        token_list = token.split('; ')
+        if token_list[0] = '0':
+            tile.appent(False)
+        else:
+            tile.appen(True)
+        for i in range(1, len(token_list)):
+            tile.append(token_list[i])
+        return tile
 
     """
     Wczytywanie mapy z lokalizacji path
@@ -13,15 +26,6 @@ class Map:
     asset - nazwa grafiki, string
     mob - spawn point moba, string
     item(s) - lista przedmiotow, string
-
-    2 2
-    1
-    a b
-    d c
-    a = [1 grass dog 0]
-    b = [0 rock 0 0]
-    c = [1 grass 0 bag]
-    d = [1 sand 0 bag coin pen]
     """
     def __init__(self, path):
         plik_mapy = open(path, "r")
@@ -30,7 +34,7 @@ class Map:
 
         self.sizex = wymiary[0]
         self.sizey = wymiary[1]
-        self.cell_size = plik_mapy.readline()
+        self.cell_size = int(plik_mapy.readline())
         map_array = []
         map_tokens = {}
 
@@ -38,17 +42,14 @@ class Map:
             liney = plik_mapy.readline().rstrip('\n').split(" ", self.sizex - 1)
             map_array.append(liney)
 
-        '''for y in range(self.sizey):
-            print(y, end=' ')
+        for line in plik_mapy:
+            token = line[:self.cell_size]
+            line = line[3+self.cell_size:]
+            line = line.rstrip('\n')
+            map_tokens[token] = self.token_to_tile(line)
+
+        for y in range(self.sizey):
             for x in range(self.sizex):
-                print(map_array[x][y], end=' ')
-            print("\n")'''
-
-
-
-
-    def token_to_tile(self, token):
-
-
-        return tile
+                pass
+                #tu będzie zapisywanie mapy
 
