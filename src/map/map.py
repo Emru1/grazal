@@ -7,7 +7,7 @@ class Map:
     def token_to_tile(self, token):
         tile = []
         token_list = token.split('; ')
-        if token_list[0] = '0':
+        if token_list[0] == '0':
             tile.appent(False)
         else:
             tile.appen(True)
