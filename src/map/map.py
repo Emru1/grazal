@@ -1,4 +1,5 @@
 from map.tile import Tile
+from globals import log
 import string
 
 
@@ -8,9 +9,9 @@ class Map:
         tile = []
         token_list = token.split('; ')
         if token_list[0] == '0':
-            tile.appent(False)
+            tile.append(False)
         else:
-            tile.appen(True)
+            tile.append(True)
         for i in range(1, len(token_list)):
             tile.append(token_list[i])
         return tile
@@ -29,6 +30,7 @@ class Map:
     """
     def __init__(self, path):
         plik_mapy = open(path, "r")
+        log.log("File " + path + " opened to read map")
         size = plik_mapy.readline()
         wymiary = [int(s) for s in size.split() if s.isdigit()]
 

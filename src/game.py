@@ -1,5 +1,6 @@
 import pygame
 from map.map import Map
+import globals
 
 
 def main():
