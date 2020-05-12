@@ -2,18 +2,26 @@ from map.tile import Tile
 from globals import log
 import string
 
+class Token:
+    def __init__(self, passable, asset, mob, items):
+        self.passable = passable
+        self.asset = asset
+        self.mob = mob
+        self.items = items
 
 class Map:
 
     def token_to_tile(self, token):
-        tile = []
         token_list = token.split('; ')
-        for i in token_list:
-            tile.append(i)
-        if tile[0] != 0:
-            tile[0] = False
-        else:
-            tile[1] = True
+        if token_list[0] == '':
+            return
+        passable = bool(token_list[0])   # passable
+        asset = str(token_list[1])    # asset
+        mob = str(token_list[2])    # mob
+        items = []
+        for x in range(3, len(token_list)):
+            items.append(token_list[x])
+        tile = Token(passable, asset, mob, items)
         return tile
 
     """
@@ -37,6 +45,7 @@ class Map:
         self.sizex = wymiary[0]
         self.sizey = wymiary[1]
         self.cell_size = int(plik_mapy.readline())
+        self.map = [[Tile() for x in range(self.sizex)] for y in range(self.sizey)]
         map_array = []
         map_tokens = {}
 
@@ -52,10 +61,9 @@ class Map:
 
         for y in range(self.sizey):
             for x in range(self.sizex):
-                pass
-                #tu będzie zapisywanie mapy
+                self.map[x][y].init(token=map_tokens[map_array[x][y]])
 
     def get_tile(self, x, y):
-        pass
+        return self.map[x][y]
 
 

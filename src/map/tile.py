@@ -1,10 +1,17 @@
+
+
 class Tile:
 
-    def __init__(self, passable, asset, mob, item):
-        self.passable = passable
-        self.tile = asset
-        if mob:
-            self.mob = mob
-        for it in item:
-            self.item.append(it)
+    def __init__(self):
+        self.passable = bool
+        self.tile = str
+        self.mob = str
 
+    def init(self, token):
+        self.passable = token.passable
+        self.tile = token.asset
+        self.item = []
+        if token.mob != '0':
+            self.mob = token.mob
+        for it in token.items:
+            self.item.append(it)
