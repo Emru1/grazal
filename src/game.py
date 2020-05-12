@@ -10,11 +10,11 @@ def main():
     mapa = Map("mapa")
 
     while running:
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                running = False
                 raise SystemExit
-            elif event.type ==pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     #move up
                     pass
@@ -34,6 +34,7 @@ def main():
                 elif event.button == 3:
                     #right mouse button
                     pass
+
 
 if __name__ == "__main__":
     main()

@@ -8,12 +8,12 @@ class Map:
     def token_to_tile(self, token):
         tile = []
         token_list = token.split('; ')
-        if token_list[0] == '0':
-            tile.append(False)
+        for i in token_list:
+            tile.append(i)
+        if tile[0] != 0:
+            tile[0] = False
         else:
-            tile.append(True)
-        for i in range(1, len(token_list)):
-            tile.append(token_list[i])
+            tile[1] = True
         return tile
 
     """
@@ -54,4 +54,8 @@ class Map:
             for x in range(self.sizex):
                 pass
                 #tu będzie zapisywanie mapy
+
+    def get_tile(self, x, y):
+        pass
+
 
