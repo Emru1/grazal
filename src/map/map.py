@@ -2,12 +2,16 @@ from map.tile import Tile
 from globals import log
 import string
 
+
 class Token:
-    def __init__(self, passable, asset, mob, items):
+
+    def __init__(self, passable, asset, obj, mob, items):
         self.passable = passable
         self.asset = asset
+        self.obj = obj
         self.mob = mob
         self.items = items
+
 
 class Map:
 
@@ -15,13 +19,14 @@ class Map:
         token_list = token.split('; ')
         if token_list[0] == '':
             return
-        passable = bool(token_list[0])   # passable
-        asset = str(token_list[1])    # asset
-        mob = str(token_list[2])    # mob
+        passable = bool(token_list[0])  # passable
+        asset = str(token_list[1])      # asset
+        obj = str(token_list[2])
+        mob = str(token_list[3])        # mob
         items = []
-        for x in range(3, len(token_list)):
+        for x in range(4, len(token_list)):
             items.append(token_list[x])
-        tile = Token(passable, asset, mob, items)
+        tile = Token(passable, asset, obj, mob, items)
         return tile
 
     """
@@ -33,6 +38,7 @@ class Map:
     kolejnosc: passable, asset, mob, item(s)
     passable - czy mozna przejsc, 0, 1
     asset - nazwa grafiki, string
+    obj - obiekty, string
     mob - spawn point moba, string
     item(s) - lista przedmiotow, string
     """
