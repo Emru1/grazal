@@ -23,7 +23,7 @@ class Map:
         passable = bool(token_list[0])  # passable
         areastr = str(token_list[1])    # area
         asset = str(token_list[2])      # asset
-        obj = str(token_list[3])
+        obj = str(token_list[3])        # obj
         mob = str(token_list[4])        # mob
         items = []
         area = []
