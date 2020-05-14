@@ -1,9 +1,15 @@
 # TO DO:
+# drzwi do poprawy
 # podzial na przedmioty (to trzeba zrobic dobrze), gotowe klasy
 # podnoszenie/upuszczanie przedmiotow
 # rysowanie
+# akcje typu otworz/zamknij
+# relacje: gracz -> przedmiot
 
 import pygame
+
+static_types = {'chair': "objectsImages/chair.png", 'lamp': "objectsImages/lamp.png",
+                'door': "objectsImages/Basic_Door_Pixel.png"}
 
 
 class Object:
@@ -13,46 +19,64 @@ class Object:
         self.image = pygame.image.load(image)
         self.taken = taken
         self.visible = visible
-
         self.draw(window)
 
-    def draw(self,win):
+    def draw(self, win, alternative_image=None):
         if self.visible:
-            win.blit(self.image, (self.pos_x, self.pos_y))
+            if alternative_image is None:
+                win.blit(self.image, (self.pos_x, self.pos_y))
+            else:
+                win.blit(pygame.image.load(alternative_image), (self.pos_x, self.pos_y))
             pygame.display.update()
 
-## do testow!!!
+    def pick(self, player, win):
+        # TO TRZEBA ZROBIC!
+        pass
+
+
+class SwordObject(Object):
+    def __init__(self, pos_x, pos_y, window):
+        self.volume = 1  # ilość, nie wiem, może się przyda?
+        self.damage = 30  # obrażenie zadawane
+        self.player_speed = 4  # wpływa na szybkośc poruszania się gracza
+        super().__init__(pos_x, pos_y, "objectsImages/sword.png", True, True, window)
+        print("STWORZYLES SWOJEGO MIECZA! hehe")
+
+
+class StaticObject(Object):
+    def __init__(self, pos_x, pos_y, type, window):
+        self.type = static_types.get(type, 'door')
+        super().__init__(pos_x, pos_y, self.type, False, True, window)
+
+    def open_the_door(self, window):
+        if self.type == "objectsImages/Basic_Door_Pixel.png":
+            self.type = "objectsImages/Basic_Door_Opening_Pixel.png"
+            self.draw(window, self.type)
+
+    def close_the_door(self, window):
+        if self.type == "objectsImages/Basic_Door_Opening_Pixel.png":
+            self.type = "objectsImages/Basic_Door_Pixel.png"
+            self.draw(window, self.type)
 
 
 pygame.init()
-win = pygame.display.set_mode((800,600))
-bg = pygame.image.load('volvo.jpg')
-bg = pygame.transform.scale(bg,(800,600))
-win.blit(bg,(0,0))
+win = pygame.display.set_mode((800, 600))
+bg = pygame.image.load('background.png')
+bg = pygame.transform.scale(bg, (800, 600))
+win.blit(bg, (0, 0))
 pygame.display.update()
 
-obj2 = Object(189,1,"sword.png",True,True,win)
-
+sword = SwordObject(120, 100, win)
+door = StaticObject(230, 140, 'door', win)
 
 run = True
 while run:
-    pygame.time.delay(50)
-    #win.blit(obj,(0,156))
-    #pygame.display.update()
+    #pygame.time.delay(50)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                door.open_the_door(win)
+            if event.key == pygame.K_s:
+                door.close_the_door(win)
