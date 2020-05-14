@@ -5,8 +5,9 @@ import string
 
 class Token:
 
-    def __init__(self, passable, asset, obj, mob, items):
+    def __init__(self, passable, area, asset, obj, mob, items):
         self.passable = passable
+        self.area = area
         self.asset = asset
         self.obj = obj
         self.mob = mob
@@ -20,13 +21,18 @@ class Map:
         if token_list[0] == '':
             return
         passable = bool(token_list[0])  # passable
-        asset = str(token_list[1])      # asset
-        obj = str(token_list[2])
-        mob = str(token_list[3])        # mob
+        areastr = str(token_list[1])    # area
+        asset = str(token_list[2])      # asset
+        obj = str(token_list[3])
+        mob = str(token_list[4])        # mob
         items = []
-        for x in range(4, len(token_list)):
+        area = []
+        for x in range(5, len(token_list)):
             items.append(token_list[x])
-        tile = Token(passable, asset, obj, mob, items)
+        areastr_split = areastr.split(', ')
+        for x in areastr_split:
+            area.append(x)
+        tile = Token(passable, area, asset, obj, mob, items)
         return tile
 
     """
@@ -37,6 +43,7 @@ class Map:
     pod tym jest rozwinięcie tokenów, co one oznaczają
     kolejnosc: passable, asset, mob, item(s)
     passable - czy mozna przejsc, 0, 1
+    area - lista tokenów odnoszących się do kratki - string
     asset - nazwa grafiki, string
     obj - obiekty, string
     mob - spawn point moba, string
