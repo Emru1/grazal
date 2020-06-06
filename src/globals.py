@@ -1,3 +1,3 @@
-from logs.logs import Logs
+from src.logs.logs import Logs
 
 log = Logs()

@@ -8,5 +8,13 @@ aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
 aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
 aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
 aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa = 1; 0; grass; 0; 0; ring(golden)
-
+aaaa
+{
+transparent 0
+obj
+{
+test
+gggg
+sssss
+}
+}

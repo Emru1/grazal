@@ -1,6 +1,6 @@
 import pygame
-from map.map import Map
-import globals
+from src.map.map import Map
+import src.globals
 
 
 def main():
