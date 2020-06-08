@@ -1,3 +1,15 @@
+"""
+Wczytywanie mapy z lokalizacji path
+pierwsze linia to wymiary mapy X x Y
+druga linia to dlugosc pojedynczego tokenu czy może symbolu
+kolejne Y linii to kolejne tokeny ktore symbolizują kolejne kafelki
+pod tym jest rozwinięcie tokenów w klamerkach, ich parametry oraz dodatkowe atrybuty
+każdy kafelek może miec dodatkowe obiekty, takie jak itemy czy moby
+przedmioty(obj), moby(mob), area(area) itp
+każde z nich ma swoje rozwiniecie w klamerkach, ktore jest przekazywane do konstruktora
+odpowiedniej klasy jako słownik <parametr, wartosc>
+"""
+
 from src.map.tile import Tile
 from src.globals import log
 import string
@@ -130,20 +142,7 @@ class Map:
                         tmp_dict['obj'] += line_obj
         return return_dict
 
-    """
-    Wczytywanie mapy z lokalizacji path
-    pierwsze linia to wymiary mapy X x Y
-    druga linia to dlugosc pojedynczego tokenu czy może symbolu
-    kolejne Y linii to kolejne tokeny które symbolizują kolejne kafelki
-    pod tym jest rozwinięcie tokenów, co one oznaczają
-    kolejnosc: passable, asset, mob, obj
-    passable - czy mozna przejsc, 0, 1
-    area - lista tokenów odnoszących się do kratki - string
-    asset - nazwa grafiki, string
-    furn - obiekty, string
-    mob - spawn point moba, string
-    obj - lista przedmiotow, string
-    """
+
     def __init__(self, path):
         line_num = 0
         plik_mapy = open(path, "r")

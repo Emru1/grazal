@@ -4,14 +4,14 @@ class Tile:
         self.passable = bool
         self.transparent = bool
         self.light = int
-        self.tile = str
+        self.asset = str
         self.furn = str
         self.mob = str
         self.obj = []
 
     def init(self, token):
         self.passable = token.passable
-        self.tile = token.asset
+        self.asset = token.asset
         self.furn = token.furn
         self.light = token.light
         self.transparent = token.transparent
@@ -23,7 +23,7 @@ class Tile:
 
     def initd(self, token):
         self.passable = token['passable']
-        self.tile = token['asset']
+        self.asset = token['asset']
         self.furn = token['furn']
         self.light = token['light']
         self.transparent = token['transparent']
