@@ -22,7 +22,6 @@ class Tile:
         return self
 
     def initd(self, token):
-        print(token)
         self.passable = token['passable']
         self.tile = token['asset']
         self.furn = token['furn']

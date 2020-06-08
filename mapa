@@ -10,11 +10,11 @@ aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
 aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
 aaaa
 {
-transparent 0
-obj
-{
-test
-gggg
-sssss
-}
+    transparent 0
+    obj
+    {
+        name Test
+        weight 100
+        can_pickup true
+    }
 }

@@ -2,11 +2,6 @@ from src.map.tile import Tile
 from src.globals import log
 import string
 
-class ItemDef:
-    def __init__(self, name):
-        self.name = name
-
-
 class Token:
 
     def __init__(self, passable, transparent, area, asset, furn, mob, obj, light):
@@ -39,6 +34,7 @@ class Map:
         for line in file:
             line_num += 1
             line = line.splitlines()[0]
+            line = line.lstrip(' ')
             if line[0] == '#':
                 continue
             if line[0] == '{':
@@ -84,6 +80,7 @@ class Map:
 
                 if param == 'mob':
                     for line_mob in file:
+                        line_mob = line_mob.lstrip(' ')
                         line_num += 1
                         if line_mob[0] == '#':
                             continue
@@ -100,6 +97,7 @@ class Map:
 
                 if param == 'area':
                     for line_area in file:
+                        line_area = line_area.lstrip(' ')
                         line_num += 1
                         if line_area[0] == '#':
                             continue
@@ -116,6 +114,7 @@ class Map:
 
                 if param == 'obj':
                     for line_obj in file:
+                        line_obj = line_obj.lstrip(' ')
                         line_num += 1
                         if line_obj[0] == '#':
                             continue
