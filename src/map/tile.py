@@ -6,8 +6,9 @@ class Tile:
         self.light = int
         self.asset = str
         self.furn = str
-        self.mob = str
-        self.obj = []
+        self.mob = {}
+        self.obj = {}
+        self.area = {}
 
     def init(self, token):
         self.passable = token.passable
@@ -29,3 +30,4 @@ class Tile:
         self.transparent = token['transparent']
         self.mob = token['mob']
         self.obj = token['obj']
+        self.area = token['area']

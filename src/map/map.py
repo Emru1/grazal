@@ -60,9 +60,9 @@ class Map:
                     tmp_dict['furn'] = ""
                     tmp_dict['light'] = 0
                     tmp_dict['transparent'] = 1
-                    tmp_dict['mob'] = ""
-                    tmp_dict['obj'] = ""
-                    tmp_dict['area'] = ""
+                    tmp_dict['mob'] = {}
+                    tmp_dict['obj'] = {}
+                    tmp_dict['area'] = {}
 
                     continue
             if not in_token:
@@ -99,13 +99,15 @@ class Map:
                         if line_mob[0] == '{':
                             if in_mob:
                                 log.log("MAP: Error when parsing map file " + file.name + " at line " + str(line_num))
-                            tmp_dict['mob'] = ""
+                            tmp_dict['mob'] = {}
                             in_mob = True
                             continue
                         if line_mob[0] == '}':
                             in_mob = False
                             break
-                        tmp_dict['mob'] += line_area
+                        line_mob_param = line_mob.split(' ')[0]
+                        line_mob_val = line_mob.split(' ')[1]
+                        tmp_dict['mob'][line_mob_param] = line_mob_val
 
                 if param == 'area':
                     for line_area in file:
@@ -116,13 +118,15 @@ class Map:
                         if line_area[0] == '{':
                             if in_area:
                                 log.log("MAP: Error when parsing map file " + file.name + " at line " + str(line_num))
-                            tmp_dict['area'] = ""
+                            tmp_dict['area'] = {}
                             in_obj = True
                             continue
                         if line_area[0] == '}':
                             in_area = False
                             break
-                        tmp_dict['area'] += line_area
+                        line_area_param = line_area.split(' ')[0]
+                        line_area_val = line_area.split(' ')[1]
+                        tmp_dict['area'][line_area_param] = line_area_val
 
                 if param == 'obj':
                     for line_obj in file:
@@ -133,15 +137,16 @@ class Map:
                         if line_obj[0] == '{':
                             if in_obj:
                                 log.log("MAP: Error when parsing map file " + file.name + " at line " + str(line_num))
-                            tmp_dict['obj'] = ""
+                            tmp_dict['obj'] = {}
                             in_obj = True
                             continue
                         if line_obj[0] == '}':
                             in_obj = False
                             break
-                        tmp_dict['obj'] += line_obj
+                        line_obj_param = line_obj.split(' ')[0]
+                        line_obj_val = line_obj.split(' ')[1]
+                        tmp_dict['obj'][line_obj_param] = line_obj_val
         return return_dict
-
 
     def __init__(self, path):
         line_num = 0
