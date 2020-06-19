@@ -37,22 +37,26 @@ class App:
         flags = RESIZABLE
         App.scenes = []
         App.scene = None
-        App.screen = pygame.display.set_mode((640, 240), flags)
-        App.t = Text('Pygame App', pos=(200, 100))
+        App.screen = pygame.display.set_mode((640, 320), flags)
         App.running = True
+
+    def test_screen(self):
+        """INITIALIZE STARTING SCREEN"""
+        Scene()
+        App.scene = App.scenes[App.scene.id]
+        App.scene.nodes.append(button("PRZYCISK",pos=(100,100)))
+        App.scene.draw()
+
     def run(self):
         """Run the main event loop."""
-        while App.running:
+        while App.running:  
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
                     raise SystemExit
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_w:
-                
-                        Scene(caption="intro")
-                        App.scene = App.scenes[0]
-                        App.scene.draw()
+                        test_screen()
                         #move up
                     elif event.key == pygame.K_s:
                         #move down
