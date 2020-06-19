@@ -44,7 +44,7 @@ class App:
         """INITIALIZE STARTING SCREEN"""
         Scene()
         App.scene = App.scenes[App.scene.id]
-        App.scene.nodes.append(button("PRZYCISK",pos=(100,100)))
+        App.scene.nodes.append(TEXT("PRZYCISK",pos=(100,100)))
         App.scene.draw()
 
     def run(self):
@@ -56,7 +56,7 @@ class App:
                     raise SystemExit
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_w:
-                        test_screen()
+                        self.test_screen()
                         #move up
                     elif event.key == pygame.K_s:
                         #move down
