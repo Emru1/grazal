@@ -1,39 +1,8 @@
-import pygame
-from src.map.map import Map
-import src.globals
-
+from src.interface.interface import App
 
 def main():
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))
-    running = True
-    mapa = Map("mapa")
-
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                raise SystemExit
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w:
-                    #move up
-                    pass
-                elif event.key == pygame.K_s:
-                    #move down
-                    pass
-                elif event.key == pygame.K_a:
-                    #move left
-                    pass
-                elif event.key == pygame.K_d:
-                    #move right
-                    pass
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    #Left mouse button
-                    pass
-                elif event.button == 3:
-                    #right mouse button
-                    pass
+    app = App()
+    app.run()
 
 
 if __name__ == "__main__":
