@@ -2,7 +2,7 @@
 # drzwi do poprawy
 # podzial na przedmioty (to trzeba zrobic dobrze), gotowe klasy
 # podnoszenie/upuszczanie przedmiotow
-# rysowanie
+# rysowanie -> w ogólnym interfejsie
 # akcje typu otworz/zamknij
 # relacje: gracz -> przedmiot
 
@@ -59,6 +59,20 @@ class StaticObject(Object):
             self.draw(window, self.type)
 
 
+def create_object(type, pos_x, pos_y, window):
+    """przydatne w tworzeniu mapy
+    :param typ obiektu, pozycja x, pozycja y, okno
+    :return nowy obiekt zgodny z typem
+    """
+    if type == "SwordObject":
+        return SwordObject(pos_x, pos_y, window)
+    if type == "door":
+        return StaticObject(pos_x, pos_y, "door", window)
+    if type == "lamp":
+        return StaticObject(pos_x, pos_y, "lamp", window)
+    if type == "chair":
+        return StaticObject(pos_x, pos_y, "chair", window)
+
 pygame.init()
 win = pygame.display.set_mode((800, 600))
 bg = pygame.image.load('background.png')
@@ -66,8 +80,8 @@ bg = pygame.transform.scale(bg, (800, 600))
 win.blit(bg, (0, 0))
 pygame.display.update()
 
-sword = SwordObject(120, 100, win)
-door = StaticObject(230, 140, 'door', win)
+sword = create_object("SwordObject", 120, 100, win)
+door = create_object("door", 230, 140, win)
 
 run = True
 while run:
@@ -80,3 +94,4 @@ while run:
                 door.open_the_door(win)
             if event.key == pygame.K_s:
                 door.close_the_door(win)
+

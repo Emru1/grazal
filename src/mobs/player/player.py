@@ -1,13 +1,17 @@
-from pygame_functions import *
+from grazal.src.pygame_functions import *
 from Box2D import *
 
 
 class Player:
     sprite = pygame.sprite.Sprite
 
-    def __init__(self, sprite, body):
+    def __init__(self, sprite, x, y, movement_speed):
+        self.x = x
+        self.y = y
         self.sprite = sprite
-        self.body = body
+        self.hp = 100
+        self.eq = []
+        self.movement_speed = movement_speed
 
     def show(self):
         showSprite(self.sprite)
@@ -15,6 +19,11 @@ class Player:
     def move(self, x, y):
         moveSprite(self.sprite, x, y)
 
+    def pick_item(self, item):
+        self.eq.append(item)
 
-class Szkielet(Player):
-    pass
+    def drop_item(self):
+        pass
+
+    def attack(self, mob):
+        pass
