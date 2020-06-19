@@ -1,5 +1,7 @@
 import pygame
 from pygame.locals import *
+from src.gfx.assets import Asset
+from src.map.map import Map
 
 class Text:
     """Create a text object."""
@@ -39,6 +41,9 @@ class App:
         App.scene = None
         App.screen = pygame.display.set_mode((640, 320), flags)
         App.running = True
+
+        self.map = Map("mapa")
+        self.assets = Asset()
 
     def test_screen(self):
         """INITIALIZE STARTING SCREEN"""
