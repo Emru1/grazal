@@ -28,7 +28,7 @@ class Token:
 
 
 class Map:
-    empty_token = Token(0, 0, 'OUT', 'out.png', '', '', [], 16)
+    empty_token = Token(0, 0, 'OUT', 'black', '', '', [], 16)
     empty_tile = Tile()
     empty_tile.init(empty_token)
 
