@@ -10,8 +10,9 @@ class Asset:
             line_num += 1
             line = line.splitlines()[0]
             line = line.lstrip(' ')
+            if line[0] == '#':
+                continue
             self.imgs[str(line.split(' ')[0])] = pygame.image.load("img/" + str(line.split(' ')[1]))
-
 
     def add(self, name, path):
         if name in self.imgs:
