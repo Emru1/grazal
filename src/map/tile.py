@@ -1,18 +1,22 @@
+from src.map.assets import Asset
+
+
 class Tile:
 
     def __init__(self):
         self.passable = bool
         self.transparent = bool
         self.light = int
-        self.asset = str
+        self.asset = Asset()
         self.furn = str
         self.mob = {}
         self.obj = {}
         self.area = {}
 
     def init(self, token):
+        self.asset = Asset()
         self.passable = token.passable
-        self.asset = token.asset
+        self.asset.init(path=token.asset)
         self.furn = token.furn
         self.light = token.light
         self.transparent = token.transparent
@@ -23,7 +27,7 @@ class Tile:
 
     def initd(self, token):
         self.passable = token['passable']
-        self.asset = token['asset']
+        self.asset.init(token['asset'])
         self.furn = token['furn']
         self.light = token['light']
         self.transparent = token['transparent']
