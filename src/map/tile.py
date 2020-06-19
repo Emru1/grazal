@@ -18,8 +18,7 @@ class Tile:
         self.transparent = token.transparent
         if token.mob != '0':
             self.mob = token.mob
-        for it in token.obj:
-            self.obj.append(it)
+        self.obj = token.obj
         return self
 
     def initd(self, token):
