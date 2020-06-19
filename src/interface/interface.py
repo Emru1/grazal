@@ -44,7 +44,7 @@ class App:
         """INITIALIZE STARTING SCREEN"""
         Scene()
         App.scene = App.scenes[App.scene.id]
-        App.scene.nodes.append(TEXT("PRZYCISK",pos=(100,100)))
+        App.scene.nodes.append(Text("PRZYCISK",pos=(100,100)))
         App.scene.draw()
 
     def run(self):
