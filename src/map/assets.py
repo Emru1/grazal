@@ -6,7 +6,7 @@ class Asset:
         self.img = pygame.image
 
     def init(self, path):
-        print(path)
+        path = "img/" + path
         self.img = pygame.image.load(path)
 
     def convert(self):

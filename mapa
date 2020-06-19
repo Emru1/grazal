@@ -17,4 +17,5 @@ aaaa
         weight 100
         can_pickup true
     }
+    asset out.png
 }
