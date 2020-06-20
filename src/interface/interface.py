@@ -44,6 +44,7 @@ class App:
 
         self.map = Map("mapa")
         self.assets = asset
+        self.assets.convert()
 
     def test_screen(self):
         """INITIALIZE STARTING SCREEN"""

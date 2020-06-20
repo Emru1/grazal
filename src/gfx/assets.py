@@ -16,7 +16,7 @@ class Asset:
 
     def add(self, name, path):
         if name in self.imgs:
-            print("Bylo")
+            log.log("Trying to add another PNG of name " + name + " with path " + path)
             return
         self.imgs[name] = pygame.image.load("img/" + path)
 
@@ -25,4 +25,4 @@ class Asset:
 
     def convert(self):
         for x in self.imgs:
-            x.convert()
+            self.imgs[x].convert()
