@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
-from src.gfx.assets import Asset
 from src.map.map import Map
+from src.globals import *
 
 class Text:
     """Create a text object."""
@@ -43,7 +43,7 @@ class App:
         App.running = True
 
         self.map = Map("mapa")
-        self.assets = Asset()
+        self.assets = asset
 
     def test_screen(self):
         """INITIALIZE STARTING SCREEN"""
