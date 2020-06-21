@@ -40,7 +40,7 @@ class App:
         flags = RESIZABLE
         self.scenes = []
         self.scene = None
-        self.screen = pygame.display.set_mode((640, 320), flags)
+        self.screen = pygame.display.set_mode((640, 640), flags)
         self.running = True
         self.map = Map("mapa")
         self.assets = asset
@@ -49,7 +49,7 @@ class App:
 
     def test_screen(self):
         """INITIALIZE STARTING SCREEN"""
-        self.screen = self.map_screen.draw(7,7)
+        self.screen.blit(self.map_screen.draw(7,7), (0, 0))
         pygame.display.flip()
     def run(self):
         """Run the main event loop."""
