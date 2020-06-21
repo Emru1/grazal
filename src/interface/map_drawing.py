@@ -18,22 +18,20 @@ class MapSurface:
         self.surface = pygame.Surface((config.grid_x * config.tile_size, config.grid_y * config.tile_size))
 
     def __get_tiles(self, x, y):
-        x = x - config.grid_x/2
-        y = y - config.grid_y/2
-        for i in range(0, config.grid_x):
-            for j in range(0, config.grid_y):
-                self.map_grid[i][j] = self.mapa.get_tile(i, j)
+        x = int(x - config.grid_x/2)
+        y = int(y - config.grid_y/2)
+        for i in range(config.grid_x):
+            for j in range(config.grid_y):
+                self.map_grid[i][j] = self.mapa.get_tile(i + x, j + y)
 
     def __draw_tile(self, x, y):
         if self.map_grid[x][y]:
             img = asset.get(self.map_grid[x][y].asset)
         else:
             img = "black"
-        to_draw = asset.get(img)
-        self.surface.blit(to_draw, (x * config.tile_size, y * config.tile_size))
+        self.surface.blit(img, (x * config.tile_size, y * config.tile_size))
 
     def draw(self, x, y):
-        self.map_grid.clear()
         self.surface.fill([0, 0, 0])
         self.__get_tiles(x, y)
         for i in range(config.grid_x):

@@ -1,21 +1,27 @@
-8 8
-4
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa aaaa aaaa aaaa aaaa aaaa aaaa aaaa
-aaaa
+16 16
+1
+a a a a a a a a a a a a a a a a
+a a a a a a a a a a a a a a a a
+a a a a a a a a a a a b a a a a
+a a a a a a a a a a a a a a a a
+a a a a a a a a a a a a a a a a
+a a a a a a a a a b a a a a a a
+a a a a a a a a a a a a a a a a
+a a a a a a a a a a a a a a a a
+a a a a a a a b a a a a a a a a
+a a b a a a a a a a a a a a a a
+a a a a a a a a a a a a a a a a
+a a a a a a a a a a a a a a a a
+a a a a a b a a a a a a a a a a
+a a a a a a a a a a a a a a a a
+a a b a a a a a a a a b a a a a
+a a a a a a a a a a a a a a a a
+a a a a a a a a a a a a a a a a
+a
 {
-    transparent 0
-    obj
-    {
-        name Test
-        weight 100
-        can_pickup true
-    }
-    asset out.png
+    asset test1
+}
+b
+{
+    asset test2
 }

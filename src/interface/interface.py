@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from src.map.map import Map
 from src.globals import *
+from src.interface.map_drawing import MapSurface
 
 class Text:
     """Create a text object."""
@@ -45,6 +46,7 @@ class App:
         self.map = Map("mapa")
         self.assets = asset
         self.assets.convert()
+        self.map_screen = MapSurface(self.map)
 
     def test_screen(self):
         """INITIALIZE STARTING SCREEN"""
@@ -55,6 +57,10 @@ class App:
 
     def run(self):
         """Run the main event loop."""
+        """TEST"""
+        self.map_screen.draw(7, 7)
+
+        """TEST"""
         while App.running:  
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
