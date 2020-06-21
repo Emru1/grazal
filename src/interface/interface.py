@@ -38,11 +38,10 @@ class App:
         """Initialize pygame and the application."""
         pygame.init()
         flags = RESIZABLE
-        App.scenes = []
-        App.scene = None
-        App.screen = pygame.display.set_mode((640, 320), flags)
-        App.running = True
-
+        self.scenes = []
+        self.scene = None
+        self.screen = pygame.display.set_mode((640, 320), flags)
+        self.running = True
         self.map = Map("mapa")
         self.assets = asset
         self.assets.convert()
@@ -50,18 +49,13 @@ class App:
 
     def test_screen(self):
         """INITIALIZE STARTING SCREEN"""
-        Scene()
-        App.scene = App.scenes[App.scene.id]
-        App.scene.nodes.append(Text("PRZYCISK",pos=(100,100)))
-        App.scene.draw()
-
+        self.screen = self.map_screen.draw(7,7)
+        pygame.display.flip()
     def run(self):
         """Run the main event loop."""
         """TEST"""
-        self.map_screen.draw(7, 7)
-
         """TEST"""
-        while App.running:  
+        while self.running:  
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
