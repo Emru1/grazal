@@ -150,7 +150,7 @@ class Map:
 
     def __init__(self, path):
         line_num = 0
-        plik_mapy = open(path, "r")
+        plik_mapy = open("maps/" + path, "r")
         log.log("File " + path + " opened to read map")
         size = plik_mapy.readline()
         line_num += 1
