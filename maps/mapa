@@ -11,8 +11,8 @@ a a a a a a a a a a a a a a a a
 a a a a a a a b a a a a a a a a
 a a b b b b b a a a a a a a a a
 a a a a a a a a a a a a a a a a
-a a a a a a a a a a a a a a a a
-a a a a a b a a a a a a a a a a
+a a a a a a a a a a c c d a a a
+a a a a a b a a a a c c d a a a
 a a a a a a a a a a a a a a a a
 a a b a a a a a a a a b a a a a
 a a a a a a a a a a a a a a a a
@@ -24,4 +24,12 @@ a
 b
 {
     asset test2
+}
+c
+{
+    asset s_trawa1
+}
+d
+{
+    asset s_trawa2
 }
