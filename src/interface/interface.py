@@ -83,9 +83,11 @@ class App:
 
         pygame.quit()
 
+
 class Scene:
     id = 0
     bg = Color('gray')
+
     def __init__(self, *args, **kwargs):
         App.scenes.append(self)
         App.scene = self
@@ -93,13 +95,12 @@ class Scene:
         Scene.id += 1
         self.nodes = []
         self.bg = Scene.bg
+
     def __str__(self):
         return "Scene {}".format(self.id)
+
     def draw(self):
         App.screen.fill(self.bg)
         for node in self.nodes:
             node.draw()
-        pygame.display.flip() 
-
-if __name__ == '__main__':
-    App().run()
+        pygame.display.flip()
