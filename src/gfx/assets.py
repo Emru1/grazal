@@ -13,6 +13,7 @@ class Asset:
             if line[0] == '#':
                 continue
             self.imgs[str(line.split(' ')[0])] = pygame.image.load("img/" + str(line.split(' ')[1]))
+        asset_file.close()
 
     def add(self, name, path):
         if name in self.imgs:

@@ -169,6 +169,7 @@ class Map:
             map_array.append(liney)
 
         map_tokens = self.parse_tokens(plik_mapy, plik_mapy.tell(), line_num)
+        plik_mapy.close()
 
         for y in range(self.sizey):
             for x in range(self.sizex):
