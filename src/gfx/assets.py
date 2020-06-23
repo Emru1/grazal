@@ -1,5 +1,4 @@
 import pygame
-from src.globals import log
 
 
 class Asset:

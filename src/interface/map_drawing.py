@@ -1,5 +1,4 @@
 from src.globals import *
-from src.map.map import Map
 from src.map.tile import Tile
 import pygame
 
