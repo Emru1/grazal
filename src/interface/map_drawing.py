@@ -3,15 +3,13 @@ from src.map.map import Map
 from src.map.tile import Tile
 import pygame
 
-"""
-Powierzchnia o wymiarach obliczonych z configu
-funkcja draw(x, y) przyjmuje pozycje wyrazona w koordynatach mapy na srodek ekranu
-nastepnie przygotowywuje i zwraca powierzchnie do narysowania na ekranie
-"""
-
 
 class MapSurface:
-
+    """
+    Powierzchnia o wymiarach obliczonych z configu.
+    Funkcja draw(x, y) przyjmuje pozycje wyrazona w koordynatach mapy na srodek ekranu,
+    nastepnie przygotowywuje i zwraca powierzchnie do narysowania na ekranie
+    """
     def __init__(self, mapa):
         self.map_grid = [[Tile() for x in range(config.grid_x)] for y in range(config.grid_y)]
         self.mapa = mapa
@@ -32,6 +30,13 @@ class MapSurface:
         self.surface.blit(img, (x * config.tile_size, y * config.tile_size))
 
     def draw(self, x, y):
+        """
+        rysuje siatke mapy z centrum podanym w parametrach x, y
+
+        :param x: int
+        :param y: int
+        :return: pygame.surface
+        """
         self.surface.fill([0, 0, 0])
         self.__get_tiles(x, y)
         for i in range(config.grid_x):
