@@ -1,5 +1,6 @@
 from src.interface.interface import App
 
+
 def main():
     app = App()
     app.run()

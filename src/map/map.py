@@ -12,7 +12,7 @@ odpowiedniej klasy jako słownik <parametr, wartosc>
 
 from src.map.tile import Tile
 from src.globals import log
-import string
+
 
 class Token:
 
@@ -36,6 +36,9 @@ class Map:
     def parse_tokens(file, file_pos, line_num):
         return_dict = {}
         tmp_dict = {}
+
+        token = ""
+        val = False
 
         in_token = False
         in_obj = False
@@ -179,5 +182,3 @@ class Map:
         if x < 0 or x > self.sizex or y < 0 or y > self.sizey:
             return self.empty_tile
         return self.map[x][y]
-
-
