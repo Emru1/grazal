@@ -1,7 +1,3 @@
-from grazal.src.pygame_functions import *
-from Box2D import *
-
-
 class Player:
     sprite = pygame.sprite.Sprite
 
