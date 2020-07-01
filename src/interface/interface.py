@@ -49,17 +49,19 @@ class App:
         self.map_screen = MapSurface(self.map)
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
-        mx, my = pygame.mouse.get_pos()
+        mous = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
-        if x+w > mx > x and y+h > my > y:
-            pygame.draw.rect(self.screen, ac, (x, y, w, h))
-            if click[0] == 1 and action != None:
+        f = pygame.font.Font(None, 32)
+        s = f.render(msg, True, [0, 0, 0])
+        textRec = s.get_rect()
+        textRec.center = (x//2,y//2)
+        if textRec.collidepoint(mous[0],mous[1]):
+            pygame.draw.rect(self.screen,ac,textRec)
+            if click[0] == True:
                 action()
         else:
-            pygame.draw.rect(self.screen, ic, (x, y, w, h))
-        f = pygame.font.Font(None, 16)
-        s = f.render(msg, True, [0, 0, 0])
-        self.screen.blit(s, (x+(w/2), y+(h/2)))
+            pygame.draw.rect(self.screen,ic,textRec)
+        self.screen.blit(s,textRec)
 
     def intro(self):
         self.running = True
@@ -68,15 +70,22 @@ class App:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-            self.screen.fill((240, 255, 255))
-            self.button("Play", 200, 100, 50, 50, (255, 0, 0), (0, 255, 0), self.game_loop)
-            self.button("Options", 200, 300, 50, 50, (255, 0, 0), (0, 255, 0))
-            self.button("Exit", 200, 500, 50, 50, (255, 0, 0), (0, 255, 0), quit)
+            self.screen.fill((255,255,255))
+            self.button("Play", 640, 300, 100, 100, (255, 0, 0), (0, 255, 0), self.game_loop)
+            self.button("Options", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0))
+            self.button("Exit", 640, 700, 100, 100, (255, 0, 0), (0, 255, 0), quit)
             pygame.display.update()
+
+    def right_panel(self):
+        pygame.draw.rect(self.screen,(100,255,0),(544,0,640-543,100)) #minimap
+        pygame.draw.rect(self.screen,(100,0,255),(544,100,640-543,200))
+        pygame.draw.rect(self.screen,(100,255,0),(544,300,640-543,245))
+        
 
     def game_loop(self):
         while self.running:
             self.screen.blit(self.map_screen.draw(7, 7), (0, 0))
+            self.right_panel()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
