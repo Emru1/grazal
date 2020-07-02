@@ -3,7 +3,8 @@ from pygame.locals import *
 from src.map.map import Map
 from src.globals import *
 from src.interface.map_drawing import MapSurface
-
+from src.logic.logic import Logic
+from src.interface.event_handler import event_handler
 
 '''class Text:
     """Create a text object."""
@@ -80,36 +81,15 @@ class App:
         pygame.draw.rect(self.screen,(100,255,0),(544,0,640-543,100)) #minimap
         pygame.draw.rect(self.screen,(100,0,255),(544,100,640-543,200))
         pygame.draw.rect(self.screen,(100,255,0),(544,300,640-543,245))
-        
 
     def game_loop(self):
+        logika = Logic()
         while self.running:
             self.screen.blit(self.map_screen.draw(7, 7), (0, 0))
+            self.screen.blit(asset.get(logika.gracz.asset),(logika.gracz.x,logika.gracz.y))
             self.right_panel()
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_w:
-                        '''move up'''
-                        pass
-                    elif event.key == pygame.K_s:
-                        '''move down'''
-                        pass
-                    elif event.key == pygame.K_a:
-                        '''move left'''
-                        pass
-                    elif event.key == pygame.K_d:
-                        '''move right'''
-                        pass
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:
-                        '''Left mouse button'''
-                        pass
-                    elif event.button == 3:
-                        '''right mouse button'''
-                        pass
+            event_handler(logika,self.map)
+            #EVENT LOOP FUNCTION HERE
             pygame.display.flip() 
 
     def test_screen(self):

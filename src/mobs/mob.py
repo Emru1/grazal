@@ -5,10 +5,13 @@ class Mob:
     uniwersalna klasa symbolizująca generycznego moba
     może to być postać gracza, przeciwnik lub NPC
     """
-    def __init__(self, x, y, mmap, asset=None):
+    def __init__(self, x, y, mmap, hp, attack, movement, asset=None):
         self.x = x
         self.y = y
         self.move_queue = []
+        self.hp = hp
+        self.attack = attack
+        self.movement = movement
         self.mmap = mmap
         if not asset:
             self.asset = "ludek"

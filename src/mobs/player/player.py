@@ -1,19 +1,25 @@
-class Player:
-    sprite = pygame.sprite.Sprite
+from src.mobs.mob import Mob
 
-    def __init__(self, sprite, x, y, movement_speed):
-        self.x = x
-        self.y = y
-        self.sprite = sprite
-        self.hp = 100
+
+class Player(Mob):
+
+    def __init__(self,x,y,mmap,hp,attack,movement,sprite):
+        super().__init__(x,y,mmap,hp,attack,movement,sprite)
         self.eq = []
-        self.movement_speed = movement_speed
 
     def show(self):
         showSprite(self.sprite)
 
+
     def move(self, x, y):
         moveSprite(self.sprite, x, y)
+
+    def moveup(self,mapa):
+        #if mapa.get_tile(self.x,self.y+self.movement).passable:
+        self.y = self.y-self.movement
+
+         
+
 
     def pick_item(self, item):
         self.eq.append(item)
