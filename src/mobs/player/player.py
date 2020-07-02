@@ -1,4 +1,5 @@
 from src.mobs.mob import Mob
+from src.globals import maps
 
 
 class Player(Mob):
@@ -15,20 +16,28 @@ class Player(Mob):
         moveSprite(self.sprite, x, y)
 
     def moveup(self,mapa):
-        #if mapa.get_tile(self.x,self.y-self.movement).passable:
-        self.y = self.y-self.movement
+        if mapa.get_tile(self.x,self.y-self.movement).passable:
+            mapa.get_tile(self.x, self.y).mob = None
+            self.y = self.y-self.movement
+            mapa.get_tile(self.x, self.y).mob = self
 
     def movedown(self,mapa):
-        #if mapa.get_tile(self.x,self.y+self.movement).passable:
-        self.y = self.y+self.movement
+        if mapa.get_tile(self.x,self.y+self.movement).passable:
+            mapa.get_tile(self.x, self.y).mob = None
+            self.y = self.y+self.movement
+            mapa.get_tile(self.x, self.y).mob = self
 
     def moveleft(self,mapa):
-        #if mapa.get_tile(self.x-self.movement,self.y).passable:
-        self.x = self.x-self.movement
+        if mapa.get_tile(self.x-self.movement,self.y).passable:
+            mapa.get_tile(self.x, self.y).mob = None
+            self.x = self.x-self.movement
+            mapa.get_tile(self.x, self.y).mob = self
     
     def moveright(self,mapa):
-        #if mapa.get_tile(self.x+self.movement,self.y).passable:
-        self.x = self.x+self.movement
+        if mapa.get_tile(self.x+self.movement,self.y).passable:
+            mapa.get_tile(self.x, self.y).mob = None
+            self.x = self.x+self.movement
+            mapa.get_tile(self.x, self.y).mob = self
          
 
 

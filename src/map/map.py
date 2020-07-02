@@ -179,6 +179,6 @@ class Map:
                 self.map[x][y].initd(token=map_tokens[map_array[y][x]])
 
     def get_tile(self, x, y):
-        if x < 0 or x > self.sizex or y < 0 or y > self.sizey:
+        if x < 0 or x > self.sizex - 1 or y < 0 or y > self.sizey - 1:
             return self.empty_tile
         return self.map[x][y]

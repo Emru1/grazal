@@ -3,6 +3,7 @@ from pygame.locals import *
 from src.map.map import Map
 from src.globals import *
 from src.interface.map_drawing import MapSurface
+from src.interface.mob_drawing import MobSurface
 from src.logic.logic import Logic
 from src.interface.event_handler import event_handler
 
@@ -44,10 +45,11 @@ class App:
         self.scene = None
         self.screen = pygame.display.set_mode((640, 640), flags)
         self.running = True
-        self.map = Map("mapa")
+        maps.add("mapa", Map("mapa"))
         self.assets = asset
         self.assets.convert()
-        self.map_screen = MapSurface(self.map)
+        self.map_screen = MapSurface(maps.get("mapa"))
+        self.mob_screen = MobSurface(maps.get("mapa"))
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
         mous = pygame.mouse.get_pos()
@@ -86,9 +88,10 @@ class App:
         logika = Logic()
         while self.running:
             self.screen.blit(self.map_screen.draw(7, 7), (0, 0))
-            self.screen.blit(asset.get(logika.gracz.asset),(logika.gracz.x,logika.gracz.y))
+            self.screen = self.mob_screen.draw(self.screen, 7, 7)
+            #self.screen.blit(asset.get(logika.gracz.asset),(logika.gracz.x,logika.gracz.y))
             self.right_panel()
-            event_handler(logika,self.map)
+            event_handler(logika,maps.get("mapa"))
             #EVENT LOOP FUNCTION HERE
             pygame.display.flip() 
 

@@ -1,3 +1,5 @@
+from src.mobs.mob import Mob
+
 
 class Tile:
 
@@ -7,7 +9,7 @@ class Tile:
         self.light = int
         self.asset = str
         self.furn = str
-        self.mob = {}
+        self.mob = None
         self.obj = {}
         self.area = {}
 
@@ -17,8 +19,8 @@ class Tile:
         self.furn = token.furn
         self.light = token.light
         self.transparent = token.transparent
-        if token.mob != '0':
-            self.mob = token.mob
+        #if token.mob != '0':
+        #    self.mob = token.mob
         self.obj = token.obj
         return self
 
@@ -28,6 +30,6 @@ class Tile:
         self.furn = token['furn']
         self.light = token['light']
         self.transparent = token['transparent']
-        self.mob = token['mob']
+        #self.mob = token['mob']
         self.obj = token['obj']
         self.area = token['area']
