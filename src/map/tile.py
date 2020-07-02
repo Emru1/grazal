@@ -12,6 +12,7 @@ class Tile:
         self.mob = None
         self.obj = {}
         self.area = {}
+        self.tmob = {}
 
     def init(self, token):
         self.passable = token.passable
@@ -19,17 +20,22 @@ class Tile:
         self.furn = token.furn
         self.light = token.light
         self.transparent = token.transparent
-        #if token.mob != '0':
-        #    self.mob = token.mob
+        if token.mob != '0':
+            self.mob = token.mob
         self.obj = token.obj
         return self
 
-    def initd(self, token):
+    def initd(self, token, x, y, path):
         self.passable = token['passable']
         self.asset = token['asset']
         self.furn = token['furn']
         self.light = token['light']
         self.transparent = token['transparent']
-        #self.mob = token['mob']
+        if token['mob']:
+            self.tmob = token['mob']
         self.obj = token['obj']
         self.area = token['area']
+
+    def addmob(self, x, y, path):
+        if self.tmob:
+            self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'].rstrip('\n'))

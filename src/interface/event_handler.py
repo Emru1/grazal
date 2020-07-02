@@ -8,15 +8,15 @@ def event_handler(logika,mapa,mobs=None):
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 '''move up'''
-                logika.gracz.moveup(mapa)
+                logika.gracz.moveup()
             elif event.key == pygame.K_s:
-                logika.gracz.movedown(mapa)
+                logika.gracz.movedown()
                 '''move down'''
             elif event.key == pygame.K_a:
-                logika.gracz.moveleft(mapa)
+                logika.gracz.moveleft()
                 '''move left'''
             elif event.key == pygame.K_d:
-                logika.gracz.moveright(mapa)
+                logika.gracz.moveright()
                 '''move right'''
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:

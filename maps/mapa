@@ -1,7 +1,7 @@
 16 16
 1
 a a a a a a a a a a a a a a a a
-a a a a a a a a a a a a a a a a
+a a a a a a a a a a a a a a d a
 a a a a a a a a a a a b a a a a
 a a a a a a a a a a a a a a a a
 a a a a a a a a a a a a a a a a
@@ -32,4 +32,8 @@ c
 d
 {
     asset s_trawa2
+    mob
+    {
+        asset ludek
+    }
 }

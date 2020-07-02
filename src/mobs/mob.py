@@ -19,6 +19,7 @@ class Mob:
             self.asset = "ludek"
         else:
             self.asset = asset
+
         maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
     def pos(self):

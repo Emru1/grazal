@@ -50,6 +50,8 @@ class App:
         self.assets.convert()
         self.map_screen = MapSurface(maps.get("mapa"))
         self.mob_screen = MobSurface(maps.get("mapa"))
+        self.clock = pygame.time.Clock()
+        self.clock.tick(60)
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
         mous = pygame.mouse.get_pos()
@@ -89,7 +91,6 @@ class App:
         while self.running:
             self.screen.blit(self.map_screen.draw(7, 7), (0, 0))
             self.screen = self.mob_screen.draw(self.screen, 7, 7)
-            #self.screen.blit(asset.get(logika.gracz.asset),(logika.gracz.x,logika.gracz.y))
             self.right_panel()
             event_handler(logika,maps.get("mapa"))
             #EVENT LOOP FUNCTION HERE

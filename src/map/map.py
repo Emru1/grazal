@@ -153,7 +153,8 @@ class Map:
 
     def __init__(self, path):
         line_num = 0
-        plik_mapy = open("maps/" + path, "r")
+        self.path = path
+        plik_mapy = open("maps/" + self.path, "r")
         log.log("File " + path + " opened to read map")
         size = plik_mapy.readline()
         line_num += 1
@@ -164,19 +165,25 @@ class Map:
         self.cell_size = int(plik_mapy.readline())
         self.map = [[Tile() for x in range(self.sizex)] for y in range(self.sizey)]
         line_num += 1
-        map_array = []
+        self.map_array = []
 
         for y in range(self.sizey):
             liney = plik_mapy.readline().rstrip('\n').split(" ", self.sizex - 1)
             line_num += 1
-            map_array.append(liney)
+            self.map_array.append(liney)
 
-        map_tokens = self.parse_tokens(plik_mapy, plik_mapy.tell(), line_num)
+        self.map_tokens = self.parse_tokens(plik_mapy, plik_mapy.tell(), line_num)
         plik_mapy.close()
 
         for y in range(self.sizey):
             for x in range(self.sizex):
-                self.map[x][y].initd(token=map_tokens[map_array[y][x]])
+                self.map[x][y].initd(self.map_tokens[self.map_array[y][x]], x, y, self.path)
+
+    def initmobs(self):
+        for y in range(self.sizey):
+            for x in range(self.sizex):
+                self.map[x][y].addmob(x, y, self.path)
+
 
     def get_tile(self, x, y):
         if x < 0 or x > self.sizex - 1 or y < 0 or y > self.sizey - 1:

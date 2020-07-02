@@ -15,29 +15,33 @@ class Player(Mob):
     def move(self, x, y):
         moveSprite(self.sprite, x, y)
 
-    def moveup(self,mapa):
-        if mapa.get_tile(self.x,self.y-self.movement).passable:
-            mapa.get_tile(self.x, self.y).mob = None
-            self.y = self.y-self.movement
-            mapa.get_tile(self.x, self.y).mob = self
+    def moveup(self):
+        if maps.get(self.mmap).get_tile(self.x,self.y-self.movement).passable:
+            if not maps.get(self.mmap).get_tile(self.x, self.y - self.movement).mob:
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+                self.y = self.y-self.movement
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
-    def movedown(self,mapa):
-        if mapa.get_tile(self.x,self.y+self.movement).passable:
-            mapa.get_tile(self.x, self.y).mob = None
-            self.y = self.y+self.movement
-            mapa.get_tile(self.x, self.y).mob = self
+    def movedown(self):
+        if maps.get(self.mmap).get_tile(self.x,self.y+self.movement).passable:
+            if not maps.get(self.mmap).get_tile(self.x, self.y + self.movement).mob:
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+                self.y = self.y+self.movement
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
-    def moveleft(self,mapa):
-        if mapa.get_tile(self.x-self.movement,self.y).passable:
-            mapa.get_tile(self.x, self.y).mob = None
-            self.x = self.x-self.movement
-            mapa.get_tile(self.x, self.y).mob = self
+    def moveleft(self):
+        if maps.get(self.mmap).get_tile(self.x-self.movement,self.y).passable:
+            if not maps.get(self.mmap).get_tile(self.x-self.movement, self.y).mob:
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+                self.x = self.x-self.movement
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
     
-    def moveright(self,mapa):
-        if mapa.get_tile(self.x+self.movement,self.y).passable:
-            mapa.get_tile(self.x, self.y).mob = None
-            self.x = self.x+self.movement
-            mapa.get_tile(self.x, self.y).mob = self
+    def moveright(self):
+        if maps.get(self.mmap).get_tile(self.x+self.movement,self.y).passable:
+            if not maps.get(self.mmap).get_tile(self.x+self.movement, self.y).mob:
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+                self.x = self.x+self.movement
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
          
 
 
