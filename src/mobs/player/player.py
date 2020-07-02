@@ -15,9 +15,20 @@ class Player(Mob):
         moveSprite(self.sprite, x, y)
 
     def moveup(self,mapa):
-        #if mapa.get_tile(self.x,self.y+self.movement).passable:
+        #if mapa.get_tile(self.x,self.y-self.movement).passable:
         self.y = self.y-self.movement
 
+    def movedown(self,mapa):
+        #if mapa.get_tile(self.x,self.y+self.movement).passable:
+        self.y = self.y+self.movement
+
+    def moveleft(self,mapa):
+        #if mapa.get_tile(self.x-self.movement,self.y).passable:
+        self.x = self.x-self.movement
+    
+    def moveright(self,mapa):
+        #if mapa.get_tile(self.x+self.movement,self.y).passable:
+        self.x = self.x+self.movement
          
 
 
