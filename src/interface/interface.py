@@ -6,6 +6,7 @@ from src.interface.map_drawing import MapSurface
 from src.interface.mob_drawing import MobSurface
 from src.logic.logic import Logic
 from src.interface.event_handler import event_handler
+from src.interface.panels import RightPanel
 
 '''class Text:
     """Create a text object."""
@@ -52,6 +53,7 @@ class App:
         self.mob_screen = MobSurface(maps.get("mapa"))
         self.clock = pygame.time.Clock()
         self.clock.tick(60)
+        self.mob_pane = False
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
         mous = pygame.mouse.get_pos()
@@ -82,17 +84,37 @@ class App:
             pygame.display.update()
 
     def right_panel(self):
-        pygame.draw.rect(self.screen,(100,255,0),(544,0,640-543,100)) #minimap
-        pygame.draw.rect(self.screen,(100,0,255),(544,100,640-543,200))
-        pygame.draw.rect(self.screen,(100,255,0),(544,300,640-543,245))
+        pass
+       # pygame.draw.rect(self.screen,(100,255,0),(544,0,640-543,100)) #minimap
+       # pygame.draw.rect(self.screen,(100,0,255),(544,100,640-543,200))
+       # pygame.draw.rect(self.screen,(100,255,0),(544,300,640-543,245))
+
+    def mob_panel(self,tile):
+        pass
+    #    if self.mob_pane:
+  #          if tile.mob:    
+  #              textRec = pygame.draw.rect(self.screen,(100,255,0),(544,0,640-543,100))
+  ##              s = f.render("ENEMY",True, (0,255,255))
+   #             hp = f.render(("HP: %d"%tile.mob.hp),True , (255,255,255))
+    #            pygame.draw.rect(self.screen,(0,0,0),textRec)
+    #            self.screen.blit(s,textRec)
+    #            hpRec = textRec.move(0,11)
+    ##            self.screen.blit(hp,hpRec)
+    #            at = f.render(("Attack: %d"%tile.mob.attack),True, (255,255,255))
+    #            atRec = hpRec.move(0,11)
+    #            self.screen.blit(at,atRec)
+    #    else:
+     #       pygame.draw.rect(self.screen,(100,255,0),(544,0,640-543,100))
 
     def game_loop(self):
         logika = Logic()
+        panel = RightPanel()
         while self.running:
             self.screen.blit(self.map_screen.draw(7, 7), (0, 0))
             self.screen = self.mob_screen.draw(self.screen, 7, 7)
-            self.right_panel()
-            event_handler(logika,maps.get("mapa"))
+            panel.Pp.show_player(self,logika)
+            #self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
+            event_handler(self,logika,maps.get("mapa"),panel)
             #EVENT LOOP FUNCTION HERE
             pygame.display.flip() 
 
@@ -102,32 +124,6 @@ class App:
 
     def run(self):
         """Run the main event loop."""
-        while self.running:  
-            self.intro()
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-                    raise SystemExit
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_w:
-                        #move up
-                        pass
-                    elif event.key == pygame.K_s:
-                        #move down
-                        pass
-                    elif event.key == pygame.K_a:
-                        #move left
-                        pass
-                    elif event.key == pygame.K_d:
-                        #move right
-                        pass
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:
-                        #Left mouse button
-                        pass
-                    elif event.button == 3:
-                        #right mouse button
-                        pass
-            pygame.display.flip()
+        self.intro()
 
         pygame.quit()
