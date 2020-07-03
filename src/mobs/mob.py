@@ -22,6 +22,8 @@ class Mob:
 
         maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
+    
+
     def lethal(self):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
@@ -52,5 +54,21 @@ class Mob:
 
 class Enemy(Mob):
     def __init__(self, x, y, asset):
-        super().__init__(x, y, asset)
+        super().__init__(x, y, asset, mmap, hp, attack, movement)
+        self.agressive = False
+        self.attacked = False
+        self.able_to_attack = False
+    
+    def check_range(self, player):
+        if self.pos() == (player.x-1,player.y) or self.pos() == (player.x+1,player.y) or self.pos() == (player.x,player.y-1) or self.pos() == (player.x,player.y+1):
+            return True
 
+    def action(self,player):
+        if self.agressive:
+            #find location of player and move to him
+            pass
+        else:
+            if self.attacked:
+                self.able_to_attack = check_range(self,player) 
+                if self.able_to_attack:
+                    player.hp = player.hp - self.attack
