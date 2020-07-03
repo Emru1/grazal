@@ -51,5 +51,17 @@ class Player(Mob):
     def drop_item(self):
         pass
 
-    def attack(self, mob):
-        pass
+    def able_to_attack(self,mob):
+        if (self.x+1,self.y) == mob.pos() or (self.x-1,self.y) == mob.pos() or (self.x,self.y+1) == mob.pos() or (self.x,self.y-1) == mob.pos():
+            return True
+        else:
+            return False
+
+    def interaction_attack(self,mob, mouse):
+        if mob:
+            if self.able_to_attack(mob):
+                if mob.hp - self.attack <= 0:
+                    mob.lethal()
+                else:
+                    mob.hp = mob.hp - self.attack          
+

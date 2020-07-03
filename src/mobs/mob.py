@@ -22,6 +22,11 @@ class Mob:
 
         maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
+    def lethal(self):
+        self.hp = 0
+        maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+        
+            
     def pos(self):
         """
         zwraca krotke z pozycja moba
