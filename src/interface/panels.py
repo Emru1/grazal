@@ -6,9 +6,14 @@ class RightPanel():
     def __init__(self):
         self.R1 = Mob_panel()
         self.Pp = Player_panel()
+        self.clicked_tile = None
         
     def resolve(self,mouse,logika,app):
-        self.clicked_tile = maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1)
+        self.clicked_tile = maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-8 + logika.gracz.x,
+                                                                 int(mouse[1]/32)-8 + logika.gracz.y)
+        print(int(mouse[0]/32)-8 + logika.gracz.x)
+        print(int(mouse[1]/32)-8 + logika.gracz.y)
+
         if self.clicked_tile.mob:
             #check if your not clicking on the player
             if self.clicked_tile.mob.x == logika.gracz.x and self.clicked_tile.mob.y == logika.gracz.y:

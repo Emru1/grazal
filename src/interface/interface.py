@@ -41,6 +41,7 @@ class App:
     def __init__(self):
         """Initialize pygame and the application."""
         pygame.init()
+        pygame.mixer.quit()
         flags = RESIZABLE
         self.scenes = []
         self.scene = None
@@ -110,12 +111,13 @@ class App:
         logika = Logic()
         panel = RightPanel()
         while self.running:
-            self.screen.blit(self.map_screen.draw(7, 7), (0, 0))
-            self.screen = self.mob_screen.draw(self.screen, 7, 7)
+            self.screen.blit(self.map_screen.draw(logika.gracz.x, logika.gracz.y), (0, 0))
+            self.screen = self.mob_screen.draw(self.screen, logika.gracz.x, logika.gracz.y)
             panel.Pp.show_player(self,logika)
             #self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
             event_handler(self,logika,maps.get("mapa"),panel)
             #EVENT LOOP FUNCTION HERE
+            self.clock.tick(60)
             pygame.display.flip() 
 
     def test_screen(self):

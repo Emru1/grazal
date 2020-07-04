@@ -13,6 +13,8 @@ class MapSurface:
         self.map_grid = [[Tile() for x in range(config.grid_x)] for y in range(config.grid_y)]
         self.mapa = mapa
         self.surface = pygame.Surface((config.grid_x * config.tile_size, config.grid_y * config.tile_size))
+        self.lx = -1
+        self.ly = -1
 
     def __get_tiles(self, x, y):
         x = int(x - config.grid_x/2)
@@ -36,6 +38,10 @@ class MapSurface:
         :param y: int
         :return: pygame.surface
         """
+        if self.lx == x and self.ly == y:
+            return self.surface
+        self.lx = x
+        self.ly = y
         self.surface.fill([0, 0, 0])
         self.__get_tiles(x, y)
         for i in range(config.grid_x):

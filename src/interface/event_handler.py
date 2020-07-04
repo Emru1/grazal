@@ -1,7 +1,8 @@
 import pygame
 from src.globals import *
 
-def event_handler(app,logika,map,panel,mobs=None):
+
+def event_handler(app, logika, mmap, panel, mobs=None):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -23,7 +24,7 @@ def event_handler(app,logika,map,panel,mobs=None):
             mouse = pygame.mouse.get_pos()
             if event.button == 1:
                 print(mouse[0],mouse[1])
-                panel.resolve(mouse,logika,app)
+                panel.resolve(mouse, logika, app)
                 #if maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob:
                     #print(mapa.get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.hp)
                     #wywolaj funkcje wyswietlajaca informacje o mobie

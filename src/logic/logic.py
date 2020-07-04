@@ -1,5 +1,6 @@
 from src.mobs.player.player import Player
 
+
 class Logic():
 
     def __init__(self):
