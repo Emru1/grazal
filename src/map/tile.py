@@ -1,4 +1,4 @@
-from src.mobs.mob import Mob
+from src.mobs.mob import Mob, Enemy
 
 
 class Tile:
@@ -38,4 +38,11 @@ class Tile:
 
     def addmob(self, x, y, path):
         if self.tmob:
-            self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'].rstrip('\n'))
+            if 'type' in self.tmob:
+                if self.tmob['type'] == 'enemy':
+                    self.mob = Enemy(x, y, path, 100, 1, 1, self.tmob['asset'])
+                    print("enemy")
+                else:
+                    self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'])
+            else:
+                self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'])

@@ -109,7 +109,7 @@ class Map:
                             in_mob = False
                             break
                         line_mob_param = line_mob.split(' ')[0]
-                        line_mob_val = line_mob.split(' ')[1]
+                        line_mob_val = line_mob.split(' ')[1].rstrip('\n')
                         tmp_dict['mob'][line_mob_param] = line_mob_val
 
                 if param == 'area':
@@ -128,7 +128,7 @@ class Map:
                             in_area = False
                             break
                         line_area_param = line_area.split(' ')[0]
-                        line_area_val = line_area.split(' ')[1]
+                        line_area_val = line_area.split(' ')[1].rstrip('\n')
                         tmp_dict['area'][line_area_param] = line_area_val
 
                 if param == 'obj':
@@ -147,7 +147,7 @@ class Map:
                             in_obj = False
                             break
                         line_obj_param = line_obj.split(' ')[0]
-                        line_obj_val = line_obj.split(' ')[1]
+                        line_obj_val = line_obj.split(' ')[1].rstrip('\n')
                         tmp_dict['obj'][line_obj_param] = line_obj_val
         return return_dict
 

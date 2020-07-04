@@ -12,7 +12,7 @@ a a a a a a a b a a a a a a a a
 a a b b b b b a a a a a a a a a
 a a a a a a a a a a a a a a a a
 a a a a a a a a a a c c d a a a
-a a a a a b a a a a c c d a a a
+a e a a a b a a a a c c d a a a
 a a a a a a a a a a a a a a a a
 a a b a a a a a a a a b a a a a
 a a a a a a a a a a a a a a a a
@@ -34,6 +34,15 @@ d
     asset s_trawa2
     mob
     {
+        asset ludek
+    }
+}
+e
+{
+    asset test2
+    mob
+    {
+        type enemy
         asset ludek
     }
 }

@@ -53,8 +53,8 @@ class Mob:
 
 
 class Enemy(Mob):
-    def __init__(self, x, y, asset):
-        super().__init__(x, y, asset, mmap, hp, attack, movement)
+    def __init__(self, x, y, mmap, hp, attack, movement, asset=None):
+        super().__init__(x, y, mmap, hp, attack, movement, asset)
         self.agressive = False
         self.attacked = False
         self.able_to_attack = False
