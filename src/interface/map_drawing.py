@@ -17,8 +17,8 @@ class MapSurface:
         self.ly = -1
 
     def __get_tiles(self, x, y):
-        x = int(x - config.grid_x/2)
-        y = int(y - config.grid_y/2)
+        x = x - int(config.grid_x/2)
+        y = y - int(config.grid_y/2)
         for i in range(config.grid_x):
             for j in range(config.grid_y):
                 self.map_grid[i][j] = self.mapa.get_tile(i + x, j + y)

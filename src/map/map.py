@@ -184,7 +184,6 @@ class Map:
             for x in range(self.sizex):
                 self.map[x][y].addmob(x, y, self.path)
 
-
     def get_tile(self, x, y):
         if x < 0 or x > self.sizex - 1 or y < 0 or y > self.sizey - 1:
             return self.empty_tile
