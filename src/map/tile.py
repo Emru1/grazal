@@ -38,11 +38,13 @@ class Tile:
 
     def addmob(self, x, y, path):
         if self.tmob:
+            name = ''
+            if 'name' in self.tmob:
+                name = self.tmob['name']
             if 'type' in self.tmob:
                 if self.tmob['type'] == 'enemy':
-                    self.mob = Enemy(x, y, path, 100, 1, 1, self.tmob['asset'])
-                    print("enemy")
+                    self.mob = Enemy(x, y, path, 100, 1, 1, self.tmob['asset'], name)
                 else:
-                    self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'])
+                    self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'], name)
             else:
-                self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'])
+                self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'], name)

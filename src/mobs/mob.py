@@ -7,7 +7,7 @@ class Mob:
     uniwersalna klasa symbolizująca generycznego moba
     może to być postać gracza, przeciwnik lub NPC
     """
-    def __init__(self, x, y, mmap, hp, attack, movement, asset=None):
+    def __init__(self, x, y, mmap, hp, attack, movement, asset=None, name=None):
         self.x = x
         self.y = y
         self.move_queue = []
@@ -20,15 +20,18 @@ class Mob:
         else:
             self.asset = asset
 
-        maps.get(self.mmap).get_tile(self.x, self.y).mob = self
+        if not name:
+            self.name = "Mob"
+        else:
+            self.name = name
 
-    
+        maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
     def lethal(self):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-        
-            
+        del self
+
     def pos(self):
         """
         zwraca krotke z pozycja moba
@@ -53,8 +56,8 @@ class Mob:
 
 
 class Enemy(Mob):
-    def __init__(self, x, y, mmap, hp, attack, movement, asset=None):
-        super().__init__(x, y, mmap, hp, attack, movement, asset)
+    def __init__(self, x, y, mmap, hp, attack, movement, asset=None, name=None):
+        super().__init__(x, y, mmap, hp, attack, movement, asset, name)
         self.agressive = False
         self.attacked = False
         self.able_to_attack = False

@@ -34,6 +34,7 @@ d
     asset s_trawa2
     mob
     {
+        name Andrzej
         asset ludek
     }
 }
@@ -42,6 +43,7 @@ e
     asset test2
     mob
     {
+        name Krzysiek
         type enemy
         asset ludek
     }
