@@ -30,7 +30,7 @@ class Mob:
     def lethal(self):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-        del self
+       # del self
 
     def pos(self):
         """
@@ -72,6 +72,6 @@ class Enemy(Mob):
             pass
         else:
             if self.attacked:
-                self.able_to_attack = check_range(self,player) 
+                self.able_to_attack = self.check_range(player) 
                 if self.able_to_attack:
                     player.hp = player.hp - self.attack
