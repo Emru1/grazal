@@ -8,6 +8,7 @@ from src.logic.logic import Logic
 from src.interface.event_handler import event_handler
 from src.interface.panels import RightPanel
 
+
 '''class Text:
     """Create a text object."""
 
@@ -118,6 +119,7 @@ class App:
             event_handler(self,logika,maps.get("mapa"),panel)
             #EVENT LOOP FUNCTION HERE
             self.clock.tick(60)
+            timer.run()
             pygame.display.flip() 
 
     def test_screen(self):
