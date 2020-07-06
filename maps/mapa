@@ -19,11 +19,11 @@ a a a a a a a a a a a a a a a a
 a a a a a a a a a a a a a a a a
 a
 {
-    asset test1
+    asset trawa
 }
 b
 {
-    asset test2
+    asset trawa
 }
 c
 {
@@ -41,7 +41,7 @@ d
 }
 e
 {
-    asset test2
+    asset trawa
     mob
     {
         name Krzysiek

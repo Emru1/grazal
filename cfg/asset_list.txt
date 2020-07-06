@@ -10,3 +10,4 @@ serduszko_23 16/gui_17.png
 serduszko_13 16/gui_18.png
 serduszko_0 16/gui_19.png
 empty_inv 16/gui_116.png
+trawa hyptosis_78.png
