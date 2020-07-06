@@ -82,10 +82,11 @@ class Mob:
                     path[(current_x+neighbour_x, current_y+neighbour_y)] = (current_x, current_y)
 
         result_path.appendleft((dest_x, dest_y))
-        current_vertex = path[(dest_x, dest_y)]
-        while current_vertex != self.pos():
-            current_vertex = path[current_vertex]
-            result_path.appendleft(current_vertex)
+        current_vertex = path.get((dest_x, dest_y))
+        while current_vertex and current_vertex != self.pos():
+            current_vertex = path.get(current_vertex)
+            if current_vertex:
+                result_path.appendleft(current_vertex)
 
         return result_path
 
