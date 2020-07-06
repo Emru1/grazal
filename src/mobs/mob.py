@@ -33,7 +33,7 @@ class Mob:
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
         logika.wrogowie.remove(self)
-       # del self
+        del self
 
     def pos(self):
         """
