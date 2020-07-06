@@ -146,3 +146,13 @@
 2020-07-06 14:35:51.623778 : Program ends
 
 
+2020-07-06 15:46:37.019630 : Program starts
+2020-07-06 15:46:37.718670 : File mapa opened to read map
+2020-07-06 15:46:38.897738 : Program ends
+
+
+2020-07-06 15:47:34.521919 : Program starts
+2020-07-06 15:47:35.226960 : File mapa opened to read map
+2020-07-06 15:47:42.559379 : Program ends
+
+

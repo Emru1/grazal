@@ -29,9 +29,10 @@ class Mob:
 
         maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
-    def lethal(self):
+    def lethal(self,logika):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+        logika.wrogowie.remove(self)
        # del self
 
     def pos(self):
@@ -71,10 +72,10 @@ class Mob:
 
         while len(queue) > 0:
             current_x, current_y = queue.popleft()
-            if all(current_x == dest_x, current_y == dest_y):
+            if current_x == dest_x and current_y == dest_y:
                 break
             for neighbour_x, neighbour_y in neighbours:
-                if all(maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).passable, (current_x+neighbour_x, current_y+neighbour_y) not in path):
+                if maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).passable and (current_x+neighbour_x, current_y+neighbour_y) not in path:
                     queue.append((current_x+neighbour_x, current_y+neighbour_y))
                     path[(current_x+neighbour_x, current_y+neighbour_y)] = (current_x, current_y)
 
