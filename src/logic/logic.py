@@ -39,7 +39,9 @@ class Logic:
         # move every enemy towards the player
         for wrog in self.wrogowie:
             shortest_path = wrog.find_path(self.gracz.x, self.gracz.y)
-            wrog.move_to(shortest_path[1][0], shortest_path[1][1])
+            print(shortest_path)
+            if shortest_path:
+                wrog.move_to(shortest_path[0], shortest_path[1])
             # for step_x, step_y in shortest_path:
             #     wrog.move_to(step_x, step_y)
 

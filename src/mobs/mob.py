@@ -47,7 +47,49 @@ class Mob:
         :param: współrzędne gracza, do którego szukamy najkrótszej ścieżki
         :return: lista z najkrótszą ścieżką!
         """
-        neighbours = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+        def __get_neigh(x, y):
+            ret = []
+            tile = maps.get(self.mmap).get_tile(x-1, y)
+            if tile.passable and not bool(tile.mob):
+                ret.append((x-1, y))
+            tile = maps.get(self.mmap).get_tile(x+1, y)
+            if tile.passable and not bool(tile.mob):
+                ret.append((x+1, y))
+            tile = maps.get(self.mmap).get_tile(x, y-1)
+            if tile.passable and not bool(tile.mob):
+                ret.append((x, y-1))
+            tile = maps.get(self.mmap).get_tile(x-1, y+1)
+            if tile.passable and not bool(tile.mob):
+                ret.append((x, y+1))
+            return ret
+
+        def __return_coord(vert):
+            ret = vert
+            while True:
+                ret = parents[ret]
+                if ret == self.pos() or parents[ret] == self.pos():
+                    return ret
+
+        if abs(dest_x - self.x) > 20 or abs(dest_x - self.y) > 20:
+            return None
+        lista = [self.pos()]
+        visited = []
+        parents = {}
+        while lista:
+            vertex = lista.pop()
+            visited.append(vertex)
+            neigs = __get_neigh(vertex[0], vertex[1])
+            for neig in neigs:
+                if neig not in visited:
+                    lista.append(neig)
+                    parents[neig] = vertex
+            if vertex[0] == dest_x and vertex[1] == dest_y:
+                return __return_coord(vertex)
+        return None
+
+
+        '''neighbours = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         queue = deque()
         queue.append((self.pos()))
         path = {}
@@ -55,24 +97,26 @@ class Mob:
         path[self.pos()] = None
 
         while len(queue) > 0:
-            current_x, current_y = queue.popleft()
-            if current_x == dest_x and current_y == dest_y:
+            curr_x, curr_y = queue.popleft()
+            if curr_x == dest_x and curr_y == dest_y:
                 break
-            for neighbour_x, neighbour_y in neighbours:
-                is_mob = maps.get(self.mmap).get_tile(current_x + neighbour_x, current_y + neighbour_y).mob
-                is_passable = maps.get(self.mmap).get_tile(current_x + neighbour_x, current_y + neighbour_y).passable
-                if (is_passable or not is_mob) and (current_x + neighbour_x, current_y + neighbour_y) not in path:
-                    queue.append((current_x + neighbour_x, current_y + neighbour_y))
-                    path[(current_x + neighbour_x, current_y + neighbour_y)] = (current_x, current_y)
+            for neig_x, neig_y in neighbours:
+                is_mob = bool(maps.get(self.mmap).get_tile(curr_x + neig_x, curr_y + neig_y).mob)
+                is_passable = maps.get(self.mmap).get_tile(curr_x + neig_x, curr_y + neig_y).passable
+                if (is_passable or not is_mob) and (curr_x + neig_x, curr_y + neig_y) not in path:
+                    queue.append((curr_x + neig_x, curr_y + neig_y))
+                    path[(curr_x + neig_x, curr_y + neig_y)] = (curr_x, curr_y)
 
         result_path.appendleft((dest_x, dest_y))
-        current_vertex = path.get((dest_x, dest_y))
-        while current_vertex and current_vertex != self.pos():
-            current_vertex = path.get(current_vertex)
-            if current_vertex:
-                result_path.appendleft(current_vertex)
-
-        return result_path
+        curr_vertex = path.get((dest_x, dest_y))
+        while curr_vertex and curr_vertex != self.pos():
+            curr_vertex = path.get(curr_vertex)
+            if curr_vertex:
+                result_path.appendleft(curr_vertex)
+        if len(result_path) >= 2:
+            return result_path[1]
+        else:
+            return result_path[0]'''
 
     def move_to(self, dest_x, dest_y):
         if maps.get(self.mmap).get_tile(dest_x, dest_y).passable:
