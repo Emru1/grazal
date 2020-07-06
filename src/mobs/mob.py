@@ -51,17 +51,33 @@ class Mob:
         def __get_neigh(x, y):
             ret = []
             tile = maps.get(self.mmap).get_tile(x-1, y)
-            if tile.passable and not tile.mob:
-                ret.append((x-1, y))
+            if tile.passable:
+                if tile.mob:
+                    if tile.mob.name == "Player":
+                        ret.append((x-1, y))
+                else:
+                    ret.append((x-1, y))
             tile = maps.get(self.mmap).get_tile(x+1, y)
-            if tile.passable and not tile.mob:
-                ret.append((x+1, y))
+            if tile.passable:
+                if tile.mob:
+                    if tile.mob.name == "Player":
+                        ret.append((x+1, y))
+                else:
+                    ret.append((x+1, y))
             tile = maps.get(self.mmap).get_tile(x, y-1)
-            if tile.passable and not tile.mob:
-                ret.append((x, y-1))
+            if tile.passable:
+                if tile.mob:
+                    if tile.mob.name == "Player":
+                        ret.append((x, y-1))
+                else:
+                    ret.append((x, y-1))
             tile = maps.get(self.mmap).get_tile(x, y+1)
-            if tile.passable and not tile.mob:
-                ret.append((x, y+1))
+            if tile.passable:
+                if tile.mob:
+                    if tile.mob.name == "Player":
+                        ret.append((x, y+1))
+                else:
+                    ret.append((x, y+1))
             return ret
 
         def __return_coord(vert):

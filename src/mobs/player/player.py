@@ -5,14 +5,8 @@ from src.globals import maps
 class Player(Mob):
 
     def __init__(self, x, y, mmap, hp, attack, movement, sprite):
-        super().__init__(x, y, mmap, hp, attack, movement, sprite)
+        super().__init__(x, y, mmap, hp, attack, movement, sprite, name="Player")
         self.eq = []
-
-    def show(self):
-        showSprite(self.sprite)
-
-    def move(self, x, y):
-        moveSprite(self.sprite, x, y)
 
     def moveup(self):
         if maps.get(self.mmap).get_tile(self.x, self.y - self.movement).passable:
