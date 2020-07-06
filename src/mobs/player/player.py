@@ -6,6 +6,7 @@ class Player(Mob):
 
     def __init__(self, x, y, mmap, hp, attack, movement, sprite):
         super().__init__(x, y, mmap, hp, attack, movement, sprite, name="Player")
+        self.near_player = True
         self.eq = []
 
     def moveup(self):

@@ -14,11 +14,12 @@ class Mob:
         self.y = y
         self.move_queue = []
         self.hp = hp
-        self.hp_max =hp
+        self.hp_max = hp
         self.hp_last = hp
         self.attack = attack
         self.movement = movement
         self.mmap = mmap
+        self.near_player = False
         if not asset:
             self.asset = "ludek"
         else:
@@ -55,28 +56,28 @@ class Mob:
             tile = maps.get(self.mmap).get_tile(x-1, y)
             if tile.passable:
                 if tile.mob:
-                    if tile.mob.name == "Player":
+                    if tile.mob.near_player:
                         ret.append((x-1, y))
                 else:
                     ret.append((x-1, y))
             tile = maps.get(self.mmap).get_tile(x+1, y)
             if tile.passable:
                 if tile.mob:
-                    if tile.mob.name == "Player":
+                    if tile.mob.near_player:
                         ret.append((x+1, y))
                 else:
                     ret.append((x+1, y))
             tile = maps.get(self.mmap).get_tile(x, y-1)
             if tile.passable:
                 if tile.mob:
-                    if tile.mob.name == "Player":
+                    if tile.mob.near_player:
                         ret.append((x, y-1))
                 else:
                     ret.append((x, y-1))
             tile = maps.get(self.mmap).get_tile(x, y+1)
             if tile.passable:
                 if tile.mob:
-                    if tile.mob.name == "Player":
+                    if tile.mob.near_player:
                         ret.append((x, y+1))
                 else:
                     ret.append((x, y+1))
