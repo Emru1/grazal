@@ -9,6 +9,7 @@ class RightPanel:
         self.Pp = PlayerPanel()
         self.clicked_tile = None
         self.wave_panel = WavePanel()
+        self.inventory_panel = InventoryPanel()
 
     def resolve(self, mouse, logika, app):
         self.wave_panel.show_wave(app, logika)
@@ -103,3 +104,14 @@ class WavePanel:
         enemies_left = f.render(("Enemies to kill: %d" % len(logika.wrogowie)), True, (255, 255, 255))
         enemiesRec = textRec.move(0, 11)
         app.screen.blit(enemies_left, enemiesRec)
+
+class InventoryPanel:
+    def __init__(self):
+        self.rec = pygame.Rect(150,544,394,640-543)
+
+    def show_inventory(self,app,logika):
+        textRec = pygame.draw.rect(app.screen,(0,0,0),self.rec)
+        f = pygame.font.Font(None,16)
+        s = f.render("Inventory: ",True, (0,255,255))
+        pygame.draw.rect(app.screen,(0,0,0), textRec)
+        app.screen.blit(s,textRec)
