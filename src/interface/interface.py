@@ -65,9 +65,7 @@ class App:
         while self.running:
             self.screen.blit(self.map_screen.draw(logika.gracz.x, logika.gracz.y), (0, 0))
             self.screen = self.mob_screen.draw(self.screen, logika.gracz.x, logika.gracz.y)
-            panel.Pp.show_player(self, logika)
-            panel.wave_panel.show_wave(self, logika)
-            panel.inventory_panel.show_inventory(self,logika)
+            panel.show_panels(self,logika)
             # self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
             event_handler(self, logika, maps.get("mapa"), panel)
             logika.mob_move()

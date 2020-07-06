@@ -27,6 +27,11 @@ class RightPanel:
             self.R1.tile_is_mob = False
             self.R1.show_default(app)
 
+    def show_panels(self, app, logika):
+        self.Pp.show_player(app, logika)
+        self.wave_panel.show_wave(app, logika)
+        self.inventory_panel.show_inventory(app,logika)
+
 
 class MobPanel:
 
