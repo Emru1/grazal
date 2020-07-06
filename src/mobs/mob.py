@@ -77,7 +77,7 @@ class Mob:
         visited = []
         parents = {}
         while lista:
-            vertex = lista.pop()
+            vertex = lista.pop(0)
             visited.append(vertex)
             neigs = __get_neigh(vertex[0], vertex[1])
             for neig in neigs:
