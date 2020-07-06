@@ -14,6 +14,7 @@ class Mob:
         self.y = y
         self.move_queue = []
         self.hp = hp
+        self.hp_max =hp
         self.attack = attack
         self.movement = movement
         self.mmap = mmap
@@ -157,11 +158,4 @@ class Enemy(Mob):
             return True
 
     def action(self, player):
-        if self.agressive:
-            # find location of player and move to him
-            pass
-        else:
-            if self.attacked:
-                self.able_to_attack = self.check_range(player)
-                if self.able_to_attack:
-                    player.hp = player.hp - self.attack
+        player.hp = player.hp - self.attack

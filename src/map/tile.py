@@ -43,7 +43,7 @@ class Tile:
                 name = self.tmob['name']
             if 'type' in self.tmob:
                 if self.tmob['type'] == 'enemy':
-                    self.mob = Enemy(x, y, path, 100, 1, 1, self.tmob['asset'], name)
+                    self.mob = Enemy(x, y, path, 40, 10, 1, self.tmob['asset'], name)
                 else:
                     self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'], name)
             else:

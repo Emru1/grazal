@@ -86,7 +86,7 @@ class PlayerPanel:
         textRec = pygame.draw.rect(app.screen, (0, 0, 0), (0, 544, 150, 640 - 543))
         f = pygame.font.Font(None, 16)
         s = f.render("Player", True, (0, 255, 255))
-        #hp = f.render(("HP: %d" % logika.gracz.hp), True, (255, 255, 255))
+        hp = f.render(("HP: %d / %d" %(logika.gracz.hp, logika.gracz.hp_max)), True, (255, 255, 255))
         pygame.draw.rect(app.screen, (0, 0, 0), textRec)
         app.screen.blit(s, textRec)
         hpRec1 = textRec.move(0, 16)
@@ -97,6 +97,8 @@ class PlayerPanel:
 #        app.screen.blit(self.hp_full,hpRec3)
         #app.screen.blit(hp, hpRec)
         self.resolve_hp(app,logika,hpRec1,hpRec2,hpRec3)
+        hpRec3 = hpRec3.move(16,0)
+        app.screen.blit(hp,hpRec3)
         at = f.render(("Attack: %d" % logika.gracz.attack), True, (255, 255, 255))
         atRec = hpRec1.move(0, 16)
         app.screen.blit(at, atRec)
@@ -166,7 +168,7 @@ class WavePanel:
 
 class InventoryPanel:
     def __init__(self):
-        self.rec = pygame.Rect(150,544,394,640-543)
+        self.rec = pygame.Rect(150,544,80,200)
         self.empty_inv = asset.get('empty_inv')
 
 

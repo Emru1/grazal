@@ -5,7 +5,7 @@ from src.globals import maps, timer
 class Logic:
 
     def __init__(self):
-        self.gracz = Player(5, 5, "mapa", 9, 20, 1, "ludek")
+        self.gracz = Player(5, 5, "mapa", 90, 20, 1, "ludek")
         self.wrogowie = []
         self.wave = 0
         self.wave_active = False
@@ -41,6 +41,8 @@ class Logic:
             shortest_path = wrog.find_path(self.gracz.x, self.gracz.y)
             if shortest_path:
                 wrog.move_to(shortest_path[0], shortest_path[1])
+            if wrog.check_range(self.gracz):
+                wrog.action(self.gracz)
             # for step_x, step_y in shortest_path:
             #     wrog.move_to(step_x, step_y)
 
