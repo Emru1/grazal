@@ -57,11 +57,11 @@ class Player(Mob):
         else:
             return False
 
-    def interaction_attack(self,mob, mouse):
+    def interaction_attack(self,mob, mouse,logika):
         if mob:
             if self.able_to_attack(mob):
                 if mob.hp - self.attack <= 0:
-                    mob.lethal()
+                    mob.lethal(logika)
                 else:
                     mob.hp = mob.hp - self.attack          
 
