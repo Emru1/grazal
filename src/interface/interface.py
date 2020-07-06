@@ -7,6 +7,7 @@ from src.interface.mob_drawing import MobSurface
 from src.logic.logic import Logic
 from src.interface.event_handler import event_handler
 from src.interface.panels import RightPanel
+from src.interface.damage_drawing import Draw_damage
 
 
 
@@ -30,6 +31,10 @@ class App:
         self.clock = pygame.time.Clock()
         self.clock.tick(60)
         self.mob_pane = False
+        self.logika = Logic()
+        self.panel = RightPanel()
+        self.draw_damage = Draw_damage(self.logika,self)
+        timer.add(1000, self.draw_damage)
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
         mous = pygame.mouse.get_pos()
@@ -60,14 +65,13 @@ class App:
             pygame.display.update()
 
     def game_loop(self):
-        logika = Logic()
-        panel = RightPanel()
         while self.running:
-            self.screen.blit(self.map_screen.draw(logika.gracz.x, logika.gracz.y), (0, 0))
-            self.screen = self.mob_screen.draw(self.screen, logika.gracz.x, logika.gracz.y)
-            panel.show_panels(self,logika)
+            self.screen.blit(self.map_screen.draw(self.logika.gracz.x, self.logika.gracz.y), (0, 0))
+            self.screen = self.mob_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
+            self.screen.blit(self.draw_damage.draw_into(),(0,0))
+            self.panel.show_panels(self,self.logika)
             # self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
-            event_handler(self, logika, maps.get("mapa"), panel)
+            event_handler(self, self.logika, maps.get("mapa"), self.panel)
             # EVENT LOOP FUNCTION HERE
             self.clock.tick(60)
             timer.run()

@@ -15,6 +15,7 @@ class Mob:
         self.move_queue = []
         self.hp = hp
         self.hp_max =hp
+        self.hp_last = hp
         self.attack = attack
         self.movement = movement
         self.mmap = mmap
