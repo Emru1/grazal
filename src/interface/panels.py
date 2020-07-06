@@ -34,7 +34,6 @@ class RightPanel:
 
 
 class MobPanel:
-
     def __init__(self):
         self.rec = pygame.Rect(544, 0, 640 - 543, 100)
         self.tile_is_mob = False
@@ -78,22 +77,78 @@ class MobPanel:
 class PlayerPanel:
     def __init__(self):
         self.rec = pygame.Rect(0, 544, 400, 640 - 543)
+        self.hp_full = asset.get('serduszko_pelne')
+        self.hp_empty = asset.get('serduszko_0')
+        self.hp_23 = asset.get('serduszko_23')
+        self.hp_13 = asset.get('serduszko_13')
 
     def show_player(self, app, logika):
         textRec = pygame.draw.rect(app.screen, (0, 0, 0), (0, 544, 150, 640 - 543))
         f = pygame.font.Font(None, 16)
         s = f.render("Player", True, (0, 255, 255))
-        hp = f.render(("HP: %d" % logika.gracz.hp), True, (255, 255, 255))
+        #hp = f.render(("HP: %d" % logika.gracz.hp), True, (255, 255, 255))
         pygame.draw.rect(app.screen, (0, 0, 0), textRec)
         app.screen.blit(s, textRec)
-        hpRec = textRec.move(0, 11)
-        app.screen.blit(hp, hpRec)
+        hpRec1 = textRec.move(0, 16)
+  #      app.screen.blit(self.hp_full,hpRec1)
+        hpRec2 = hpRec1.move(16,0)
+ #       app.screen.blit(self.hp_full,hpRec2)
+        hpRec3 = hpRec2.move(16,0)
+#        app.screen.blit(self.hp_full,hpRec3)
+        #app.screen.blit(hp, hpRec)
+        self.resolve_hp(app,logika,hpRec1,hpRec2,hpRec3)
         at = f.render(("Attack: %d" % logika.gracz.attack), True, (255, 255, 255))
-        atRec = hpRec.move(0, 11)
+        atRec = hpRec1.move(0, 16)
         app.screen.blit(at, atRec)
         ms = f.render(("Movement speed: %d" % logika.gracz.movement), True, (255, 255, 255))
         msRec = atRec.move(0, 11)
         app.screen.blit(ms, msRec)
+
+
+    def resolve_hp(self,app,logika,r1,r2,r3):
+        if logika.gracz.hp > 80:
+            #blit 3 hp full
+            app.screen.blit(self.hp_full,r1)
+            app.screen.blit(self.hp_full,r2)
+            app.screen.blit(self.hp_full,r3)
+        elif logika.gracz.hp > 60:
+            #blit 2 hp full and another depending on state
+            app.screen.blit(self.hp_full,r1)
+            app.screen.blit(self.hp_full,r2)
+            if logika.gracz.hp - 60 > 9:
+                #blit 2/3hp
+                app.screen.blit(self.hp_23,r3)
+            elif logika.gracz.hp - 60 > 0:
+                #blit 1/3hp
+                app.screen.blit(self.hp_13,r3)
+            else:
+                #blit empty heart
+                app.screen.blit(self.hp_empty,r3)
+        elif logika.gracz.hp > 30:
+            #blit 1 hp full and another depending on state
+            app.screen.blit(self.hp_full,r1)
+            if logika.gracz.hp - 30 > 9:
+                #blit 2/3hp and empty heart
+                app.screen.blit(self.hp_23,r2)
+            elif logika.gracz.hp - 30 > 0:
+                #blit 1/3 hp and empty heart
+                app.screen.blit(self.hp_13,r2)
+            app.screen.blit(self.hp_empty,r3)
+        else:
+            #blit 1 heart depending on state and 2 empty
+            if logika.gracz.hp == 0:
+                app.screen.blit(self.hp_empty,r1)
+            else:
+                if logika.gracz.hp > 20:
+                    app.screen.blit(self.hp_23,r1)
+                else:
+                    app.screen.blit(self.hp_13,r1)
+            app.screen.blit(self.hp_empty,r2)
+            app.screen.blit(self.hp_empty,r3)
+
+
+            
+            
 
 
 class WavePanel:

@@ -27,7 +27,6 @@ def event_handler(app, logika, mmap, panel, mobs=None):
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse = pygame.mouse.get_pos()
             if event.button == 1:
-                print(mouse[0], mouse[1])
                 logika.check_interactions(maps.get(logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + logika.gracz.x,
                                                                                int(mouse[1] / 32) - 8 + logika.gracz.y),
                                           panel, app, mouse)
