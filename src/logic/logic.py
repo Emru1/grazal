@@ -11,18 +11,15 @@ class Logic():
         self.wave_active = False
 
     def check_interactions(self,tile,panel,app,mouse):
-        print(self.wrogowie)
-        #print(mouse[0],mouse[1])
-        print("check_interactions")
         if tile.mob:
-            print("is mob")
+            #print("is mob")
             #if mob is clicked
             #if mob is next to player u are able to attack
-            self.gracz.interaction_attack(tile.mob,mouse)
+            self.gracz.interaction_attack(tile.mob,mouse,self)
         else:
-            print("else")
+            #print("else")
             #item/ground
-            #pass
+            pass
         panel.resolve(mouse,self,app)
 
     def set_enemies(self):
@@ -39,12 +36,16 @@ class Logic():
                     
 
     def mob_move(self):
-        pass
         #move every enemy towards the player
-       # for w in self.wrogowie:
-        #    result = self.wrogowie.find_path(gracz.pos())
-         #   for x, y in result:
-          #      print(x,y)
+        if len(self.wrogowie) > 0:
+            print(self.wrogowie[0].find_path(self.gracz.x,self.gracz.y))
+        #pass
+    def mob_attack(self,mob):
+        mob.action(self.gracz)
 
-    def mob_attack(self):
-        pass
+    def mobs_routine(self):
+        for a in self.wrogowie:
+            a.action(self.gracz)
+
+            
+
