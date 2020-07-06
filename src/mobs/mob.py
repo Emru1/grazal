@@ -77,7 +77,7 @@ class Mob:
             for neighbour_x, neighbour_y in neighbours:
                 is_mob = maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).mob
                 is_passable = maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).passable
-                if (is_passable or is_mob is False) and (current_x+neighbour_x, current_y+neighbour_y) not in path:
+                if (is_passable or not is_mob) and (current_x+neighbour_x, current_y+neighbour_y) not in path:
                     queue.append((current_x+neighbour_x, current_y+neighbour_y))
                     path[(current_x+neighbour_x, current_y+neighbour_y)] = (current_x, current_y)
 
@@ -91,7 +91,7 @@ class Mob:
         return result_path
 
     def move_to(self, dest_x, dest_y):
-        if maps.get(self.mmap).get_tile(self.x,self.y-self.movement).passable:
+        if maps.get(self.mmap).get_tile(dest_x, dest_y).passable:
             if not maps.get(self.mmap).get_tile(dest_x, dest_y).mob:
                 maps.get(self.mmap).get_tile(self.x, self.y).mob = None
                 self.y = dest_y
