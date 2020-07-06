@@ -9,15 +9,21 @@ class Draw_damage:
         self.screen = pygame.Surface((config.grid_x * config.tile_size, config.grid_y * config.tile_size))
         self.screen.fill([0, 0, 0])
         self.screen.set_colorkey([0, 0, 0])
-    
+        self.lx = 0
+        self.ly = 0
+
     def draw_damage(self, mob):
-        f = pygame.font.Font(None, 32)
+        f = pygame.font.Font(None, 16)
         s = f.render("-%d" % (mob.hp_last-mob.hp), True, (255, 0, 0))
         self.screen.blit(s, ((mob.x - self.logika.gracz.x + 8) * 32,
                              (mob.y - self.logika.gracz.y + 8) * 32 - 16, 30, 30))
         mob.hp_last = mob.hp
 
     def draw_into(self):
+        if self.lx != self.logika.gracz.x or self.ly != self.logika.gracz.y:
+            self.lx = self.logika.gracz.x
+            self.ly = self.logika.gracz.y
+            self.timer_run()
         return self.screen
 
     def timer_run(self):

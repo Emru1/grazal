@@ -3,7 +3,6 @@ from src.globals import maps, timer
 
 
 class Logic:
-
     def __init__(self):
         self.gracz = Player(5, 5, "mapa", 90, 20, 1, "ludek")
         self.wrogowie = []
