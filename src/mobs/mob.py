@@ -42,21 +42,6 @@ class Mob:
         """
         return self.x, self.y
 
-    '''def calculate_path(self, x, y):
-        class DijkstraStruct:
-            def __init__(self, pos, dist):
-                self.pos = pos
-                self.dist = dist
-
-        curr = (self.x, self.y)
-        dest = (x, y)
-        visited = set()
-        dist = 0
-        to_check = [curr]
-        while True:
-            curr = to_check[0]
-            to_check.pop(0)'''
-
     def find_path(self, dest_x, dest_y):
         """
         :param: współrzędne gracza, do którego szukamy najkrótszej ścieżki
