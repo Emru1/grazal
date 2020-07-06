@@ -1,7 +1,6 @@
 from src.mobs.player.player import Player
 from src.globals import maps
 
-
 class Logic():
 
     def __init__(self):
@@ -37,8 +36,11 @@ class Logic():
 
     def mob_move(self):
         #move every enemy towards the player
-        if len(self.wrogowie) > 0:
-            print(self.wrogowie[0].find_path(self.gracz.x,self.gracz.y))
+        for wrog in self.wrogowie:
+            shortest_path = wrog.find_path(self.gracz.x,self.gracz.y)
+            for step_x, step_y in shortest_path:
+                wrog.move_to(step_x, step_y)
+
         #pass
     def mob_attack(self,mob):
         mob.action(self.gracz)

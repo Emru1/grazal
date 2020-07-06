@@ -90,6 +90,13 @@ class Mob:
 
         return result_path
 
+    def move_to(self, dest_x, dest_y):
+        if maps.get(self.mmap).get_tile(self.x,self.y-self.movement).passable:
+            if not maps.get(self.mmap).get_tile(dest_x, dest_y).mob:
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+                self.y = dest_y
+                self.x = dest_x
+                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
 
 class Enemy(Mob):
