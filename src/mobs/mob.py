@@ -51,16 +51,16 @@ class Mob:
         def __get_neigh(x, y):
             ret = []
             tile = maps.get(self.mmap).get_tile(x-1, y)
-            if tile.passable and not bool(tile.mob):
+            if tile.passable and not tile.mob:
                 ret.append((x-1, y))
             tile = maps.get(self.mmap).get_tile(x+1, y)
-            if tile.passable and not bool(tile.mob):
+            if tile.passable and not tile.mob:
                 ret.append((x+1, y))
             tile = maps.get(self.mmap).get_tile(x, y-1)
-            if tile.passable and not bool(tile.mob):
+            if tile.passable and not tile.mob:
                 ret.append((x, y-1))
-            tile = maps.get(self.mmap).get_tile(x-1, y+1)
-            if tile.passable and not bool(tile.mob):
+            tile = maps.get(self.mmap).get_tile(x, y+1)
+            if tile.passable and not tile.mob:
                 ret.append((x, y+1))
             return ret
 
@@ -74,18 +74,19 @@ class Mob:
         if abs(dest_x - self.x) > 20 or abs(dest_x - self.y) > 20:
             return None
         lista = [self.pos()]
-        visited = []
+        visited = set()
         parents = {}
+
         while lista:
             vertex = lista.pop(0)
-            visited.append(vertex)
-            neigs = __get_neigh(vertex[0], vertex[1])
-            for neig in neigs:
-                if neig not in visited:
-                    lista.append(neig)
-                    parents[neig] = vertex
             if vertex[0] == dest_x and vertex[1] == dest_y:
                 return __return_coord(vertex)
+            visited.add(vertex)
+            neigs = __get_neigh(vertex[0], vertex[1])
+            for neig in neigs:
+                if neig not in visited and neig not in lista:
+                    lista.append(neig)
+                    parents[neig] = vertex
         return None
 
 
