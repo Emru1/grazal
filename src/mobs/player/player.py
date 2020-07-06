@@ -1,5 +1,5 @@
-from src.mobs.mob import Mob
 from src.globals import maps
+from src.mobs.mob import Mob
 
 
 class Player(Mob):

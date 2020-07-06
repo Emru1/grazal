@@ -1,12 +1,12 @@
 16 16
 1
 a a a a a a a a a a a a a a a a
-a a a a a a a a a a a a a a d a
-a a a a a a a a a a a b a a a a
-a a a a a a a a a a a a a a a a
-a a a a a a a a a a a a a a a a
-a a a a a a a a a b a a a a a a
-a a a a a a a a a a a a a a a a
+a f f f f f f f a a a a a a d a
+a f h j j j j f a a a b a a a a
+a f g j l j g f a a a a a a a a
+a f g l k j j f a a a a a a a a
+a f h j g g i f a b a a a a a a
+a f f g f f f f a a a a a a a a
 a a a a a a a a a a a a a a a a
 a a a a a a a b a a a a a a a a
 a a b b b b b a a a a a a a a a
@@ -48,4 +48,33 @@ e
         type enemy
         asset ludek
     }
+}
+f
+{
+    asset sciana_cegly
+    passable 0
+}
+g
+{
+    asset podloga_cegly_1
+}
+h
+{
+    asset podloga_cegly_6
+}
+i
+{
+    asset podloga_cegly_7
+}
+j
+{
+    asset podloga_cegly_5
+}
+k
+{
+    asset podloga_cegly_4
+}
+l
+{
+    asset podloga_cegly_3
 }

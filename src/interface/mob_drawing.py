@@ -1,6 +1,7 @@
+import pygame
+
 from src.globals import *
 from src.map.tile import Tile
-import pygame
 
 
 class MobSurface:

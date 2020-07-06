@@ -1,5 +1,3 @@
-from collections import deque
-
 from src.globals import maps
 
 
@@ -53,34 +51,34 @@ class Mob:
 
         def __get_neigh(x, y):
             ret = []
-            tile = maps.get(self.mmap).get_tile(x-1, y)
+            tile = maps.get(self.mmap).get_tile(x - 1, y)
             if tile.passable:
                 if tile.mob:
                     if tile.mob.near_player:
-                        ret.append((x-1, y))
+                        ret.append((x - 1, y))
                 else:
-                    ret.append((x-1, y))
-            tile = maps.get(self.mmap).get_tile(x+1, y)
+                    ret.append((x - 1, y))
+            tile = maps.get(self.mmap).get_tile(x + 1, y)
             if tile.passable:
                 if tile.mob:
                     if tile.mob.near_player:
-                        ret.append((x+1, y))
+                        ret.append((x + 1, y))
                 else:
-                    ret.append((x+1, y))
-            tile = maps.get(self.mmap).get_tile(x, y-1)
+                    ret.append((x + 1, y))
+            tile = maps.get(self.mmap).get_tile(x, y - 1)
             if tile.passable:
                 if tile.mob:
                     if tile.mob.near_player:
-                        ret.append((x, y-1))
+                        ret.append((x, y - 1))
                 else:
-                    ret.append((x, y-1))
-            tile = maps.get(self.mmap).get_tile(x, y+1)
+                    ret.append((x, y - 1))
+            tile = maps.get(self.mmap).get_tile(x, y + 1)
             if tile.passable:
                 if tile.mob:
                     if tile.mob.near_player:
-                        ret.append((x, y+1))
+                        ret.append((x, y + 1))
                 else:
-                    ret.append((x, y+1))
+                    ret.append((x, y + 1))
             return ret
 
         def __return_coord(vert):
@@ -107,36 +105,6 @@ class Mob:
                     lista.append(neig)
                     parents[neig] = vertex
         return None
-
-
-        '''neighbours = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        queue = deque()
-        queue.append((self.pos()))
-        path = {}
-        result_path = deque()
-        path[self.pos()] = None
-
-        while len(queue) > 0:
-            curr_x, curr_y = queue.popleft()
-            if curr_x == dest_x and curr_y == dest_y:
-                break
-            for neig_x, neig_y in neighbours:
-                is_mob = bool(maps.get(self.mmap).get_tile(curr_x + neig_x, curr_y + neig_y).mob)
-                is_passable = maps.get(self.mmap).get_tile(curr_x + neig_x, curr_y + neig_y).passable
-                if (is_passable or not is_mob) and (curr_x + neig_x, curr_y + neig_y) not in path:
-                    queue.append((curr_x + neig_x, curr_y + neig_y))
-                    path[(curr_x + neig_x, curr_y + neig_y)] = (curr_x, curr_y)
-
-        result_path.appendleft((dest_x, dest_y))
-        curr_vertex = path.get((dest_x, dest_y))
-        while curr_vertex and curr_vertex != self.pos():
-            curr_vertex = path.get(curr_vertex)
-            if curr_vertex:
-                result_path.appendleft(curr_vertex)
-        if len(result_path) >= 2:
-            return result_path[1]
-        else:
-            return result_path[0]'''
 
     def move_to(self, dest_x, dest_y):
         if maps.get(self.mmap).get_tile(dest_x, dest_y).passable:

@@ -1,7 +1,3 @@
-import pygame
-import random
-
-
 class com_Creature:
 
     def __init__(self, name, attack=2, deff=0, hp=10, dict={}):

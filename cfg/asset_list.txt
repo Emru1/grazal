@@ -11,3 +11,12 @@ serduszko_13 16/gui_18.png
 serduszko_0 16/gui_19.png
 empty_inv 16/gui_116.png
 trawa hyptosis_78.png
+sciana_cegly hyptosis_375.png
+podloga_cegly_1 hyptosis_361.png
+podloga_cegly_2 hyptosis_362.png
+podloga_cegly_3 hyptosis_363.png
+podloga_cegly_4 hyptosis_364.png
+podloga_cegly_5 hyptosis_365.png
+podloga_cegly_6 hyptosis_366.png
+podloga_cegly_7 hyptosis_367.png
+podloga_cegly_8 hyptosis_368.png

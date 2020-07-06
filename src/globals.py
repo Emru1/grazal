@@ -1,7 +1,7 @@
-from src.logs.logs import Logs
 from src.gfx.assets import Asset
-from src.map.maps_repo import Maps
 from src.logic.timer import Timer
+from src.logs.logs import Logs
+from src.map.maps_repo import Maps
 
 
 class Config:

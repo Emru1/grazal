@@ -26,7 +26,10 @@ class Tile:
         return self
 
     def initd(self, token, x, y, path):
-        self.passable = token['passable']
+        if token['passable'] == '0':
+            self.passable = False
+        else:
+            self.passable = True
         self.asset = token['asset']
         self.furn = token['furn']
         self.light = token['light']

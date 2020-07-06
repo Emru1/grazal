@@ -1,5 +1,5 @@
-from src.mobs.player.player import Player
 from src.globals import maps, timer
+from src.mobs.player.player import Player
 
 
 class Logic:

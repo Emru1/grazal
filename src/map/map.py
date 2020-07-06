@@ -10,8 +10,8 @@ każde z nich ma swoje rozwiniecie w klamerkach, ktore jest przekazywane do kons
 odpowiedniej klasy jako słownik <parametr, wartosc>
 """
 
-from src.map.tile import Tile
 from src.globals import log
+from src.map.tile import Tile
 
 
 class Token:
@@ -58,7 +58,7 @@ class Map:
                     break
                 else:
                     in_token = True
-                    tmp_dict['passable'] = 1
+                    tmp_dict['passable'] = True
                     tmp_dict['asset'] = ""
                     tmp_dict['furn'] = ""
                     tmp_dict['light'] = 0
@@ -85,6 +85,9 @@ class Map:
             if in_token:
                 if param == 'transparent':
                     tmp_dict[param] = bool(val)
+                    continue
+                if param == 'passable':
+                    tmp_dict[param] = val
                     continue
                 if param == 'light':
                     tmp_dict[param] = int(val)
