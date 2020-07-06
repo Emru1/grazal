@@ -1,3 +1,5 @@
+from collections import deque
+
 from src.globals import maps
 
 
@@ -55,6 +57,37 @@ class Mob:
             to_check.pop(0)'''
 
 
+    def find_path(self, dest_x, dest_y):
+        """
+        :param: współrzędne gracza, do którego szukamy najkrótszej ścieżki
+        :return: lista z najkrótszą ścieżką!
+        """
+        neighbours = [(1,0), (-1,0), (0,1), (0,-1)]
+        queue = deque()
+        queue.append((self.pos()))
+        path = {}
+        result_path = deque()
+        path[self.pos()] = None
+
+        while len(queue) > 0:
+            current_x, current_y = queue.popleft()
+            if all(current_x == dest_x, current_y == dest_y):
+                break
+            for neighbour_x, neighbour_y in neighbours:
+                if all(maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).passable, (current_x+neighbour_x, current_y+neighbour_y) not in path):
+                    queue.append((current_x+neighbour_x, current_y+neighbour_y))
+                    path[(current_x+neighbour_x, current_y+neighbour_y)] = (current_x, current_y)
+
+        result_path.appendleft((dest_x, dest_y))
+        current_vertex = path[(dest_x, dest_y)]
+        while current_vertex != self.pos():
+            current_vertex = path[current_vertex]
+            result_path.appendleft(current_vertex)
+
+        return result_path
+
+
+
 class Enemy(Mob):
     def __init__(self, x, y, mmap, hp, attack, movement, asset=None, name=None):
         super().__init__(x, y, mmap, hp, attack, movement, asset, name)
@@ -75,3 +108,4 @@ class Enemy(Mob):
                 self.able_to_attack = self.check_range(player) 
                 if self.able_to_attack:
                     player.hp = player.hp - self.attack
+

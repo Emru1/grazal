@@ -39,7 +39,12 @@ class Logic():
                     
 
     def mob_move(self):
-        #move every enemy towards the player
         pass
+        #move every enemy towards the player
+       # for w in self.wrogowie:
+        #    result = self.wrogowie.find_path(gracz.pos())
+         #   for x, y in result:
+          #      print(x,y)
+
     def mob_attack(self):
         pass

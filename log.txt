@@ -1,0 +1,148 @@
+2020-07-02 20:12:29.968661 : Program starts
+2020-07-02 20:12:30.643803 : File mapa opened to read map
+2020-07-02 20:12:34.234570 : Program ends
+
+
+2020-07-02 20:12:45.522156 : Program starts
+2020-07-02 20:12:46.158279 : File mapa opened to read map
+2020-07-02 20:12:48.433151 : Program ends
+
+
+2020-07-02 20:17:26.101597 : Program starts
+2020-07-02 20:17:26.715375 : File mapa opened to read map
+2020-07-02 20:17:38.470843 : Program ends
+
+
+2020-07-02 20:24:17.018652 : Program starts
+2020-07-02 20:24:17.635890 : File mapa opened to read map
+2020-07-02 20:24:20.656942 : Program ends
+
+
+2020-07-02 20:24:23.263163 : Program starts
+2020-07-02 20:24:23.891237 : File mapa opened to read map
+2020-07-02 20:24:36.762334 : Program ends
+
+
+2020-07-02 20:26:05.043507 : Program starts
+2020-07-02 20:26:05.670420 : File mapa opened to read map
+2020-07-02 20:26:07.026611 : Program ends
+
+
+2020-07-02 21:50:15.870674 : Program starts
+2020-07-02 21:50:16.594624 : File mapa opened to read map
+2020-07-02 21:50:19.577280 : Program ends
+
+
+2020-07-02 21:52:33.192903 : Program starts
+2020-07-02 21:52:34.878145 : File mapa opened to read map
+2020-07-02 21:52:37.349809 : Program ends
+
+
+2020-07-02 21:54:27.046904 : Program starts
+2020-07-02 21:54:28.109356 : File mapa opened to read map
+2020-07-02 21:55:02.471804 : Program ends
+
+
+2020-07-02 21:55:05.472280 : Program starts
+2020-07-02 21:55:06.537081 : File mapa opened to read map
+2020-07-02 21:55:11.001598 : Program ends
+
+
+2020-07-02 22:40:55.547350 : Program starts
+2020-07-02 22:40:56.810103 : File mapa opened to read map
+2020-07-02 22:41:02.282550 : Program ends
+
+
+2020-07-02 22:41:27.651442 : Program starts
+2020-07-02 22:41:28.491196 : File mapa opened to read map
+2020-07-02 22:41:51.784499 : Program ends
+
+
+2020-07-02 22:51:20.602153 : Program starts
+2020-07-02 22:51:21.244134 : File mapa opened to read map
+2020-07-02 22:58:54.904045 : Program ends
+
+
+2020-07-03 16:46:35.197485 : Program starts
+2020-07-03 16:46:37.033654 : File mapa opened to read map
+2020-07-03 16:46:53.713829 : Program ends
+
+
+2020-07-03 16:47:09.259559 : Program starts
+2020-07-03 16:47:09.908845 : File mapa opened to read map
+2020-07-03 16:47:15.176474 : Program ends
+
+
+2020-07-03 16:48:03.566502 : Program starts
+2020-07-03 16:48:04.378916 : File mapa opened to read map
+2020-07-03 16:48:35.186030 : Program ends
+
+
+2020-07-03 16:51:55.443332 : Program starts
+2020-07-03 16:51:56.217048 : File mapa opened to read map
+2020-07-03 16:55:59.569710 : Program ends
+
+
+2020-07-05 17:30:14.657523 : Program starts
+2020-07-05 17:30:16.064584 : File mapa opened to read map
+2020-07-05 18:14:23.052474 : Program ends
+
+
+2020-07-05 18:32:23.522752 : Program starts
+2020-07-05 18:32:26.444436 : File mapa opened to read map
+2020-07-05 18:33:03.341207 : Program ends
+
+
+2020-07-06 10:26:02.526697 : Program starts
+2020-07-06 10:26:03.556094 : File mapa opened to read map
+2020-07-06 10:26:07.445322 : Program ends
+
+
+2020-07-06 10:48:23.395943 : Program starts
+2020-07-06 10:48:24.384386 : File mapa opened to read map
+2020-07-06 10:48:25.852912 : Program ends
+
+
+2020-07-06 14:25:09.363661 : Program starts
+2020-07-06 14:25:10.388380 : File mapa opened to read map
+2020-07-06 14:25:12.169614 : Program ends
+
+
+2020-07-06 14:25:25.588833 : Program starts
+2020-07-06 14:25:26.550919 : File mapa opened to read map
+2020-07-06 14:25:27.504304 : Program ends
+
+
+2020-07-06 14:26:07.324410 : Program starts
+2020-07-06 14:26:08.301305 : File mapa opened to read map
+2020-07-06 14:26:14.112453 : Program ends
+
+
+2020-07-06 14:28:24.375670 : Program starts
+2020-07-06 14:28:25.342661 : File mapa opened to read map
+2020-07-06 14:28:38.652237 : Program ends
+
+
+2020-07-06 14:29:35.280572 : Program starts
+2020-07-06 14:29:36.293389 : File mapa opened to read map
+2020-07-06 14:29:38.818264 : Program ends
+
+
+2020-07-06 14:32:13.723784 : Program starts
+2020-07-06 14:32:14.690519 : File mapa opened to read map
+2020-07-06 14:32:21.528611 : Program ends
+
+
+2020-07-06 14:35:18.258909 : Program starts
+2020-07-06 14:35:18.265919 : Program ends
+
+
+2020-07-06 14:35:21.643595 : Program starts
+2020-07-06 14:35:21.649579 : Program ends
+
+
+2020-07-06 14:35:38.503028 : Program starts
+2020-07-06 14:35:39.495041 : File mapa opened to read map
+2020-07-06 14:35:51.623778 : Program ends
+
+

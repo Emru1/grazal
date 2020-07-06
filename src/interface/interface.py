@@ -117,6 +117,7 @@ class App:
             panel.Pp.show_player(self,logika)
             #self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
             event_handler(self,logika,maps.get("mapa"),panel)
+            logika.mob_move()
             #EVENT LOOP FUNCTION HERE
             self.clock.tick(60)
             timer.run()
