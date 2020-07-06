@@ -40,6 +40,3 @@ class Timer:
         else:
             act = self.Action(interval, instance)
             self.actions.append(act)
-
-
-

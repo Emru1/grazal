@@ -73,17 +73,17 @@ def create_object(type, pos_x, pos_y, window):
     if type == "chair":
         return StaticObject(pos_x, pos_y, "chair", window)
 
-#pygame.init()
-#win = pygame.display.set_mode((800, 600))
-#bg = pygame.image.load('background.png')
-#bg = pygame.transform.scale(bg, (800, 600))
-#win.blit(bg, (0, 0))
-#pygame.display.update()
+# pygame.init()
+# win = pygame.display.set_mode((800, 600))
+# bg = pygame.image.load('background.png')
+# bg = pygame.transform.scale(bg, (800, 600))
+# win.blit(bg, (0, 0))
+# pygame.display.update()
 #
-#sword = create_object("SwordObject", 120, 100, win)
-#door = create_object("door", 230, 140, win)
+# sword = create_object("SwordObject", 120, 100, win)
+# door = create_object("door", 230, 140, win)
 #
-#run = True
+# run = True
 #    #pygame.time.delay(50)
 #    for event in pygame.event.get():
 #        if event.type == pygame.QUIT:

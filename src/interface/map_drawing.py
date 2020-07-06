@@ -9,16 +9,17 @@ class MapSurface:
     Funkcja draw(x, y) przyjmuje pozycje wyrazona w koordynatach mapy na srodek ekranu,
     nastepnie przygotowywuje i zwraca powierzchnie do narysowania na ekranie
     """
+
     def __init__(self, mapa):
-        self.map_grid = [[Tile() for x in range(config.grid_x)] for y in range(config.grid_y)]
+        self.map_grid = [[Tile() for _ in range(config.grid_x)] for _ in range(config.grid_y)]
         self.mapa = mapa
         self.surface = pygame.Surface((config.grid_x * config.tile_size, config.grid_y * config.tile_size))
         self.lx = -1
         self.ly = -1
 
     def __get_tiles(self, x, y):
-        x = x - int(config.grid_x/2)
-        y = y - int(config.grid_y/2)
+        x = x - int(config.grid_x / 2)
+        y = y - int(config.grid_y / 2)
         for i in range(config.grid_x):
             for j in range(config.grid_y):
                 self.map_grid[i][j] = self.mapa.get_tile(i + x, j + y)

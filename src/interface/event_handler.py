@@ -27,16 +27,18 @@ def event_handler(app, logika, mmap, panel, mobs=None):
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse = pygame.mouse.get_pos()
             if event.button == 1:
-                print(mouse[0],mouse[1])
-                logika.check_interactions(maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-8 + logika.gracz.x,int(mouse[1]/32)-8 + logika.gracz.y),panel,app,mouse)
-               # panel.resolve(mouse, logika, app)
-                #if maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob:
-                    #print(mapa.get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.hp)
-                    #wywolaj funkcje wyswietlajaca informacje o mobie
-                   # if maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.x != logika.gracz.x and maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.y != logika.gracz.y:
-                    #    app.mob_pane = True
-                    #else:
-                    #    app.mob_pane = False
+                print(mouse[0], mouse[1])
+                logika.check_interactions(maps.get(logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + logika.gracz.x,
+                                                                               int(mouse[1] / 32) - 8 + logika.gracz.y),
+                                          panel, app, mouse)
+            # panel.resolve(mouse, logika, app)
+            # if maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob:
+            # print(mapa.get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.hp)
+            # wywolaj funkcje wyswietlajaca informacje o mobie
+            # if maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.x != logika.gracz.x and maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.y != logika.gracz.y:
+            #    app.mob_pane = True
+            # else:
+            #    app.mob_pane = False
             elif event.button == 3:
                 '''right mouse button'''
                 pass
