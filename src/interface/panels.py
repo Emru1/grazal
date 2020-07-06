@@ -148,8 +148,7 @@ class PlayerPanel:
 
 
             
-            
-
+    
 
 class WavePanel:
     def __init__(self):
@@ -168,10 +167,19 @@ class WavePanel:
 class InventoryPanel:
     def __init__(self):
         self.rec = pygame.Rect(150,544,394,640-543)
+        self.empty_inv = asset.get('empty_inv')
+
 
     def show_inventory(self,app,logika):
         textRec = pygame.draw.rect(app.screen,(0,0,0),self.rec)
         f = pygame.font.Font(None,16)
-        s = f.render("Inventory: ",True, (0,255,255))
+        s = f.render("Inventory ",True, (0,255,255))
+        #blit inventory
+        first_field = textRec.move(0,16)
         pygame.draw.rect(app.screen,(0,0,0), textRec)
         app.screen.blit(s,textRec)
+        for j in range(4):
+            for i in range(3):
+                app.screen.blit(self.empty_inv,first_field)
+                first_field = first_field.move(16,0)
+            first_field = first_field.move(-48,16)
