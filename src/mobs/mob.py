@@ -75,7 +75,9 @@ class Mob:
             if current_x == dest_x and current_y == dest_y:
                 break
             for neighbour_x, neighbour_y in neighbours:
-                if maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).passable and (current_x+neighbour_x, current_y+neighbour_y) not in path:
+                is_mob = maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).mob
+                is_passable = maps.get(self.mmap).get_tile(current_x+neighbour_x, current_y+neighbour_y).passable
+                if is_passable and not is_mob and (current_x+neighbour_x, current_y+neighbour_y) not in path:
                     queue.append((current_x+neighbour_x, current_y+neighbour_y))
                     path[(current_x+neighbour_x, current_y+neighbour_y)] = (current_x, current_y)
 
