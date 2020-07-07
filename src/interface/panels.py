@@ -28,7 +28,8 @@ class RightPanel:
     def show_panels(self, app, logika):
         self.Pp.show_player(app, logika)
         self.wave_panel.show_wave(app, logika)
-        self.inventory_panel.show_inventory(app, logika)
+        self.inventory_panel.show_equiped_inventory(app, logika)
+        self.inventory_panel.show_inventory(app,logika)
         self.instructions.show_instruction(app)
         if self.clicked_tile == None:
             self.R1.show_default(app,self.clicked_tile)
@@ -79,15 +80,6 @@ class MobPanel(BasePanel):
     def __init__(self):
         super().__init__()
         self.rec = pygame.Rect(544, 0, 640 - 543, 100)
-        self.left_up = asset.get('left_up')
-        self.center_up = asset.get('center_up')
-        self.right_up = asset.get('right_up')
-        self.right_center = asset.get('right_center')
-        self.right_down = asset.get('right_down')
-        self.center_down = asset.get('center_down')
-        self.left_down = asset.get('left_down')
-        self.left_center = asset.get('left_center')
-        self.center = asset.get('center')
 
     def show(self, app, tile):
             self.blit_background(app,6,6,pygame.Rect(544,0,16,16))
@@ -118,15 +110,6 @@ class PlayerPanel(BasePanel):
         self.hp_empty = asset.get('serduszko_0')
         self.hp_23 = asset.get('serduszko_23')
         self.hp_13 = asset.get('serduszko_13')
-        self.left_up = asset.get('left_up')
-        self.center_up = asset.get('center_up')
-        self.right_up = asset.get('right_up')
-        self.right_center = asset.get('right_center')
-        self.right_down = asset.get('right_down')
-        self.center_down = asset.get('center_down')
-        self.left_down = asset.get('left_down')
-        self.left_center = asset.get('left_center')
-        self.center = asset.get('center')
     
    
 
@@ -193,6 +176,10 @@ class WavePanel(BasePanel):
 
     def show_wave(self, app, logika):
         self.blit_background(app,6,6,pygame.Rect(544,544,16,16))
+        textRec = pygame.Rect(544+15,544+10,32,32)
+        f = pygame.font.Font(None,16)
+        s = f.render("Objectives: ", True, (0,0,0), None)
+        app.screen.blit(s,textRec)
 
 
 class InventoryPanel(BasePanel):
@@ -200,35 +187,54 @@ class InventoryPanel(BasePanel):
         super().__init__()
         self.rec = pygame.Rect(544, 640-544, 640-543, 200)
         self.empty_inv = asset.get('empty_inv')
-        self.left_up = asset.get('left_up')
-        self.center_up = asset.get('center_up')
-        self.right_up = asset.get('right_up')
-        self.right_center = asset.get('right_center')
-        self.right_down = asset.get('right_down')
-        self.center_down = asset.get('center_down')
-        self.left_down = asset.get('left_down')
-        self.left_center = asset.get('left_center')
-        self.center = asset.get('center')
 
-    def show_inventory(self, app, logika):
-        self.blit_background(app,6,28,pygame.Rect(544,640-544,16,16))
-       
+    def show_equiped_inventory(self, app, logika):
+        self.blit_background(app,6,6,pygame.Rect(544,640-544,16,16))
+        textRec = pygame.Rect(567,640-544+15,20,20)
+        f = pygame.font.Font(None,19)
+        s = f.render("Equiped",True,(0,0,0),None)
+        app.screen.blit(s,textRec)
+        ArmorText = pygame.Rect(550,640-543+68,20,20)
+        k = pygame.font.Font(None,16)
+        s = k.render("Armor", True, (0,0,0), None)
+        app.screen.blit(s,ArmorText)
+        armorRec = pygame.Rect(550,640-543+36,32,32)
+        if logika.gracz.armor:
+            pass
+            #blit item
+        else:
+            app.screen.blit(self.empty_inv,armorRec)
+        WeaponText = pygame.Rect(590,640-543+68,20,20)
+        s = k.render("Weapon", True, (0,0,0), None)
+        app.screen.blit(s,WeaponText)
+        WeaponRec = armorRec.move(48,0)
+        if logika.gracz.weapon:
+            pass
+        else:
+            app.screen.blit(self.empty_inv,WeaponRec)
+    def show_inventory(self,app,logika):
+        self.blit_background(app,6,22,pygame.Rect(544,640-544+16*6,16,16))
+        f = pygame.font.Font(None,19)
+        s = f.render("Inventory", True, (0,0,0), None)
+        textRec = pygame.Rect(563,640-544+16*6+13,16,16)
+        app.screen.blit(s,textRec)
+        first = pygame.Rect(555,640-544+16*6+36,32,32)
+        #blit empty_inventory then blit items
+        first = first.move(-32,0)
+        for i in range(9):
+            for i in range(2):
+                first = first.move(34,0)
+                app.screen.blit(self.empty_inv,first)
+            first = first.move(2 * (-34),34)
 
 
+            
 
 
 class InstructionPanel(BasePanel):
     def __init__(self):
+        super().__init__()
         self.rec = pygame.Rect(160,544,80,200)
-        self.left_up = asset.get('left_up')
-        self.center_up = asset.get('center_up')
-        self.right_up = asset.get('right_up')
-        self.right_center = asset.get('right_center')
-        self.right_down = asset.get('right_down')
-        self.center_down = asset.get('center_down')
-        self.left_down = asset.get('left_down')
-        self.left_center = asset.get('left_center')
-        self.center = asset.get('center')
 
     def show_instruction(self,app):
         self.blit_background(app,24,6,pygame.Rect(160,544,16,16))

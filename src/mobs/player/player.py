@@ -7,6 +7,9 @@ class Player(Mob):
         super().__init__(x, y, mmap, hp, attack, movement, sprite, name="Player")
         self.near_player = True
         self.eq = []
+        self.eq_max = 20
+        self.weapon = None
+        self.armor = None
         self.up = 0
         self.down = 0
         self.left = 0

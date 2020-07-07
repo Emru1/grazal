@@ -21,7 +21,7 @@ serduszko_pelne 16/gui_32.png
 serduszko_23 16/gui_33.png
 serduszko_13 16/gui_34.png
 serduszko_0 16/gui_35.png
-empty_inv 16/gui_116.png
+empty_inv empty_inventory.png
 trawa hyptosis_78.png
 sciana_cegly hyptosis_375.png
 podloga_cegly_1 hyptosis_361.png
