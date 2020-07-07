@@ -41,15 +41,15 @@ class App:
         click = pygame.mouse.get_pressed()
         f = pygame.font.Font(None, 32)
         s = f.render(msg, True, [0, 0, 0])
-        textRec = s.get_rect()
-        textRec.center = (x // 2, y // 2)
-        if textRec.collidepoint(mous[0], mous[1]):
-            pygame.draw.rect(self.screen, ac, textRec)
-            if click[0] == True:
+        text_rec = s.get_rect()
+        text_rec.center = (x // 2, y // 2)
+        if text_rec.collidepoint(mous[0], mous[1]):
+            pygame.draw.rect(self.screen, ac, text_rec)
+            if click[0]:
                 action()
         else:
-            pygame.draw.rect(self.screen, ic, textRec)
-        self.screen.blit(s, textRec)
+            pygame.draw.rect(self.screen, ic, text_rec)
+        self.screen.blit(s, text_rec)
 
     def intro(self):
         self.running = True
