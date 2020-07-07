@@ -11,24 +11,73 @@ class RightPanel:
         self.clicked_tile = None
         self.wave_panel = WavePanel()
         self.inventory_panel = InventoryPanel()
+        self.instructions = InstructionPanel()
 
     def resolve(self, mouse, logika, app):
         self.wave_panel.show_wave(app, logika)
         self.clicked_tile = maps.get(logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + logika.gracz.x,
                                                                  int(mouse[1] / 32) - 8 + logika.gracz.y)
-        if self.clicked_tile.mob:
-            self.R1.show(app, self.clicked_tile)
+        if (0 < mouse[0] < config.grid_x*config.tile_size) and (0 < mouse[1] < config.grid_y*config.tile_size): 
+            if self.clicked_tile.mob:
+                self.R1.show(app, self.clicked_tile)
+            else:
+                self.R1.show_default(app,self.clicked_tile)
         else:
-            self.R1.show_default(app)
+            pass
 
     def show_panels(self, app, logika):
         self.Pp.show_player(app, logika)
         self.wave_panel.show_wave(app, logika)
         self.inventory_panel.show_inventory(app, logika)
+        self.instructions.show_instruction(app)
+        if self.clicked_tile == None:
+            self.R1.show_default(app,self.clicked_tile)
 
+class BasePanel:
 
-class MobPanel:
     def __init__(self):
+        self.left_up = asset.get('left_up')
+        self.center_up = asset.get('center_up')
+        self.right_up = asset.get('right_up')
+        self.right_center = asset.get('right_center')
+        self.right_down = asset.get('right_down')
+        self.center_down = asset.get('center_down')
+        self.left_down = asset.get('left_down')
+        self.left_center = asset.get('left_center')
+        self.center = asset.get('center')
+
+    def blit_background(self, app, width, height, rec):
+        #REC to pygame.rec reprezentuje lewy gorny rog dla rysowanego panelu (x,y,16,16)
+        #blit left corner
+        app.screen.blit(self.left_up,rec)
+        for i in range(width-2):
+            rec = rec.move(16,0)
+            app.screen.blit(self.center_up,rec)
+        rec = rec.move(16,0)
+        app.screen.blit(self.right_up,rec)
+        for j in range(height-2):
+            rec = rec.move((width-1)*-16,16)
+            app.screen.blit(self.left_center,rec)
+            for i in range(width-2):
+                rec = rec.move(16,0)
+                app.screen.blit(self.center,rec)
+            rec = rec.move(16,0)
+            app.screen.blit(self.right_center,rec)
+        rec = rec.move((width-1)*-16,16)
+        app.screen.blit(self.left_down,rec)
+        for i in range(width-2):
+            rec = rec.move(16,0)
+            app.screen.blit(self.center_down,rec)
+        rec = rec.move(16,0)
+        app.screen.blit(self.right_down,rec)
+
+        
+        
+
+
+class MobPanel(BasePanel):
+    def __init__(self):
+        super().__init__()
         self.rec = pygame.Rect(544, 0, 640 - 543, 100)
         self.left_up = asset.get('left_up')
         self.center_up = asset.get('center_up')
@@ -41,7 +90,7 @@ class MobPanel:
         self.center = asset.get('center')
 
     def show(self, app, tile):
-            self.blit_background(app)
+            self.blit_background(app,6,6,pygame.Rect(544,0,16,16))
             nameRec = pygame.Rect(570,16,1,1)
             f = pygame.font.Font(None,16)
             s = f.render(tile.mob.name,True,(0,0,0),None)
@@ -53,75 +102,47 @@ class MobPanel:
             s = f.render("Attack: %d"%tile.mob.attack, True, (0,0,0), None)
             app.screen.blit(s,attRec)
 
-    def blit_background(self,app):
-        first = pygame.Rect(544,0,16,16)
-        app.screen.blit(self.left_up,first)
-        for i in range(4):
-            first = first.move(16,0)
-            app.screen.blit(self.center_up,first)
-        first = first.move(16,0)
-        app.screen.blit(self.right_up,first)
-        for j in range(4):
-            first = first.move(5*-16,16)
-            app.screen.blit(self.left_center,first)
-            for i in range(4):
-                first = first.move(16,0)
-                app.screen.blit(self.center,first)
-            first = first.move(16,0)
-            app.screen.blit(self.right_center,first)
-        first = first.move(5*-16,16)
-        app.screen.blit(self.left_down,first)
-        for i in range(4):
-            first = first.move(16,0)
-            app.screen.blit(self.center_down,first)
-        first = first.move(16,0)
-        app.screen.blit(self.right_down,first)
-
-    
-
-    def show_default(self, app):
-        self.blit_background(app)
-        textRec = pygame.Rect(550,32,10,10)
-        f = pygame.font.Font(None,16)
-        s = f.render("Just a ground", True, (0, 0, 0),None)
-        app.screen.blit(s, textRec)
+    def show_default(self, app,tile):
+        self.blit_background(app,6,6,pygame.Rect(544,0,16,16))
 
     def show_player(self, app, logika):
         self.blit_background(app)
 
 
 
-class PlayerPanel:
+class PlayerPanel(BasePanel):
     def __init__(self):
+        super().__init__()
         self.rec = pygame.Rect(0, 544, 400, 640 - 543)
         self.hp_full = asset.get('serduszko_pelne')
         self.hp_empty = asset.get('serduszko_0')
         self.hp_23 = asset.get('serduszko_23')
         self.hp_13 = asset.get('serduszko_13')
+        self.left_up = asset.get('left_up')
+        self.center_up = asset.get('center_up')
+        self.right_up = asset.get('right_up')
+        self.right_center = asset.get('right_center')
+        self.right_down = asset.get('right_down')
+        self.center_down = asset.get('center_down')
+        self.left_down = asset.get('left_down')
+        self.left_center = asset.get('left_center')
+        self.center = asset.get('center')
+    
+   
 
     def show_player(self, app, logika):
-        textRec = pygame.draw.rect(app.screen, (0, 0, 0), (0, 544, 150, 640 - 543))
-        f = pygame.font.Font(None, 16)
-        s = f.render("Player", True, (0, 255, 255))
-        hp = f.render(("HP: %d / %d" % (logika.gracz.hp, logika.gracz.hp_max)), True, (255, 255, 255))
-        pygame.draw.rect(app.screen, (0, 0, 0), textRec)
-        app.screen.blit(s, textRec)
-        hpRec1 = textRec.move(0, 16)
-        #      app.screen.blit(self.hp_full,hpRec1)
-        hpRec2 = hpRec1.move(16, 0)
-        #       app.screen.blit(self.hp_full,hpRec2)
-        hpRec3 = hpRec2.move(16, 0)
-        #        app.screen.blit(self.hp_full,hpRec3)
-        # app.screen.blit(hp, hpRec)
-        self.resolve_hp(app, logika, hpRec1, hpRec2, hpRec3)
-        hpRec3 = hpRec3.move(16, 0)
-        app.screen.blit(hp, hpRec3)
-        at = f.render(("Attack: %d" % logika.gracz.attack), True, (255, 255, 255))
-        atRec = hpRec1.move(0, 16)
-        app.screen.blit(at, atRec)
-        ms = f.render(("Movement speed: %d" % logika.gracz.movement), True, (255, 255, 255))
-        msRec = atRec.move(0, 11)
-        app.screen.blit(ms, msRec)
+        self.blit_background(app,10,6,pygame.Rect(0,544,16,16))
+        nameRec = pygame.Rect(50,550,0,0)
+        f = pygame.font.Font(None,16)
+        s = f.render("Gracz", True, (0,0,0), None)
+        app.screen.blit(s,nameRec)
+        hpRec1 = pygame.Rect(8,566,16,16)
+        hpRec2 = hpRec1.move(16,0)
+        hpRec3 = hpRec2.move(16,0)
+        self.resolve_hp(app,logika,hpRec1,hpRec2,hpRec3)
+        hpRec = hpRec3.move(16,2)
+        app.screen.blit(f.render("HP: %d / %d"%(logika.gracz.hp,logika.gracz.hp_max), True, (0,0,0),None),hpRec)
+        app.screen.blit(f.render("Attack: %d"%logika.gracz.attack,True,(0,0,0),None),hpRec1.move(0,16))
 
     def resolve_hp(self, app, logika, r1, r2, r3):
         if logika.gracz.hp > 80:
@@ -165,36 +186,66 @@ class PlayerPanel:
             app.screen.blit(self.hp_empty, r3)
 
 
-class WavePanel:
+class WavePanel(BasePanel):
     def __init__(self):
+        super().__init__()
         self.rec = pygame.Rect(544, 544, 400, 640 - 543)
 
     def show_wave(self, app, logika):
-        textRec = pygame.draw.rect(app.screen, (0, 0, 0), self.rec)
-        f = pygame.font.Font(None, 16)
-        s = f.render(("Wave: %d" % logika.wave), True, (255, 255, 255))
-        pygame.draw.rect(app.screen, (0, 0, 0), textRec)
-        app.screen.blit(s, textRec)
-        enemies_left = f.render(("Enemies to kill: %d" % len(logika.wrogowie)), True, (255, 255, 255))
-        enemiesRec = textRec.move(0, 11)
-        app.screen.blit(enemies_left, enemiesRec)
+        self.blit_background(app,6,6,pygame.Rect(544,544,16,16))
 
 
-class InventoryPanel:
+class InventoryPanel(BasePanel):
     def __init__(self):
-        self.rec = pygame.Rect(150, 544, 80, 200)
+        super().__init__()
+        self.rec = pygame.Rect(544, 640-544, 640-543, 200)
         self.empty_inv = asset.get('empty_inv')
+        self.left_up = asset.get('left_up')
+        self.center_up = asset.get('center_up')
+        self.right_up = asset.get('right_up')
+        self.right_center = asset.get('right_center')
+        self.right_down = asset.get('right_down')
+        self.center_down = asset.get('center_down')
+        self.left_down = asset.get('left_down')
+        self.left_center = asset.get('left_center')
+        self.center = asset.get('center')
 
     def show_inventory(self, app, logika):
-        textRec = pygame.draw.rect(app.screen, (0, 0, 0), self.rec)
-        f = pygame.font.Font(None, 16)
-        s = f.render("Inventory ", True, (0, 255, 255))
-        # blit inventory
-        first_field = textRec.move(0, 16)
-        pygame.draw.rect(app.screen, (0, 0, 0), textRec)
-        app.screen.blit(s, textRec)
-        for j in range(4):
-            for i in range(3):
-                app.screen.blit(self.empty_inv, first_field)
-                first_field = first_field.move(16, 0)
-            first_field = first_field.move(-48, 16)
+        self.blit_background(app,6,28,pygame.Rect(544,640-544,16,16))
+       
+
+
+
+
+class InstructionPanel(BasePanel):
+    def __init__(self):
+        self.rec = pygame.Rect(160,544,80,200)
+        self.left_up = asset.get('left_up')
+        self.center_up = asset.get('center_up')
+        self.right_up = asset.get('right_up')
+        self.right_center = asset.get('right_center')
+        self.right_down = asset.get('right_down')
+        self.center_down = asset.get('center_down')
+        self.left_down = asset.get('left_down')
+        self.left_center = asset.get('left_center')
+        self.center = asset.get('center')
+
+    def show_instruction(self,app):
+        self.blit_background(app,24,6,pygame.Rect(160,544,16,16))
+        f = pygame.font.Font(None,16)
+        s = f.render("Instructions:",True,(0,0,0))
+        first_line = pygame.Rect(164,550,80,10)
+        app.screen.blit(s,first_line)
+        s = f.render("You can move by using WASD",True,(0,0,0),None)
+        first_line = first_line.move(0,16)
+        app.screen.blit(s,first_line)
+        s = f.render("Interact by using left mouse button",True, (0,0,0), None)
+        first_line = first_line.move(0,16)
+        app.screen.blit(s,first_line)
+        s = f.render("Left click on the items in inventory to equip/unequip", True, (0,0,0), None)
+        first_line = first_line.move(0,16)
+        app.screen.blit(s,first_line)
+        s = f.render("Right click on the item to delete from inventory", True, (0,0,0),None)
+        first_line = first_line.move(0,16)
+        app.screen.blit(s,first_line)
+
