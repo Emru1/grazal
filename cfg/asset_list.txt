@@ -40,4 +40,4 @@ right_down /16/gui_151.png
 center_down /16/gui_150.png
 left_down /16/gui_149.png
 left_center /16/gui_133.png
-mid /16/gui_134.png
+center /16/gui_134.png

@@ -17,15 +17,8 @@ class RightPanel:
         self.clicked_tile = maps.get(logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + logika.gracz.x,
                                                                  int(mouse[1] / 32) - 8 + logika.gracz.y)
         if self.clicked_tile.mob:
-            # check if your not clicking on the player
-            if self.clicked_tile.mob.x == logika.gracz.x and self.clicked_tile.mob.y == logika.gracz.y:
-                self.R1.show_player(app, logika)
-            else:
-                self.R1.tile_is_mob = True
-                self.R1.show(app, self.clicked_tile)
-                # make mob_panel appear
+            self.R1.show(app, self.clicked_tile)
         else:
-            self.R1.tile_is_mob = False
             self.R1.show_default(app)
 
     def show_panels(self, app, logika):
@@ -37,42 +30,65 @@ class RightPanel:
 class MobPanel:
     def __init__(self):
         self.rec = pygame.Rect(544, 0, 640 - 543, 100)
-        self.tile_is_mob = False
+        self.left_up = asset.get('left_up')
+        self.center_up = asset.get('center_up')
+        self.right_up = asset.get('right_up')
+        self.right_center = asset.get('right_center')
+        self.right_down = asset.get('right_down')
+        self.center_down = asset.get('center_down')
+        self.left_down = asset.get('left_down')
+        self.left_center = asset.get('left_center')
+        self.center = asset.get('center')
 
     def show(self, app, tile):
-        if self.tile_is_mob:
-            textRec = pygame.draw.rect(app.screen, (100, 255, 0), (544, 0, 640 - 543, 100))
-            f = pygame.font.Font(None, 16)
-            s = f.render(tile.mob.name, True, (0, 255, 255))
-            hp = f.render(("HP: %d" % tile.mob.hp), True, (255, 255, 255))
-            pygame.draw.rect(app.screen, (0, 0, 0), textRec)
-            app.screen.blit(s, textRec)
-            hpRec = textRec.move(0, 11)
-            app.screen.blit(hp, hpRec)
-            at = f.render(("Attack: %d" % tile.mob.attack), True, (255, 255, 255))
-            atRec = hpRec.move(0, 11)
-            app.screen.blit(at, atRec)
-        else:
-            self.show_default(app)
+            self.blit_background(app)
+            nameRec = pygame.Rect(570,16,1,1)
+            f = pygame.font.Font(None,16)
+            s = f.render(tile.mob.name,True,(0,0,0),None)
+            app.screen.blit(s,nameRec)
+            hpRec = nameRec.move(-20,16)
+            s = f.render("HP: %d"%tile.mob.hp, True, (0,0,0), None)
+            app.screen.blit(s,hpRec)
+            attRec = hpRec.move(0,16)
+            s = f.render("Attack: %d"%tile.mob.attack, True, (0,0,0), None)
+            app.screen.blit(s,attRec)
+
+    def blit_background(self,app):
+        first = pygame.Rect(544,0,16,16)
+        app.screen.blit(self.left_up,first)
+        for i in range(4):
+            first = first.move(16,0)
+            app.screen.blit(self.center_up,first)
+        first = first.move(16,0)
+        app.screen.blit(self.right_up,first)
+        for j in range(4):
+            first = first.move(5*-16,16)
+            app.screen.blit(self.left_center,first)
+            for i in range(4):
+                first = first.move(16,0)
+                app.screen.blit(self.center,first)
+            first = first.move(16,0)
+            app.screen.blit(self.right_center,first)
+        first = first.move(5*-16,16)
+        app.screen.blit(self.left_down,first)
+        for i in range(4):
+            first = first.move(16,0)
+            app.screen.blit(self.center_down,first)
+        first = first.move(16,0)
+        app.screen.blit(self.right_down,first)
+
+    
 
     def show_default(self, app):
-        textRec = pygame.draw.rect(app.screen, (0, 0, 0), (544, 0, 640 - 543, 100))
-        f = pygame.font.Font(None, 16)
-        s = f.render("Just a ground", True, (255, 255, 255))
+        self.blit_background(app)
+        textRec = pygame.Rect(550,32,10,10)
+        f = pygame.font.Font(None,16)
+        s = f.render("Just a ground", True, (0, 0, 0),None)
         app.screen.blit(s, textRec)
 
     def show_player(self, app, logika):
-        textRec = pygame.draw.rect(app.screen, (100, 255, 0), (544, 0, 640 - 543, 100))
-        f = pygame.font.Font(None, 16)
-        s = f.render("Player", True, (0, 255, 255))
-        hp = f.render(("HP: %d" % logika.gracz.hp), True, (255, 255, 255))
-        pygame.draw.rect(app.screen, (0, 0, 0), textRec)
-        app.screen.blit(s, textRec)
-        hpRec = textRec.move(0, 11)
-        app.screen.blit(hp, hpRec)
-        at = f.render(("Attack: %d" % logika.gracz.attack), True, (255, 255, 255))
-        atRec = hpRec.move(0, 11)
-        app.screen.blit(at, atRec)
+        self.blit_background(app)
+
 
 
 class PlayerPanel:
