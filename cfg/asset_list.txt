@@ -32,3 +32,12 @@ podloga_cegly_5 hyptosis_365.png
 podloga_cegly_6 hyptosis_366.png
 podloga_cegly_7 hyptosis_367.png
 podloga_cegly_8 hyptosis_368.png
+left_up /16/gui_117.png
+center_up /16/gui_118.png
+right_up /16/gui_119.png
+right_center /16/gui_135.png
+right_down /16/gui_151.png
+center_down /16/gui_150.png
+left_down /16/gui_149.png
+left_center /16/gui_133.png
+mid /16/gui_134.png
