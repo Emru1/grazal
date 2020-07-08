@@ -14,9 +14,9 @@ class RightPanel:
         self.instructions = InstructionPanel()
 
     def resolve(self, mouse, logika, app):
-        self.wave_panel.show_wave(app, logika)
         self.clicked_tile = maps.get(logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + logika.gracz.x,
                                                                  int(mouse[1] / 32) - 8 + logika.gracz.y)
+        self.wave_panel.resolve_hover(app, logika,self.inventory_panel, mouse)
         if (0 < mouse[0] < config.grid_x * config.tile_size) and (0 < mouse[1] < config.grid_y * config.tile_size):
             if self.clicked_tile.mob:
                 self.R1.show(app, self.clicked_tile)
@@ -173,10 +173,34 @@ class WavePanel(BasePanel):
 
     def show_wave(self, app, logika):
         self.blit_background(app, 6, 6, pygame.Rect(544, 544, 16, 16))
-        textRec = pygame.Rect(544 + 15, 544 + 10, 32, 32)
-        f = pygame.font.Font(None, 16)
-        s = f.render("Objectives: ", True, (0, 0, 0), None)
-        app.screen.blit(s, textRec)
+    
+    def resolve_hover(self, app, logika, inwentory, mouse):
+        self.blit_background(app, 6, 6, pygame.Rect(544,544,16,16))
+        f = pygame.font.Font(None,16)
+        textRec = pygame.Rect(544+15,544 + 10, 32, 32)
+        if inwentory.armor_rec.collidepoint(mouse):
+            #najechano myszka na armor
+            s = f.render(logika.gracz.armor.name, True, (0,0,0), None)
+            app.screen.blit(s,textRec)
+            textRec = textRec.move(0,32)
+            s = f.render(logika.gracz.armor.description, True, (0,0,0), None)
+            app.screen.blit(s, textRec)
+        elif inwentory.weapon_rec.collidepoint(mouse):
+            #najechano myszka na bron
+            s = f.render(logika.gracz.weapon.name, True, (0,0,0), None)
+            app.screen.blit(s, textRec)
+            textRec = textRec.move(0,32)
+            s = f.render(logika.gracz.weapon.description, True, (0,0,0), None)
+            app.screen.blit(s, textRec)
+        elif logika.gracz.eq_count != 0:
+            for i in range(logika.gracz.eq_count):
+                if inwentory.inventory_rec[i].collidepoint(mouse):
+                    #Wyswietl informacje o bierzacej pozycji myszki
+                    s = f.render(logika.gracz.eq[i].name, True, (0,0,0), None)
+                    app.screen.blit(s,textRec)
+                    textRec = textRec.move(0,32)
+                    s = f.render(logika.gracz.eq[i].description, True, (0,0,0), None)
+                    app.screen.blit(s, textRec)    
 
 
 class InventoryPanel(BasePanel):
@@ -253,6 +277,18 @@ class InventoryPanel(BasePanel):
                                 logika.gracz.eq[i] = logika.gracz.weapon
                                 logika.gracz.weapon = temp
                         logika.gracz.eq[i].remove(logika.gracz.eq[i])
+        if self.weapon_rec.collidepoint(mouse):
+            #gracz klika na aktualna bron
+            if logika.gracz.weapon != None:
+                logika.gracz.eq_count = logika.gracz.eq_count +1 
+                logika.gracz.eq.append(logika.gracz.weapon)
+                logika.gracz.weapon.unequip(logika.gracz)
+        if self.armor_rec.collidepoint(mouse):
+            #gracz klika na aktualna zbroje
+            if logika.gracz.armor != None:
+                logika.gracz.eq_count = logika.gracz.eq_count +1 
+                logika.gracz.eq.append(logika.gracz.armor)
+                logika.gracz.armor.unequip(logika.gracz)
 
 
 class InstructionPanel(BasePanel):

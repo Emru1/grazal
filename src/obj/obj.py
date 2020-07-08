@@ -1,5 +1,5 @@
 class Object:
-    def __init__(self, pos_x, pos_y, path, asset):
+    def __init__(self, pos_x, pos_y, path, asset, name, description):
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.asset = asset
@@ -11,14 +11,16 @@ class Object:
         self.edible = False
         self.weapon = False
         self.armor = False
+        self.name = name
+        self.description = description
 
     def pos(self):
         return self.pos_x, self.pos_y
 
 
 class Weapon(Object):
-    def __init__(self, pos_x, pos_y, path, asset, attack):
-        super().__init__(pos_x, pos_y, path, asset)
+    def __init__(self, pos_x, pos_y, path, asset, name, description, attack):
+        super().__init__(pos_x, pos_y, path, asset, description, name)
         self.attack_val = attack
         self.can_eq = True
         self.can_mv = True
@@ -33,10 +35,16 @@ class Weapon(Object):
             # zamien itemki
             return True
 
+    def unequip(self, mob):
+        if mob.weapon != None:
+            mob.attack = mob.attack - self.attack_val
+            mob.weapon = None
+
+
 
 class Armor(Object):
-    def __init__(self, pos_x, pos_y, path, asset, armor_val):
-        super().__init__(pos_x, pos_y, path, asset)
+    def __init__(self, pos_x, pos_y, path, asset, name , description, armor_val):
+        super().__init__(pos_x, pos_y, path, asset, name)
         self.armor = True
         self.armor_val = armor_val
         self.can_eq = True
@@ -50,11 +58,14 @@ class Armor(Object):
         else:
             # zamien itemki
             return True
+    def unequip(self, mob):
+        mob.armor_val = mob.armor_val - self.armor_val
+        mob.armor = None
 
 
 class Edible(Object):
-    def __init__(self, pos_x, pos_y, path, asset):
-        super().__init__(pos_x, pos_y, path, asset)
+    def __init__(self, pos_x, pos_y, path, asset, name, description):
+        super().__init__(pos_x, pos_y, path, asset, name, description)
         self.can_eq = True
         self.can_mv = True
         self.edible = True
@@ -64,8 +75,8 @@ class Edible(Object):
 
 
 class Potion(Edible):
-    def __init__(self, pos_x, pos_y, path, asset, hp_or_mp, points):
-        super().__init__(pos_x, pos_y, path, asset)
+    def __init__(self, pos_x, pos_y, path, asset, name, description, hp_or_mp, points):
+        super().__init__(pos_x, pos_y, path, asset, description, name)
         self.hp_or_mp = hp_or_mp
         self.points = points
 

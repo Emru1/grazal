@@ -42,11 +42,11 @@ class Event_handler:
         self.right = False
 
         for event in pygame.event.get():
+            mouse = pygame.mouse.get_pos()
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                mouse = pygame.mouse.get_pos()
                 if event.button == 1:
                     self.logika.check_interactions(maps.get(self.logika.gracz.mmap).get_tile(
                         int(mouse[0] / 32) - 8 + self.logika.gracz.x, int(mouse[1] / 32) - 8 + self.logika.gracz.y),
@@ -55,3 +55,5 @@ class Event_handler:
                 elif event.button == 3:
                     '''right mouse button'''
                     pass
+            elif event.type == pygame.MOUSEMOTION or self.panel.inventory_panel.rec.collidepoint(pygame.mouse.get_pos()):
+                self.panel.wave_panel.resolve_hover(self.app,self.logika,self.panel.inventory_panel,mouse)
