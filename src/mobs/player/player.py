@@ -93,10 +93,16 @@ class Player(Mob):
         else:
             return False
 
-    def interaction_attack(self, mob, mouse, logika):
+    def interaction_attack(self, mob, logika):
         if mob:
             if self.able_to_attack(mob):
                 if mob.hp - self.attack <= 0:
                     mob.lethal(logika)
                 else:
                     mob.hp = mob.hp - self.attack
+
+    def interaction_pickup(self, item, logika):
+        if item:
+            if self.able_to_attack(item):
+                self.pick_item(item)
+                maps.get(self.mmap).get_tile(item.pos()[0], item.pos()[1]).obj = None

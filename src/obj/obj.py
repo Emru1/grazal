@@ -7,6 +7,9 @@ class Object:
         self.can_mv = False
         self.on_ground = True
 
+    def pos(self):
+        return (self.pos_x, self.pos_y)
+
 
 class Weapon(Object):
     def __init__(self, pos_x, pos_y, asset, attack):

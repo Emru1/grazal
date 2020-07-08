@@ -15,11 +15,9 @@ class Logic:
             # print("is mob")
             # if mob is clicked
             # if mob is next to player u are able to attack
-            self.gracz.interaction_attack(tile.mob, mouse, self)
-        else:
-            # print("else")
-            # item/ground
-            pass
+            self.gracz.interaction_attack(tile.mob, self)
+        elif tile.obj:
+            self.gracz.interaction_pickup(tile.obj, self)
         panel.resolve(mouse, self, app)
 
     def set_enemies(self):
