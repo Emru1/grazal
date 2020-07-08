@@ -31,10 +31,12 @@ class Weapon(Object):
 
 
 class Armor(Object):
-    def __init__(self, pos_x, pos_y, asset, armor_val):
-        super().__init__(pos_x, pos_y, asset)
+    def __init__(self, pos_x, pos_y, path, asset, armor_val):
+        super().__init__(pos_x, pos_y, path, asset)
         self.armor = True
         self.armor_val = armor_val
+        self.can_eq = True
+        self.can_mv = True
 
     def equip(self, mob):
         if mob.armor == None:
@@ -45,11 +47,7 @@ class Armor(Object):
             #zamien itemki
             return True
             
-    def __init__(self, pos_x, pos_y, path, asset, armor):
-        super().__init__(pos_x, pos_y, path, asset)
-        self.armor = armor
-        self.can_eq = True
-        self.can_mv = True
+
 
 
 class Edible(Object):
