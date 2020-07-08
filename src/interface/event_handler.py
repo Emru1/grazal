@@ -4,27 +4,27 @@ from src.globals import *
 
 
 def event_handler(app, logika, mmap, panel, mobs=None):
+    key = pygame.key.get_pressed()
+    if key[pygame.K_w]:
+        '''move up'''
+        logika.gracz.moveup()
+        logika.set_enemies()
+    elif key[pygame.K_s]:
+        logika.gracz.movedown()
+        logika.set_enemies()
+        '''move down'''
+    elif key[pygame.K_a]:
+        logika.gracz.moveleft()
+        logika.set_enemies()
+        '''move left'''
+    elif key[pygame.K_d]:
+        logika.gracz.moveright()
+        logika.set_enemies()
+        '''move right'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                '''move up'''
-                logika.gracz.moveup()
-                logika.set_enemies()
-            elif event.key == pygame.K_s:
-                logika.gracz.movedown()
-                logika.set_enemies()
-                '''move down'''
-            elif event.key == pygame.K_a:
-                logika.gracz.moveleft()
-                logika.set_enemies()
-                '''move left'''
-            elif event.key == pygame.K_d:
-                logika.gracz.moveright()
-                logika.set_enemies()
-                '''move right'''
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse = pygame.mouse.get_pos()
             if event.button == 1:
