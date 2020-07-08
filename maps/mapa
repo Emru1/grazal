@@ -36,7 +36,7 @@ d
     {
         name Andrzej
         type enemy
-        asset zabka
+        asset sdol
     }
 }
 e
@@ -46,7 +46,7 @@ e
     {
         name Krzysiek
         type enemy
-        asset zabka
+        asset sdol
     }
 }
 f

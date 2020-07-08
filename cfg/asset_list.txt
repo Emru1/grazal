@@ -41,3 +41,15 @@ center_down /16/gui_150.png
 left_down /16/gui_149.png
 left_center /16/gui_133.png
 center /16/gui_134.png
+sgora ssgora.png
+sgora2 ssgora2.png
+sgora3 ssgora3.png
+sdol ssdol.png
+sdol2 ssdol2.png
+sdol3 ssdol3.png
+slewo sslewo.png
+slewo2 sslewo2.png
+slewo3 sslewo3.png
+sprawo ssprawo.png
+sprawo2 ssprawo2.png
+sprawo3 ssprawo3.png
