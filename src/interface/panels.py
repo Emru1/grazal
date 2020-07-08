@@ -186,6 +186,8 @@ class InventoryPanel(BasePanel):
     def __init__(self):
         super().__init__()
         self.rec = pygame.Rect(544, 640-544, 640-543, 200)
+        self.weapon_rec = pygame.Rect(598,640-543+36,32,32)
+        self.armor_rec = pygame.Rect(550,640-543+36,32,32)
         self.empty_inv = asset.get('empty_inv')
 
     def show_equiped_inventory(self, app, logika):
@@ -198,20 +200,18 @@ class InventoryPanel(BasePanel):
         k = pygame.font.Font(None,16)
         s = k.render("Armor", True, (0,0,0), None)
         app.screen.blit(s,ArmorText)
-        armorRec = pygame.Rect(550,640-543+36,32,32)
         if logika.gracz.armor:
             pass
             #blit item
         else:
-            app.screen.blit(self.empty_inv,armorRec)
+            app.screen.blit(self.empty_inv,self.armor_rec)
         WeaponText = pygame.Rect(590,640-543+68,20,20)
         s = k.render("Weapon", True, (0,0,0), None)
         app.screen.blit(s,WeaponText)
-        WeaponRec = armorRec.move(48,0)
         if logika.gracz.weapon:
             pass
         else:
-            app.screen.blit(self.empty_inv,WeaponRec)
+            app.screen.blit(self.empty_inv,self.weapon_rec)
     def show_inventory(self,app,logika):
         self.blit_background(app,6,22,pygame.Rect(544,640-544+16*6,16,16))
         f = pygame.font.Font(None,19)
