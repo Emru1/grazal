@@ -183,18 +183,26 @@ class WavePanel(BasePanel):
             if logika.gracz.armor:
                 self.name = inwentory.armor.name
                 self.description = inwentory.armor.description
+            else:
+                self.name = None
+                self.description = None
         elif inwentory.weapon_rec.collidepoint(mouse):
             # najechano myszka na bron
             if logika.gracz.weapon:
                 self.name = inwentory.weapon.name
                 self.description = inwentory.weapon.description
+            else:
+                self.name = None
+                self.description = None
         elif logika.gracz.eq_count != 0:
             for i in range(logika.gracz.eq_count):
                 if inwentory.inventory_rec[i].collidepoint(mouse):
                     # Wyswietl informacje o bierzacej pozycji myszki
                     self.name = logika.gracz.eq[i].name
                     self.description = logika.gracz.eq[i].description
-
+        else:
+            self.name = None
+            self.description = None
     def show_wave(self, app):
         def blit_text(surface, text, pos, font, color=pygame.Color('black')):
             words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
@@ -203,7 +211,7 @@ class WavePanel(BasePanel):
             x, y = pos
             for line in words:
                 for word in line:
-                    word_surface = font.render(word, 0, color)
+                    word_surface = font.render(word, True, color, None)
                     word_width, word_height = word_surface.get_size()
                     if x + word_width >= max_width:
                         x = pos[0]  # Reset the x.
