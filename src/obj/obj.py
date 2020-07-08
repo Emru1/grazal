@@ -36,14 +36,13 @@ class Weapon(Object):
             return True
 
     def unequip(self, mob):
-        if mob.weapon != None:
+        if mob.weapon:
             mob.attack = mob.attack - self.attack_val
             mob.weapon = None
 
 
-
 class Armor(Object):
-    def __init__(self, pos_x, pos_y, path, asset, name , description, armor_val):
+    def __init__(self, pos_x, pos_y, path, asset, name, description, armor_val):
         super().__init__(pos_x, pos_y, path, asset, name)
         self.armor = True
         self.armor_val = armor_val
@@ -58,6 +57,7 @@ class Armor(Object):
         else:
             # zamien itemki
             return True
+
     def unequip(self, mob):
         mob.armor_val = mob.armor_val - self.armor_val
         mob.armor = None

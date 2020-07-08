@@ -16,7 +16,7 @@ class RightPanel:
     def resolve(self, mouse, logika, app):
         self.clicked_tile = maps.get(logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + logika.gracz.x,
                                                                  int(mouse[1] / 32) - 8 + logika.gracz.y)
-       # self.wave_panel.resolve_hover(app, logika,self.inventory_panel, mouse)
+        # self.wave_panel.resolve_hover(app, logika,self.inventory_panel, mouse)
         if (0 < mouse[0] < config.grid_x * config.tile_size) and (0 < mouse[1] < config.grid_y * config.tile_size):
             if self.clicked_tile.mob:
                 self.R1.show(app, self.clicked_tile)
@@ -33,7 +33,7 @@ class RightPanel:
         self.inventory_panel.show_equiped_inventory(app, logika)
         self.inventory_panel.show_inventory(app, logika)
         self.instructions.show_instruction(app)
-        if self.clicked_tile == None:
+        if not self.clicked_tile:
             self.R1.show_default(app, self.clicked_tile)
 
 
@@ -173,27 +173,28 @@ class WavePanel(BasePanel):
         self.name = None
         self.description = None
 
-  #  def show_wave(self, app, logika):
+        #  def show_wave(self, app, logika):
         pass
-        #self.blit_background(app, 6, 6, pygame.Rect(544, 544, 16, 16))
-    
+        # self.blit_background(app, 6, 6, pygame.Rect(544, 544, 16, 16))
+
     def resolve_hover(self, app, logika, inwentory, mouse):
         if inwentory.armor_rec.collidepoint(mouse):
-            #najechano myszka na armor
+            # najechano myszka na armor
             if logika.gracz.armor:
                 self.name = inwentory.armor.name
                 self.description = inwentory.armor.description
         elif inwentory.weapon_rec.collidepoint(mouse):
-            #najechano myszka na bron
+            # najechano myszka na bron
             if logika.gracz.weapon:
                 self.name = inwentory.weapon.name
                 self.description = inwentory.weapon.description
         elif logika.gracz.eq_count != 0:
             for i in range(logika.gracz.eq_count):
                 if inwentory.inventory_rec[i].collidepoint(mouse):
-                    #Wyswietl informacje o bierzacej pozycji myszki
+                    # Wyswietl informacje o bierzacej pozycji myszki
                     self.name = logika.gracz.eq[i].name
                     self.description = logika.gracz.eq[i].description
+
     def show_wave(self, app):
         def blit_text(surface, text, pos, font, color=pygame.Color('black')):
             words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
@@ -211,12 +212,16 @@ class WavePanel(BasePanel):
                     x += word_width + space
                 x = pos[0]  # Reset the x.
                 y += word_height  # Start on new row.
-        self.blit_background(app, 6, 6, pygame.Rect(544,544,16,16))
-        textRec = pygame.Rect(544+5,544 + 10, 32, 32)
+
+        self.blit_background(app, 6, 6, pygame.Rect(544, 544, 16, 16))
+        textRec = pygame.Rect(544 + 5, 544 + 10, 32, 32)
         if self.name and self.description:
-            blit_text(app.screen,self.name+'\n'+self.description,(549,554), pygame.font.Font(None,16), (0,0,0))
+            blit_text(app.screen, self.name + '\n' + self.description, (549, 554), pygame.font.Font(None, 16),
+                      (0, 0, 0))
         elif self.name and not self.description:
-            blit_text(app.screen,self.name,(549,554), pygame.font.Font(None,16), (0,0,0))
+            blit_text(app.screen, self.name, (549, 554), pygame.font.Font(None, 16), (0, 0, 0))
+
+
 class InventoryPanel(BasePanel):
     def __init__(self):
         super().__init__()
@@ -292,15 +297,15 @@ class InventoryPanel(BasePanel):
                                 logika.gracz.weapon = temp
                         logika.gracz.eq[i].remove(logika.gracz.eq[i])
         if self.weapon_rec.collidepoint(mouse):
-            #gracz klika na aktualna bron
+            # gracz klika na aktualna bron
             if logika.gracz.weapon != None:
-                logika.gracz.eq_count = logika.gracz.eq_count +1 
+                logika.gracz.eq_count = logika.gracz.eq_count + 1
                 logika.gracz.eq.append(logika.gracz.weapon)
                 logika.gracz.weapon.unequip(logika.gracz)
         if self.armor_rec.collidepoint(mouse):
-            #gracz klika na aktualna zbroje
+            # gracz klika na aktualna zbroje
             if logika.gracz.armor != None:
-                logika.gracz.eq_count = logika.gracz.eq_count +1 
+                logika.gracz.eq_count = logika.gracz.eq_count + 1
                 logika.gracz.eq.append(logika.gracz.armor)
                 logika.gracz.armor.unequip(logika.gracz)
 

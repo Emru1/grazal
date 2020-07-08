@@ -27,6 +27,7 @@ class Mob:
             self.asset = "ludek"
         else:
             self.asset = asset
+        self.asset_base = self.asset
 
         if not name:
             self.name = "Mob"
@@ -38,7 +39,8 @@ class Mob:
     def lethal(self, logika):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-        maps.get(self.mmap).putobj(Potion(self.x, self.y, self.mmap, 'potions0', 'Mikstura życia', 'Leczy gracza o 10hp', 1, 10))
+        maps.get(self.mmap).putobj(
+            Potion(self.x, self.y, self.mmap, 'potions0', 'Mikstura życia', 'Leczy gracza o 10hp', 1, 10))
         logika.wrogowie.remove(self)
         del self
 
@@ -98,14 +100,26 @@ class Mob:
 
     def move_to(self, dest_x, dest_y):
         if maps.get(self.mmap).get_tile(dest_x, dest_y).ispassable():
-            if dest_x < 0:
-                self.asset = "slewo"
-            elif dest_x > 0:
-                self.asset = "sprawo"
-            elif dest_y > 0:
-                self.asset = "sgora"
-            elif dest_y < 0:
-                self.asset = "sdol"
+            if dest_x < self.x:
+                self.asset = self.asset_base + "lewo"
+                self.left = self.left % 3
+                self.left = self.left + 1
+                self.asset = self.asset + str(self.left)
+            elif dest_x > self.x:
+                self.asset = self.asset_base + "prawo"
+                self.right = self.right % 3
+                self.right = self.right + 1
+                self.asset = self.asset + str(self.right)
+            elif dest_y < self.y:
+                self.asset = self.asset_base + "gora"
+                self.up = self.up % 3
+                self.up = self.up + 1
+                self.asset = self.asset + str(self.up)
+            elif dest_y > self.y:
+                self.asset = self.asset_base + "dol"
+                self.down = self.down % 3
+                self.down = self.down + 1
+                self.asset = self.asset + str(self.down)
             maps.get(self.mmap).get_tile(self.x, self.y).mob = None
             self.y = dest_y
             self.x = dest_x

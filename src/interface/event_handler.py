@@ -55,5 +55,5 @@ class Event_handler:
                 elif event.button == 3:
                     '''right mouse button'''
                     pass
-            elif event.type == pygame.MOUSEMOTION: #or self.panel.inventory_panel.rec.collidepoint(pygame.mouse.get_pos()):
-                self.panel.wave_panel.resolve_hover(self.app,self.logika,self.panel.inventory_panel,mouse)
+            elif event.type == pygame.MOUSEMOTION:  # or self.panel.inventory_panel.rec.collidepoint(pygame.mouse.get_pos()):
+                self.panel.wave_panel.resolve_hover(self.app, self.logika, self.panel.inventory_panel, mouse)
