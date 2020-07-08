@@ -24,6 +24,10 @@ class Weapon(Object):
         if mob.weapon == None:
             mob.weapon = self
             mob.attack = mob.attack + self.attack_val
+            return False
+        else:
+            #zamien itemki
+            return True
 
 
 class Armor(Object):
@@ -53,6 +57,7 @@ class Edible(Object):
         super().__init__(pos_x, pos_y, path, asset)
         self.can_eq = True
         self.can_mv = True
+        self.edible = True
 
 
 
