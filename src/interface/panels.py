@@ -189,6 +189,7 @@ class InventoryPanel(BasePanel):
         self.weapon_rec = pygame.Rect(598,640-543+36,32,32)
         self.armor_rec = pygame.Rect(550,640-543+36,32,32)
         self.empty_inv = asset.get('empty_inv')
+        self.inventory_rec = []
 
     def show_equiped_inventory(self, app, logika):
         self.blit_background(app,6,6,pygame.Rect(544,640-544,16,16))
@@ -224,6 +225,7 @@ class InventoryPanel(BasePanel):
         for i in range(9):
             for i in range(2):
                 first = first.move(34,0)
+                self.inventory_rec.append(first)
                 app.screen.blit(self.empty_inv,first)
             first = first.move(2 * (-34),34)
 

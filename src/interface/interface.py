@@ -25,7 +25,7 @@ class App:
         self.running = True
         maps.add("mapa", Map("mapa"))
         self.assets = asset
-      a  self.assets.convert()
+        self.assets.convert()
         self.map_screen = MapSurface(maps.get("mapa"))
         self.mob_screen = MobSurface(maps.get("mapa"))
         self.clock = pygame.time.Clock()
@@ -36,7 +36,7 @@ class App:
         self.draw_damage = Draw_damage(self.logika, self)
         self.event_handler = Event_handler(self,self.logika,self.panel)
         timer.add(1000, self.draw_damage)
-        timer.add(100,self.event_handler)
+        timer.add(150,self.event_handler)
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
         mous = pygame.mouse.get_pos()

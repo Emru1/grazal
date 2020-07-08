@@ -7,19 +7,23 @@
 # relacje: gracz -> przedmiot
 
 import pygame
+from src.globals import *
 
 static_types = {'chair': "objectsImages/chair.png", 'lamp': "objectsImages/lamp.png",
                 'door': "objectsImages/Basic_Door_Pixel.png"}
 
 
 class Object:
-    def __init__(self, pos_x, pos_y, image, taken, visible, window):
+    def __init__(self, pos_x, pos_y, asset):
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.image = pygame.image.load(image)
-        self.taken = taken
-        self.visible = visible
-        self.draw(window)
+        self.asset = asset.get(image)
+        self.weapon = False
+        self.armor = False
+        self.edible = False #Czy item jest jadalny (potek)
+        self.in_inventory = False
+        self.inventory_tile = None
+        self.on_ground = True
 
     def draw(self, win, alternative_image=None):
         if self.visible:
@@ -33,6 +37,25 @@ class Object:
         # TO TRZEBA ZROBIC!
         pass
 
+class Weapon(Object):
+    def __init__(self,pos_x, pos_y, asset, attack):
+        super().__init__(pos_x,pos_y,asset)
+        self.weapon = True
+        self.attack_val = attack
+
+class Armor(Object):
+    def __init__(self,pos_x, pos_y, asset, armor):
+        super().__init__(pos_x,pos_y,asset)
+        self.armor = True
+        self.armor = armor
+
+class Edible(Object):
+    def __init__(self,pos_x, pos_y, asset, hp):
+        super().__init__(pos_x,pos_y,asset)
+        self.edible = True
+        self.apply_hp = hp
+        
+    
 
 class SwordObject(Object):
     def __init__(self, pos_x, pos_y, window):

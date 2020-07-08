@@ -8,6 +8,7 @@ class Player(Mob):
         self.near_player = True
         self.eq = []
         self.eq_max = 20
+        self.eq_count = 0
         self.weapon = None
         self.armor = None
         self.up = 0
