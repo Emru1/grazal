@@ -191,3 +191,26 @@ class Map:
         if x < 0 or x > self.sizex - 1 or y < 0 or y > self.sizey - 1:
             return self.empty_tile
         return self.map[x][y]
+
+    def putobj(self, obj):
+        x = obj.pos_x
+        y = obj.pos_y
+        dd = 0
+        while True:
+            tile = self.get_tile(x, y)
+            if tile.obj or not tile.ipassable:
+                dd = dd + 1
+                dd = dd % 4
+            else:
+                obj.pos_y = y
+                obj.pos_x = x
+                tile.obj = obj
+                break
+            if dd == 0:
+                x = x + 1
+            elif dd == 1:
+                y = y + 1
+            elif dd == 2:
+                x = x - 1
+            elif dd == 3:
+                y = y - 1

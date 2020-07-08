@@ -36,7 +36,7 @@ class Mob:
     def lethal(self, logika):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-        maps.get(self.mmap).get_tile(self.x, self.y).obj = Potion(self.x, self.y, self.mmap, 'potions0', 1, 10)
+        maps.get(self.mmap).putobj(Potion(self.x, self.y, self.mmap, 'potions0', 1, 10))
         logika.wrogowie.remove(self)
         del self
 
