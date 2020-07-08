@@ -76,7 +76,7 @@ class Edible(Object):
 
 class Potion(Edible):
     def __init__(self, pos_x, pos_y, path, asset, name, description, hp_or_mp, points):
-        super().__init__(pos_x, pos_y, path, asset, description, name)
+        super().__init__(pos_x, pos_y, path, asset, name, description)
         self.hp_or_mp = hp_or_mp
         self.points = points
 

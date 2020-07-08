@@ -16,7 +16,7 @@ class RightPanel:
     def resolve(self, mouse, logika, app):
         self.clicked_tile = maps.get(logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + logika.gracz.x,
                                                                  int(mouse[1] / 32) - 8 + logika.gracz.y)
-        self.wave_panel.resolve_hover(app, logika,self.inventory_panel, mouse)
+       # self.wave_panel.resolve_hover(app, logika,self.inventory_panel, mouse)
         if (0 < mouse[0] < config.grid_x * config.tile_size) and (0 < mouse[1] < config.grid_y * config.tile_size):
             if self.clicked_tile.mob:
                 self.R1.show(app, self.clicked_tile)
@@ -29,7 +29,7 @@ class RightPanel:
 
     def show_panels(self, app, logika):
         self.Pp.show_player(app, logika)
-        self.wave_panel.show_wave(app, logika)
+        self.wave_panel.show_wave(app)
         self.inventory_panel.show_equiped_inventory(app, logika)
         self.inventory_panel.show_inventory(app, logika)
         self.instructions.show_instruction(app)
@@ -170,39 +170,53 @@ class WavePanel(BasePanel):
     def __init__(self):
         super().__init__()
         self.rec = pygame.Rect(544, 544, 400, 640 - 543)
+        self.name = None
+        self.description = None
 
-    def show_wave(self, app, logika):
-        self.blit_background(app, 6, 6, pygame.Rect(544, 544, 16, 16))
+  #  def show_wave(self, app, logika):
+        pass
+        #self.blit_background(app, 6, 6, pygame.Rect(544, 544, 16, 16))
     
     def resolve_hover(self, app, logika, inwentory, mouse):
-        self.blit_background(app, 6, 6, pygame.Rect(544,544,16,16))
-        f = pygame.font.Font(None,16)
-        textRec = pygame.Rect(544+15,544 + 10, 32, 32)
         if inwentory.armor_rec.collidepoint(mouse):
             #najechano myszka na armor
-            s = f.render(logika.gracz.armor.name, True, (0,0,0), None)
-            app.screen.blit(s,textRec)
-            textRec = textRec.move(0,32)
-            s = f.render(logika.gracz.armor.description, True, (0,0,0), None)
-            app.screen.blit(s, textRec)
+            if logika.gracz.armor:
+                self.name = inwentory.armor.name
+                self.description = inwentory.armor.description
         elif inwentory.weapon_rec.collidepoint(mouse):
             #najechano myszka na bron
-            s = f.render(logika.gracz.weapon.name, True, (0,0,0), None)
-            app.screen.blit(s, textRec)
-            textRec = textRec.move(0,32)
-            s = f.render(logika.gracz.weapon.description, True, (0,0,0), None)
-            app.screen.blit(s, textRec)
+            if logika.gracz.weapon:
+                self.name = inwentory.weapon.name
+                self.description = inwentory.weapon.description
         elif logika.gracz.eq_count != 0:
             for i in range(logika.gracz.eq_count):
                 if inwentory.inventory_rec[i].collidepoint(mouse):
                     #Wyswietl informacje o bierzacej pozycji myszki
-                    s = f.render(logika.gracz.eq[i].name, True, (0,0,0), None)
-                    app.screen.blit(s,textRec)
-                    textRec = textRec.move(0,32)
-                    s = f.render(logika.gracz.eq[i].description, True, (0,0,0), None)
-                    app.screen.blit(s, textRec)    
-
-
+                    self.name = logika.gracz.eq[i].name
+                    self.description = logika.gracz.eq[i].description
+    def show_wave(self, app):
+        def blit_text(surface, text, pos, font, color=pygame.Color('black')):
+            words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
+            space = font.size(' ')[0]  # The width of a space.
+            max_width, max_height = surface.get_size()
+            x, y = pos
+            for line in words:
+                for word in line:
+                    word_surface = font.render(word, 0, color)
+                    word_width, word_height = word_surface.get_size()
+                    if x + word_width >= max_width:
+                        x = pos[0]  # Reset the x.
+                        y += word_height  # Start on new row.
+                    surface.blit(word_surface, (x, y))
+                    x += word_width + space
+                x = pos[0]  # Reset the x.
+                y += word_height  # Start on new row.
+        self.blit_background(app, 6, 6, pygame.Rect(544,544,16,16))
+        textRec = pygame.Rect(544+5,544 + 10, 32, 32)
+        if self.name and self.description:
+            blit_text(app.screen,self.name+'\n'+self.description,(549,554), pygame.font.Font(None,16), (0,0,0))
+        elif self.name and not self.description:
+            blit_text(app.screen,self.name,(549,554), pygame.font.Font(None,16), (0,0,0))
 class InventoryPanel(BasePanel):
     def __init__(self):
         super().__init__()
