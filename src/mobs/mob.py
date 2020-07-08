@@ -16,6 +16,7 @@ class Mob:
         self.hp_last = hp
         self.attack = attack
         self.movement = movement
+        self.armor_val = 0
         self.mmap = mmap
         self.near_player = False
         self.up = 0
