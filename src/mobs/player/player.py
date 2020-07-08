@@ -17,68 +17,64 @@ class Player(Mob):
         self.right = 0
 
     def moveup(self):
-        if maps.get(self.mmap).get_tile(self.x, self.y - self.movement).passable:
-            if not maps.get(self.mmap).get_tile(self.x, self.y - self.movement).mob:
-                if self.up == 0 or self.up % 3 == 0:
-                    self.up = self.up + 1
-                    self.asset = "gora"
-                elif self.up % 3 == 1:
-                    self.up = self.up + 1
-                    self.asset = "gora2"
-                elif self.up % 3 == 2:
-                    self.up = self.up + 1
-                    self.asset = "gora3"
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-                self.y = self.y - self.movement
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
+        if maps.get(self.mmap).get_tile(self.x, self.y - self.movement).ispassable():
+            if self.up == 0 or self.up % 3 == 0:
+                self.up = self.up + 1
+                self.asset = "gora"
+            elif self.up % 3 == 1:
+                self.up = self.up + 1
+                self.asset = "gora2"
+            elif self.up % 3 == 2:
+                self.up = self.up + 1
+                self.asset = "gora3"
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+            self.y = self.y - self.movement
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
     def movedown(self):
-        if maps.get(self.mmap).get_tile(self.x, self.y + self.movement).passable:
-            if not maps.get(self.mmap).get_tile(self.x, self.y + self.movement).mob:
-                if self.down == 0 or self.down % 3 == 0:
-                    self.down = self.down + 1
-                    self.asset = "ludek"
-                elif self.down % 3 == 1:
-                    self.down = self.down + 1
-                    self.asset = "ludek2"
-                elif self.down % 3 == 2:
-                    self.down = self.down + 1
-                    self.asset = "ludek3"
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-                self.y = self.y + self.movement
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
+        if maps.get(self.mmap).get_tile(self.x, self.y + self.movement).ispassable():
+            if self.down == 0 or self.down % 3 == 0:
+                self.down = self.down + 1
+                self.asset = "ludek"
+            elif self.down % 3 == 1:
+                self.down = self.down + 1
+                self.asset = "ludek2"
+            elif self.down % 3 == 2:
+                self.down = self.down + 1
+                self.asset = "ludek3"
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+            self.y = self.y + self.movement
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
     def moveleft(self):
-        if maps.get(self.mmap).get_tile(self.x - self.movement, self.y).passable:
-            if not maps.get(self.mmap).get_tile(self.x - self.movement, self.y).mob:
-                if self.left == 0 or self.left % 3 == 0:
-                    self.left = self.left + 1
-                    self.asset = "lewo"
-                elif self.left % 3 == 1:
-                    self.left = self.left + 1
-                    self.asset = "lewo2"
-                elif self.left % 3 == 2:
-                    self.left = self.left + 1
-                    self.asset = "lewo3"
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-                self.x = self.x - self.movement
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
+        if maps.get(self.mmap).get_tile(self.x - self.movement, self.y).ispassable():
+            if self.left == 0 or self.left % 3 == 0:
+                self.left = self.left + 1
+                self.asset = "lewo"
+            elif self.left % 3 == 1:
+                self.left = self.left + 1
+                self.asset = "lewo2"
+            elif self.left % 3 == 2:
+                self.left = self.left + 1
+                self.asset = "lewo3"
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+            self.x = self.x - self.movement
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
     def moveright(self):
-        if maps.get(self.mmap).get_tile(self.x + self.movement, self.y).passable:
-            if not maps.get(self.mmap).get_tile(self.x + self.movement, self.y).mob:
-                if self.right == 0 or self.right % 3 == 0:
-                    self.right = self.right + 1
-                    self.asset = "prawo"
-                elif self.right % 3 == 1:
-                    self.right = self.right + 1
-                    self.asset = "prawo2"
-                elif self.right % 3 == 2:
-                    self.right = self.right + 1
-                    self.asset = "prawo3"
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-                self.x = self.x + self.movement
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
+        if maps.get(self.mmap).get_tile(self.x + self.movement, self.y).ispassable():
+            if self.right == 0 or self.right % 3 == 0:
+                self.right = self.right + 1
+                self.asset = "prawo"
+            elif self.right % 3 == 1:
+                self.right = self.right + 1
+                self.asset = "prawo2"
+            elif self.right % 3 == 2:
+                self.right = self.right + 1
+                self.asset = "prawo3"
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+            self.x = self.x + self.movement
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
     def pick_item(self, item):
         self.eq.append(item)

@@ -18,7 +18,6 @@ class Mob:
         self.movement = movement
         self.armor_val = 0
         self.mmap = mmap
-        self.near_player = False
         self.up = 0
         self.down = 0
         self.left = 0
@@ -38,7 +37,7 @@ class Mob:
     def lethal(self, logika):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-        maps.get(self.mmap).get_tile(self.x, self.y).obj = Potion(self.x, self.y, 'potions0', 1, 10)
+        maps.get(self.mmap).putobj(Potion(self.x, self.y, self.mmap, 'potions0', 1, 10))
         logika.wrogowie.remove(self)
         del self
 
@@ -58,33 +57,17 @@ class Mob:
         def __get_neigh(x, y):
             ret = []
             tile = maps.get(self.mmap).get_tile(x - 1, y)
-            if tile.passable:
-                if tile.mob:
-                    if tile.mob.near_player:
-                        ret.append((x - 1, y))
-                else:
-                    ret.append((x - 1, y))
+            if tile.ispassable():
+                ret.append((x - 1, y))
             tile = maps.get(self.mmap).get_tile(x + 1, y)
-            if tile.passable:
-                if tile.mob:
-                    if tile.mob.near_player:
-                        ret.append((x + 1, y))
-                else:
-                    ret.append((x + 1, y))
+            if tile.ispassable():
+                ret.append((x + 1, y))
             tile = maps.get(self.mmap).get_tile(x, y - 1)
-            if tile.passable:
-                if tile.mob:
-                    if tile.mob.near_player:
-                        ret.append((x, y - 1))
-                else:
-                    ret.append((x, y - 1))
+            if tile.ispassable():
+                ret.append((x, y - 1))
             tile = maps.get(self.mmap).get_tile(x, y + 1)
-            if tile.passable:
-                if tile.mob:
-                    if tile.mob.near_player:
-                        ret.append((x, y + 1))
-                else:
-                    ret.append((x, y + 1))
+            if tile.ispassable():
+                ret.append((x, y + 1))
             return ret
 
         def __return_coord(vert):
@@ -113,20 +96,19 @@ class Mob:
         return None
 
     def move_to(self, dest_x, dest_y):
-        if maps.get(self.mmap).get_tile(dest_x, dest_y).passable:
-            if not maps.get(self.mmap).get_tile(dest_x, dest_y).mob:
-                if dest_x < 0:
-                    self.asset = "slewo"
-                elif dest_x > 0:
-                    self.asset = "sprawo"
-                elif dest_y > 0:
-                    self.asset = "sgora"
-                elif dest_y < 0:
-                    self.asset = "sdol"
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-                self.y = dest_y
-                self.x = dest_x
-                maps.get(self.mmap).get_tile(self.x, self.y).mob = self
+        if maps.get(self.mmap).get_tile(dest_x, dest_y).ispassable():
+            if dest_x < 0:
+                self.asset = "slewo"
+            elif dest_x > 0:
+                self.asset = "sprawo"
+            elif dest_y > 0:
+                self.asset = "sgora"
+            elif dest_y < 0:
+                self.asset = "sdol"
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+            self.y = dest_y
+            self.x = dest_x
+            maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
 
 class Enemy(Mob):

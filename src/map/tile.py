@@ -1,10 +1,11 @@
 from src.mobs.mob import Mob, Enemy
 from src.obj.obj import *
 
+
 class Tile:
 
     def __init__(self):
-        self.passable = bool
+        self.ipassable = bool
         self.transparent = bool
         self.light = int
         self.asset = str
@@ -16,7 +17,7 @@ class Tile:
         self.tobj = {}
 
     def init(self, token):
-        self.passable = token.passable
+        self.ipassable = token.passable
         self.asset = token.asset
         self.furn = token.furn
         self.light = token.light
@@ -28,9 +29,9 @@ class Tile:
 
     def initd(self, token, x, y, path):
         if token['passable'] == '0':
-            self.passable = False
+            self.ipassable = False
         else:
-            self.passable = True
+            self.ipassable = True
         self.asset = token['asset']
         self.furn = token['furn']
         self.light = token['light']
@@ -58,6 +59,18 @@ class Tile:
         if self.tobj:
             if 'type' in self.tmob:
                 if self.tmob['type'] == 'potion':
-                    self.obj = Potion(x, y, self.tobj['asset'], 1, 10)
+                    self.obj = Potion(x, y, path, self.tobj['asset'], 1, 10)
                 else:
-                    self.obj = Object(x, y, self.tobj['asset'])
+                    self.obj = Object(x, y, path, self.tobj['asset'])
+
+    def ispassable(self):
+        if not self.ipassable:
+            return False
+        if self.mob:
+            if not self.mob.name == 'Player':
+                return False
+        if self.obj:
+            if not self.obj.passable:
+                return False
+        return True
+
