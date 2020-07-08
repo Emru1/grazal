@@ -8,7 +8,7 @@ class Logic:
         self.wrogowie = []
         self.wave = 0
         self.wave_active = False
-        timer.add(1000, self)
+        timer.add(800, self)
 
     def check_interactions(self, tile, panel, app, mouse):
         if tile.mob:

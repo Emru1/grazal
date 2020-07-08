@@ -7,7 +7,6 @@
 # relacje: gracz -> przedmiot
 
 import pygame
-from src.globals import *
 
 static_types = {'chair': "objectsImages/chair.png", 'lamp': "objectsImages/lamp.png",
                 'door': "objectsImages/Basic_Door_Pixel.png"}
@@ -20,7 +19,7 @@ class Object:
         self.asset = asset.get(image)
         self.weapon = False
         self.armor = False
-        self.edible = False #Czy item jest jadalny (potek)
+        self.edible = False  # Czy item jest jadalny (potek)
         self.in_inventory = False
         self.inventory_tile = None
         self.on_ground = True
@@ -37,25 +36,27 @@ class Object:
         # TO TRZEBA ZROBIC!
         pass
 
+
 class Weapon(Object):
-    def __init__(self,pos_x, pos_y, asset, attack):
-        super().__init__(pos_x,pos_y,asset)
+    def __init__(self, pos_x, pos_y, asset, attack):
+        super().__init__(pos_x, pos_y, asset)
         self.weapon = True
         self.attack_val = attack
 
+
 class Armor(Object):
-    def __init__(self,pos_x, pos_y, asset, armor):
-        super().__init__(pos_x,pos_y,asset)
+    def __init__(self, pos_x, pos_y, asset, armor):
+        super().__init__(pos_x, pos_y, asset)
         self.armor = True
         self.armor = armor
 
+
 class Edible(Object):
-    def __init__(self,pos_x, pos_y, asset, hp):
-        super().__init__(pos_x,pos_y,asset)
+    def __init__(self, pos_x, pos_y, asset, hp):
+        super().__init__(pos_x, pos_y, asset)
         self.edible = True
         self.apply_hp = hp
-        
-    
+
 
 class SwordObject(Object):
     def __init__(self, pos_x, pos_y, window):

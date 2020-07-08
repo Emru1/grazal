@@ -3,25 +3,44 @@ import pygame
 from src.globals import *
 
 
-class Event_handler():
+class Event_handler:
 
     def __init__(self, app, logika, panel, mobs=None):
         self.app = app
         self.logika = logika
         self.panel = panel
-    
-    def timer_run(self):
-        self.logika.set_enemies()
+        self.up = False
+        self.down = False
+        self.left = False
+        self.right = False
+
+    def check_move(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
-            self.logika.gracz.moveup()
+            self.up = True
         elif keys[pygame.K_s]:
-            self.logika.gracz.movedown()
+            self.down = True
         elif keys[pygame.K_a]:
-            self.logika.gracz.moveleft()
+            self.left = True
         elif keys[pygame.K_d]:
+            self.right = True
+
+    def timer_run(self):
+        self.logika.set_enemies()
+        if self.up:
+            self.logika.gracz.moveup()
+        elif self.down:
+            self.logika.gracz.movedown()
+        elif self.left:
+            self.logika.gracz.moveleft()
+        elif self.right:
             self.logika.gracz.moveright()
-    
+
+        self.up = False
+        self.down = False
+        self.left = False
+        self.right = False
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -29,18 +48,10 @@ class Event_handler():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
                 if event.button == 1:
-                    self.logika.check_interactions(maps.get(self.logika.gracz.mmap).get_tile(int(mouse[0] / 32) - 8 + self.logika.gracz.x,
-                                                                                int(mouse[1] / 32) - 8 + self.logika.gracz.y),
-                                            self.panel, self.app, mouse)
-                # panel.resolve(mouse, logika, app)
-                # if maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob:
-                # print(mapa.get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.hp)
-                # wywolaj funkcje wyswietlajaca informacje o mobie
-                # if maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.x != logika.gracz.x and maps.get(logika.gracz.mmap).get_tile(int(mouse[0]/32)-1,int(mouse[1]/32)-1).mob.y != logika.gracz.y:
-                #    app.mob_pane = True
-                # else:
-                #    app.mob_pane = False
+                    self.logika.check_interactions(maps.get(self.logika.gracz.mmap).get_tile(
+                        int(mouse[0] / 32) - 8 + self.logika.gracz.x, int(mouse[1] / 32) - 8 + self.logika.gracz.y),
+                        self.panel, self.app, mouse)
+
                 elif event.button == 3:
                     '''right mouse button'''
                     pass
-
