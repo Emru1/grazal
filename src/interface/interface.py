@@ -25,7 +25,7 @@ class App:
         self.running = True
         maps.add("mapa", Map("mapa"))
         self.assets = asset
-      a  self.assets.convert()
+        self.assets.convert()
         self.map_screen = MapSurface(maps.get("mapa"))
         self.mob_screen = MobSurface(maps.get("mapa"))
         self.clock = pygame.time.Clock()

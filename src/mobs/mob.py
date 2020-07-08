@@ -18,6 +18,10 @@ class Mob:
         self.movement = movement
         self.mmap = mmap
         self.near_player = False
+        self.up = 0
+        self.down = 0
+        self.left = 0
+        self.right = 0
         if not asset:
             self.asset = "ludek"
         else:
@@ -109,6 +113,14 @@ class Mob:
     def move_to(self, dest_x, dest_y):
         if maps.get(self.mmap).get_tile(dest_x, dest_y).passable:
             if not maps.get(self.mmap).get_tile(dest_x, dest_y).mob:
+                if dest_x < 0:
+                    self.asset = "slewo"
+                elif dest_x > 0:
+                    self.asset = "sprawo"
+                elif dest_y > 0:
+                    self.asset = "sgora"
+                elif dest_y < 0:
+                    self.asset = "sdol"
                 maps.get(self.mmap).get_tile(self.x, self.y).mob = None
                 self.y = dest_y
                 self.x = dest_x
