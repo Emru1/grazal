@@ -1,5 +1,5 @@
 from src.globals import maps
-
+from src.obj.obj import Potion
 
 class Mob:
     """
@@ -37,6 +37,7 @@ class Mob:
     def lethal(self, logika):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
+        maps.get(self.mmap).get_tile(self.x, self.y).obj = Potion(self.x, self.y, 'potions0', 1, 10)
         logika.wrogowie.remove(self)
         del self
 

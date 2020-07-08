@@ -1,5 +1,5 @@
 from src.mobs.mob import Mob, Enemy
-
+from src.obj.obj import *
 
 class Tile:
 
@@ -10,9 +10,10 @@ class Tile:
         self.asset = str
         self.furn = str
         self.mob = None
-        self.obj = {}
+        self.obj = None
         self.area = {}
         self.tmob = {}
+        self.tobj = {}
 
     def init(self, token):
         self.passable = token.passable
@@ -36,7 +37,8 @@ class Tile:
         self.transparent = token['transparent']
         if token['mob']:
             self.tmob = token['mob']
-        self.obj = token['obj']
+        if token['obj']:
+            self.tobj = token['obj']
         self.area = token['area']
 
     def addmob(self, x, y, path):
@@ -51,3 +53,11 @@ class Tile:
                     self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'], name)
             else:
                 self.mob = Mob(x, y, path, 100, 1, 1, self.tmob['asset'], name)
+
+    def addobj(self, x, y, path):
+        if self.tobj:
+            if 'type' in self.tmob:
+                if self.tmob['type'] == 'potion':
+                    self.obj = Potion(x, y, self.tobj['asset'], 1, 10)
+                else:
+                    self.obj = Object(x, y, self.tobj['asset'])

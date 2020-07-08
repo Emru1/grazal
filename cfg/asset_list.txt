@@ -53,3 +53,4 @@ slewo3 sslewo3.png
 sprawo ssprawo.png
 sprawo2 ssprawo2.png
 sprawo3 ssprawo3.png
+potions0 potions_0.png

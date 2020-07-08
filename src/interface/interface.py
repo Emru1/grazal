@@ -6,6 +6,7 @@ from src.interface.damage_drawing import Draw_damage
 from src.interface.event_handler import Event_handler
 from src.interface.map_drawing import MapSurface
 from src.interface.mob_drawing import MobSurface
+from src.interface.obj_drawing import ObjSurface
 from src.interface.panels import RightPanel
 from src.logic.logic import Logic
 from src.map.map import Map
@@ -28,6 +29,7 @@ class App:
         self.assets.convert()
         self.map_screen = MapSurface(maps.get("mapa"))
         self.mob_screen = MobSurface(maps.get("mapa"))
+        self.obj_screen = ObjSurface(maps.get("mapa"))
         self.clock = pygame.time.Clock()
         self.clock.tick(60)
         self.mob_pane = False
@@ -69,6 +71,7 @@ class App:
     def game_loop(self):
         while self.running:
             self.screen.blit(self.map_screen.draw(self.logika.gracz.x, self.logika.gracz.y), (0, 0))
+            self.screen = self.obj_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
             self.screen = self.mob_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
             self.screen.blit(self.draw_damage.draw_into(), (0, 0))
             self.panel.show_panels(self, self.logika)
