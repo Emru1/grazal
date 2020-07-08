@@ -23,10 +23,9 @@ class RightPanel:
             else:
                 self.R1.show_default(app, self.clicked_tile)
         else:
-            #kliknieto na element poza mapa
+            # kliknieto na element poza mapa
             if self.inventory_panel.rec.collidepoint(mouse):
-                self.inventory_panel.resolve(app, logika,mouse)
-
+                self.inventory_panel.resolve(app, logika, mouse)
 
     def show_panels(self, app, logika):
         self.Pp.show_player(app, logika)
@@ -228,24 +227,23 @@ class InventoryPanel(BasePanel):
                 app.screen.blit(self.empty_inv, first)
             first = first.move(2 * (-34), 34)
         for i in range(len(logika.gracz.eq)):
-            app.screen.blit(asset.get(logika.gracz.eq[i].asset),self.inventory_rec[i])
-            
-    
-    def resolve(self, app, logika,mouse):
-        #sprawdz czy klikano lub najechano na jeden z elementow inwentarza
-        #jesli gracz nie ma zadnego ekwipunku nie sprawdzaj
+            app.screen.blit(asset.get(logika.gracz.eq[i].asset), self.inventory_rec[i])
+
+    def resolve(self, app, logika, mouse):
+        # sprawdz czy klikano lub najechano na jeden z elementow inwentarza
+        # j esli gracz nie ma zadnego ekwipunku nie sprawdzaj
         if logika.gracz.eq_count != 0:
-            #gracz ma itemy sprawdz czy najechano na kwadrat z itemem
+            # gracz ma itemy sprawdz czy najechano na kwadrat z itemem
             for i in range(logika.gracz.eq_count):
                 if self.inventory_rec[i].collidepoint(mouse):
                     if logika.gracz.eq[i].edible:
-                        #itemek jadalny
+                        # itemek jadalny
                         logika.gracz.eq[i].use(logika.gracz)
                         logika.gracz.eq.remove(logika.gracz.eq[i])
-                        logika.gracz.eq_count = logika.gracz.eq_count -1
+                        logika.gracz.eq_count = logika.gracz.eq_count - 1
                     else:
                         if not logika.gracz.eq[i].equip(logika.gracz):
-                            logika.gracz.eq_count = logika.gracz.eq_count -1
+                            logika.gracz.eq_count = logika.gracz.eq_count - 1
                         else:
                             temp = logika.gracz.eq[i]
                             if logika.gracz.eq[i].armor:
@@ -255,7 +253,7 @@ class InventoryPanel(BasePanel):
                                 logika.gracz.eq[i] = logika.gracz.weapon
                                 logika.gracz.weapon = temp
                         logika.gracz.eq[i].remove(logika.gracz.eq[i])
-                        
+
 
 class InstructionPanel(BasePanel):
     def __init__(self):

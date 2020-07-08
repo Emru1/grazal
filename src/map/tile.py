@@ -73,4 +73,3 @@ class Tile:
             if not self.obj.passable:
                 return False
         return True
-

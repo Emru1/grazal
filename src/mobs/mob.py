@@ -1,6 +1,7 @@
 from src.globals import maps
 from src.obj.obj import Potion
 
+
 class Mob:
     """
     uniwersalna klasa symbolizująca generycznego moba

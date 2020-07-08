@@ -78,7 +78,7 @@ class Player(Mob):
 
     def pick_item(self, item):
         self.eq.append(item)
-        self.eq_count = self.eq_count+1
+        self.eq_count = self.eq_count + 1
 
     def drop_item(self):
         pass

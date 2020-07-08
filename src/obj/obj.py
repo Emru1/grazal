@@ -8,6 +8,9 @@ class Object:
         self.can_mv = False
         self.on_ground = True
         self.passable = True
+        self.edible = False
+        self.weapon = False
+        self.armor = False
 
     def pos(self):
         return self.pos_x, self.pos_y
@@ -19,14 +22,15 @@ class Weapon(Object):
         self.attack_val = attack
         self.can_eq = True
         self.can_mv = True
+        self.weapon = True
 
-    def equip(self,mob):
-        if mob.weapon == None:
+    def equip(self, mob):
+        if not mob.weapon:
             mob.weapon = self
             mob.attack = mob.attack + self.attack_val
             return False
         else:
-            #zamien itemki
+            # zamien itemki
             return True
 
 
@@ -39,15 +43,13 @@ class Armor(Object):
         self.can_mv = True
 
     def equip(self, mob):
-        if mob.armor == None:
+        if not mob.armor:
             mob.armor = self
-            mob.armor_val = mob.armor_val+self.armor_val
+            mob.armor_val = mob.armor_val + self.armor_val
             return False
         else:
-            #zamien itemki
+            # zamien itemki
             return True
-            
-
 
 
 class Edible(Object):
@@ -57,6 +59,8 @@ class Edible(Object):
         self.can_mv = True
         self.edible = True
 
+    def use(self, mob):
+        pass
 
 
 class Potion(Edible):
