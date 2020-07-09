@@ -18,7 +18,6 @@ class Logic:
 
     def check_interactions(self, tile, panel, app, mouse):
         if tile.mob:
-            # print("is mob")
             # if mob is clicked
             # if mob is next to player u are able to attack
             self.gracz.interaction_attack(tile.mob, self)
@@ -27,7 +26,7 @@ class Logic:
         panel.resolve(mouse, self, app)
 
     def check_interactions_right_click(self, panel, app, mouse):
-            panel.inventory_panel.remove_obj(self, mouse)
+        panel.inventory_panel.remove_obj(self, mouse)
 
     def set_enemies(self):
         for x in range(self.gracz.x - 7, self.gracz.x + 7):

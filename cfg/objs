@@ -19,14 +19,14 @@ black_sword
     type weapon
     name Miecz czarnej Skaly
     asset Czarny_miecz
-    desc Zwieksza sile ataku o 20
-    attack 20
+    desc Zwieksza sile ataku o 40
+    attack 40
 }
 golden_sword
 {
     type weapon
     name Zloty Miecz
-    asset Zloty_Miecz
+    asset Zloty_miecz
     desc Zwieksza sile ataku o 20
     attack 20
 }

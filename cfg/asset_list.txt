@@ -72,6 +72,19 @@ soldierlewo3 soldier/soldierlewo3.png
 soldierprawo1 soldier/soldierprawo1.png
 soldierprawo2 soldier/soldierprawo2.png
 soldierprawo3 soldier/soldierprawo3.png
+# shadow
+dgora1 shadow/dgora1.png
+dgora2 shadow/dgora2.png
+dgora3 shadow/dgora3.png
+ddol1 shadow/ddol1.png
+ddol2 shadow/ddol2.png
+ddol3 shadow/ddol3.png
+dlewo1 shadow/dlewo1.png
+dlewo2 shadow/dlewo2.png
+dlewo3 shadow/dlewo3.png
+dprawo1 shadow/dprawo1.png
+dprawo2 shadow/dprawo2.png
+dprawo3 shadow/dprawo3.png
 # potion
 potions0 potions_0.png
 # bronie
@@ -99,6 +112,7 @@ cegly_deski_r hyptosis_506.png
 cegly_deski_ul hyptosis_475.png
 cegly_deski_u hyptosis_476.png
 cegly_deski_ur hyptosis_477.png
+kosz hyptosis_892.png
 # labirynt
 labirynt_pion hyptosis_185.png
 labirynt_poziom hyptosis_157.png

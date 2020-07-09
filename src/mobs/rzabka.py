@@ -18,13 +18,11 @@ class com_Creature:
 
     def attack(self, target):
         damage_dealt = self.power - target.creature.defense
-        print(self.name_instance + " atakuje " + target.creature.name_instance + " zadajac " + str(
-            damage_dealt) + " obrazen!")
+
         target.creature.take_damage(damage_dealt)
 
     def take_damage(self, damage):
         self.current_hp -= damage
-        print(self.name_instance + "'s health is " + str(self.current_hp) + "/" + str(self.max_hp))
         if self.current_hp <= 0:
             pass
             # mobek zdycha

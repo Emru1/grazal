@@ -195,7 +195,7 @@ class WavePanel(BasePanel):
             else:
                 self.name = None
                 self.description = None
-        elif logika.gracz.eq_count != 0:
+        elif logika.gracz.eq_count:
             for i in range(logika.gracz.eq_count):
                 if inwentory.inventory_rec[i].collidepoint(mouse):
                     # Wyswietl informacje o bierzacej pozycji myszki
@@ -287,7 +287,7 @@ class InventoryPanel(BasePanel):
     def resolve(self, app, logika, mouse):
         # sprawdz czy klikano lub najechano na jeden z elementow inwentarza
         # j esli gracz nie ma zadnego ekwipunku nie sprawdzaj
-        if logika.gracz.eq_count != 0:
+        if logika.gracz.eq_count:
             # gracz ma itemy sprawdz czy najechano na kwadrat z itemem
             for i in range(logika.gracz.eq_count):
                 if self.inventory_rec[i].collidepoint(mouse):
@@ -299,62 +299,61 @@ class InventoryPanel(BasePanel):
                     else:
                         temp = logika.gracz.eq[i]
                         if temp.weapon:
-                            #item jest bronia sprawdz czy gracz ma juz zalozona bron
+                            # item jest bronia sprawdz czy gracz ma juz zalozona bron
                             if logika.gracz.weapon:
-                                #gracz ma zalozona bron
+                                # gracz ma zalozona bron
                                 logika.gracz.eq.append(logika.gracz.weapon)
                                 logika.gracz.eq.remove(temp)
                                 logika.gracz.weapon.unequip(logika.gracz)
                                 logika.gracz.weapon = temp
                                 logika.gracz.weapon.equip(logika.gracz)
                             else:
-                                #gracz nie ma broni
+                                # gracz nie ma broni
                                 logika.gracz.weapon = temp
                                 logika.gracz.weapon.equip(logika.gracz)
                                 logika.gracz.eq.remove(temp)
-                                logika.gracz.eq_count = logika.gracz.eq_count -1
+                                logika.gracz.eq_count = logika.gracz.eq_count - 1
                         elif temp.armor:
                             if logika.gracz.armor:
-                                print("GRACZ MA JUZ ZBROJE")
                                 logika.gracz.eq.append(logika.gracz.armor)
                                 logika.gracz.eq.remove(temp)
                                 logika.gracz.armor.unequip(logika.gracz)
                                 logika.gracz.armor = temp
                                 logika.gracz.armor.equip(logika.gracz)
                             else:
-                                print("GRACZ NIE MIAL ZALOZONEJ ZBROI")
                                 logika.gracz.armor = temp
                                 logika.gracz.armor.equip(logika.gracz)
                                 logika.gracz.eq.remove(temp)
-                                logika.gracz.eq_count = logika.gracz.eq_count -1
-        print(self.weapon_rec, self.armor_rec)
+                                logika.gracz.eq_count = logika.gracz.eq_count - 1
         if self.weapon_rec.collidepoint(mouse):
             # gracz klika na aktualna bron
-            if logika.gracz.weapon != None:
+            if logika.gracz.weapon:
                 logika.gracz.eq_count = logika.gracz.eq_count + 1
                 logika.gracz.eq.append(logika.gracz.weapon)
                 logika.gracz.weapon.unequip(logika.gracz)
                 logika.gracz.weapon = None
         if self.armor_rec.collidepoint(mouse):
             # gracz klika na aktualna zbroje
-            if logika.gracz.armor != None:
+            if logika.gracz.armor:
                 logika.gracz.eq_count = logika.gracz.eq_count + 1
                 logika.gracz.eq.append(logika.gracz.armor)
                 logika.gracz.armor.unequip(logika.gracz)
                 logika.gracz.armor = None
+
     def remove_obj(self, logika, mouse):
         if self.weapon_rec.collidepoint(mouse):
-            #usun zalozona bron
+            # usun zalozona bron
             logika.gracz.weapon.unequip(logika.gracz)
             logika.gracz.weapon = None
         if self.armor_rec.collidepoint(mouse):
-            #usun zalozona zbroje
+            # usun zalozona zbroje
             logika.gracz.armor.unequip(logika.gracz)
             logika.gracz.armor = None
         for i in range(logika.gracz.eq_count):
             if self.inventory_rec[i].collidepoint(mouse):
                 logika.gracz.eq.remove(logika.gracz.eq[i])
-                logika.gracz.eq_count = logika.gracz.eq_count -1
+                logika.gracz.eq_count = logika.gracz.eq_count - 1
+
 
 class InstructionPanel(BasePanel):
     def __init__(self):

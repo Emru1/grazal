@@ -1,5 +1,6 @@
-import pygame
 import random
+
+import pygame
 
 
 class SFX:
@@ -14,4 +15,3 @@ class SFX:
     def timer_run(self):
         if not pygame.mixer.music.get_busy():
             self.start()
-

@@ -7,9 +7,9 @@ skeleton
     type enemy
     droplist
     {
-        health 100
-        sword 100
-        copper_armor 100
+        health 80
+        sword 50
+        copper_armor 70
     }
 }
 soldier
@@ -22,6 +22,18 @@ soldier
     droplist
     {
         health 100
-        sword 100
+        golden_sword 70
+    }
+}
+shadow
+{
+    name Cien
+    asset d
+    hp 200
+    attack 40
+    type enemy
+    droplist
+    {
+        black_sword 100
     }
 }
