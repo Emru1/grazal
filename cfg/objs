@@ -14,17 +14,41 @@ sword
     desc Zwieksza sile ataku o 10
     attack 10
 }
-#            (Weapon(self.x, self.y, self.mmap, 'Czarny_miecz', 'Miecz czarnej skały', 'Zwieksza sile ataku o 20', 20),
-#             50),
-#            (Weapon(self.x, self.y, self.mmap, 'Zloty_miecz', 'Zloty Miecz', 'Zwieksza sile ataku o 30', 30), 40),
-#            (
-#            Weapon(self.x, self.y, self.mmap, 'Czarny_kos', 'Miecz Czarnego Kosa', 'Zwieksza sile ataku o 40', 40), 30),
-#            (Weapon(self.x, self.y, self.mmap, 'Szabelka', 'Krótka Szabla', 'Zwieksza sile ataku o 15', 15), 80),
+black_sword
+{
+    type weapon
+    name Miecz czarnej Skaly
+    asset Czarny_miecz
+    desc Zwieksza sile ataku o 20
+    attack 20
+}
+golden_sword
+{
+    type weapon
+    name Zloty Miecz
+    asset Zloty_Miecz
+    desc Zwieksza sile ataku o 20
+    attack 20
+}
+sabre
+{
+    type weapon
+    name Krotka Szabla
+    asset Szabelka
+    desc Zwieksza sile ataku o 15
+    attack 15
+}
+copper_armor
+{
+    type armor
+    name Miedziana Zbroja
+    asset Zbroja_miedz
+    desc Zwieksza obrone gracza o 10
+    armor_val 10
+}
 #            (Weapon(self.x, self.y, self.mmap, 'Dluga_szabla', 'Długa Szabla', 'Zwieksza sile ataku o 25', 25), 70),
 #            (Weapon(self.x, self.y, self.mmap, 'Siekiera', 'Siekiera', 'Zwieksza sile ataku o 35', 35), 60),
 #            (Weapon(self.x, self.y, self.mmap, 'Mjolnir', 'StormBreaker', 'Zwieksza sile ataku o 50', 50), 80),
-#            (Armor(self.x, self.y, self.mmap, 'Zbroja_miedz', 'Miedziana Zbroja', 'Zwieksza obrone gracza o 10', 10),
-#             50),
 #            (Armor(self.x, self.y, self.mmap, 'Zbroja_diament', 'Diamentowa Zbroja', 'Zwieksza obrone gracza o 30', 30),
 #             30),
 #            (Armor(self.x, self.y, self.mmap, 'Zbroja_jungla', 'Leśna Zbroja', 'Zwieksza obrone gracza o 5', 5), 80),
