@@ -12,3 +12,16 @@ skeleton
         copper_armor 100
     }
 }
+soldier
+{
+    name Zolnierz
+    asset soldier
+    hp 90
+    attack 15
+    type enemy
+    droplist
+    {
+        health 100
+        sword 100
+    }
+}

@@ -15,6 +15,7 @@ class MobSurface:
         self.map_grid = [[Tile() for _ in range(config.grid_x)] for _ in range(config.grid_y)]
         self.mapa = mapa
         self.surface = pygame.Surface((config.grid_x * config.tile_size, config.grid_y * config.tile_size))
+        self.shadow = asset.get('shadow')
 
     def __get_tiles(self, x, y):
         x = x - int(config.grid_x / 2)
@@ -27,6 +28,7 @@ class MobSurface:
         if self.map_grid[x][y]:
             if self.map_grid[x][y].mob:
                 img = asset.get(self.map_grid[x][y].mob.asset)
+                surface.blit(self.shadow, (x * config.tile_size, y * config.tile_size))
                 surface.blit(img, (x * config.tile_size, y * config.tile_size))
 
     def draw(self, surface, x, y):

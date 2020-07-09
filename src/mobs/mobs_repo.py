@@ -25,6 +25,7 @@ class Mobs:
 
             if not in_token:
                 token = line
+                print(token)
                 token = token.rstrip()
                 continue
             if line[0] == '}':
@@ -69,6 +70,7 @@ class Mobs:
                             break
                         tmp_dict['drop'].append((line_drop.split(' ')[0], line_drop.split(' ')[1]))
         file.close()
+        print(self.mobs)
 
     def get_mob(self, x, y, mmap, name):
         from src.mobs.mob import Mob, Enemy
