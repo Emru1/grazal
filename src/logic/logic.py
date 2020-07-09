@@ -10,6 +10,12 @@ class Logic:
         self.wave_active = False
         timer.add(800, self)
 
+    def check_conditions(self):
+        if self.gracz.hp > 0:
+            return True
+        else:
+            return False
+
     def check_interactions(self, tile, panel, app, mouse):
         if tile.mob:
             # print("is mob")
@@ -42,7 +48,6 @@ class Logic:
                 wrog.action(self.gracz)
             # for step_x, step_y in shortest_path:
             #     wrog.move_to(step_x, step_y)
-
         # pass
 
     def timer_run(self):
