@@ -43,7 +43,7 @@ class Weapon(Object):
 
 class Armor(Object):
     def __init__(self, pos_x, pos_y, path, asset, name, description, armor_val):
-        super().__init__(pos_x, pos_y, path, asset, name)
+        super().__init__(pos_x, pos_y, path, asset, name, description)
         self.armor = True
         self.armor_val = armor_val
         self.can_eq = True

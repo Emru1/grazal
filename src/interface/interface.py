@@ -64,24 +64,42 @@ class App:
                     quit()
             self.screen.fill((255, 255, 255))
             self.button("Play", 640, 300, 100, 100, (255, 0, 0), (0, 255, 0), self.game_loop)
-            self.button("Options", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0))
-            self.button("Exit", 640, 700, 100, 100, (255, 0, 0), (0, 255, 0), quit)
+            #self.button("Options", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0))
+            self.button("Exit", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0), quit)
             pygame.display.update()
 
+    def game_over(self):
+        while self.running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+            self.screen.fill((0,0,0))
+            textRec = pygame.Rect(640//2-50,320-150,32,32)
+            f = pygame.font.Font(None,32)
+            s = f.render("WASTED", True, (255,0,0), None)       
+            self.screen.blit(s,textRec)
+            #self.button("Main Menu", 440, 500, 100, 100, (255,0,0), (255,255,255), self.set_game_done)
+            self.button("Exit", 600, 500, 100, 100, (255,0,0), (0,255,255), pygame.quit)         
+            pygame.display.flip()
+    
     def game_loop(self):
         while self.running:
-            self.screen.blit(self.map_screen.draw(self.logika.gracz.x, self.logika.gracz.y), (0, 0))
-            self.screen = self.obj_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
-            self.screen = self.mob_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
-            self.screen.blit(self.draw_damage.draw_into(), (0, 0))
-            self.panel.show_panels(self, self.logika)
-            # self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
-            # event_handler(self, self.logika, maps.get("mapa"), self.panel)
-            # EVENT LOOP FUNCTION HERE
-            self.clock.tick(60)
-            self.event_handler.check_move()
-            timer.run()
-            pygame.display.flip()
+            if self.logika.check_conditions():
+                self.screen.blit(self.map_screen.draw(self.logika.gracz.x, self.logika.gracz.y), (0, 0))
+                self.screen = self.obj_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
+                self.screen = self.mob_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
+                self.screen.blit(self.draw_damage.draw_into(), (0, 0))
+                self.panel.show_panels(self, self.logika)
+                # self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
+                # event_handler(self, self.logika, maps.get("mapa"), self.panel)
+                # EVENT LOOP FUNCTION HERE
+                self.clock.tick(60)
+                self.event_handler.check_move()
+                timer.run()
+                pygame.display.flip()
+            else:
+                self.game_over()
 
     def run(self):
         """Run the main event loop."""
