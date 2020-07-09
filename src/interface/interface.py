@@ -10,6 +10,7 @@ from src.interface.obj_drawing import ObjSurface
 from src.interface.panels import RightPanel
 from src.logic.logic import Logic
 from src.map.map import Map
+from src.sfx.sfx import SFX
 
 
 class App:
@@ -17,8 +18,10 @@ class App:
 
     def __init__(self):
         """Initialize pygame and the application."""
-        pygame.init()
-        pygame.mixer.quit()
+        pygame.display.init()
+        pygame.font.init()
+        pygame.mixer.init(44100)
+        # pygame.mixer.quit()
         flags = RESIZABLE
         self.scenes = []
         self.scene = None
@@ -37,6 +40,8 @@ class App:
         self.panel = RightPanel()
         self.draw_damage = Draw_damage(self.logika, self)
         self.event_handler = Event_handler(self, self.logika, self.panel)
+        self.sfx = SFX()
+        self.sfx.start()
         timer.add(1000, self.draw_damage)
         timer.add(100, self.event_handler)
 
