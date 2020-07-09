@@ -21,7 +21,6 @@ class App:
         pygame.display.init()
         pygame.font.init()
         pygame.mixer.init(44100)
-        # pygame.mixer.quit()
         flags = RESIZABLE
         self.scenes = []
         self.scene = None
@@ -43,7 +42,7 @@ class App:
         self.sfx = SFX()
         timer.add(1000, self.draw_damage)
         timer.add(100, self.event_handler)
-        timer.add(1000, self.sfx)
+        #timer.add(1000, self.sfx)
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
         mous = pygame.mouse.get_pos()

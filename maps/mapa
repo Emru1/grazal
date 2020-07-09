@@ -1,84 +1,126 @@
-16 16
-1
-a a a a a a a a a a a a a a a a
-a f f f f f f f a a a a a a d a
-a f h j j j j f a a a b a a a a
-a f g j l j g f a a a a a a a a
-a f g l k j j f a a a a a a a a
-a f h j g g i f a b a a a a a a
-a f f g f f f f a a a a a a a a
-a a a a a a a a a a a a a a a a
-a a a a a a a b a a a a a a a a
-a a b b b b b a a a a a a a a a
-a a a a a a a m a a a a a a a a
-a a a a a a a a a a c c d a a a
-a e a a a b a a a a c c d a a a
-a a a a a a a a a a a a a a a a
-a a b a a a a a a a a b a a a a
-a a a a a a a a a a a a a a a a
-a a a a a a a a m a a a a a a a
-a
-{
-    asset trawa
-}
-b
-{
-    asset trawa
-}
-c
+50 50
+3
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa ekf ekg ekg ekg ekg ekg ekh aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa eke ekd ekd ekj ekd ekd eki aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa eke ekd ekd ekd ekd ekj eki aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa eke ekd ekj ekd ekd ekd eki aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa eke ekd ekd ekd ekd ekd eki aaa aaa aaa aaa aaa aaa aaa aaa zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa eka ekb ekc ekd eka ekb ekc aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy yyz yyy zzz yyz yyy yyz yyy yyy yyy yyy yyy zzx yyz yyy yyy yyz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzz yyy zzz yyy zzx zzx zzx zzx zzx zzx yyz zzx yyy zzz yyy zzx yyz zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyz zzz yyy zzz yyy yyy yyy yyy zzx zzx yyy yyy zzx yyy zzz yyy yyz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzz yyy zzz yyy zzx zzx yyy yyy yyy zzx zzx zzx yyy zzz yyy zzx zzx zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz zzx yyy yyz zzz yyy zzx zzx zzx zzz yyz yyy yyy yyy yyz zzz yyy zzx yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy yyy zzx zzz yyz yyy yyy yyy zzz zzx yyy zzx zzx zzx zzz yyy zzx yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzz zzx zzz zzx zzx zzx yyy yyz zzx zzx zzx yyy yyz zzz yyy zzx yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyz zzz yyz yyy yyy yyy zzx zzx yyy zzx zzx yyz yyy yyy zzz yyy yyy yyz zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzz yyy zzx zzx yyy zzx zzx yyy zzz yyz yyy yyy yyz zzz zzx zzx zzx zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy yyy yyy yyy zzx yyy zzx zzx yyy zzz yyz yyy yyz yyy yyy yyy yyz zzx zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz zzx zzx yyy yyy zzx yyy zzx zzx yyy zzx zzx yyy yyy yyy zzx zzx yyy zzx zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz zzx zzx zzx zzx zzx yyy zzx zzx yyz yyy zzz yyy yyy yyy zzx zzx yyy yyz zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy yyy yyz yyy yyy yyy yyy zzx zzx yyz zzz zzx zzx yyy zzx zzx zzz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzx zzx yyy zzx zzx zzx zzx zzx yyy zzz yyz yyy yyy yyy yyz zzz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzx zzx yyy zzx zzx zzx zzx zzx yyy zzx zzx zzx zzx zzx zzx zzz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyz yyy yyy yyy yyy yyz yyy yyy zzx yyy yyy yyz yyy yyy yyz zzz zzz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzx zzx zzx zzx yyy zzx yyy zzx zzx zzx zzx yyy zzx yyy zzz zzz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa yyy yyy yyy yyz yyy yyy yyy zzx yyz yyy yyy yyy yyy yyy zzx yyy yyy yyy yyz zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa
 {
     asset s_trawa1
 }
-d
+zzz
 {
-    asset s_trawa2
-    mob
-    {
-        mob skeleton
-    }
-}
-e
-{
-    asset trawa
-    mob
-    {
-        mob skeleton
-    }
-}
-f
-{
-    asset sciana_cegly
+    asset labirynt_pion
     passable 0
 }
-g
+zzx
 {
-    asset podloga_cegly_1
+    asset labirynt_poziom
+    passable 0
 }
-h
+yyy
 {
-    asset podloga_cegly_6
+    asset labirynt_podloga
 }
-i
+yyz
 {
-    asset podloga_cegly_7
-}
-j
-{
-    asset podloga_cegly_5
-}
-k
-{
-    asset podloga_cegly_4
-}
-l
-{
-    asset podloga_cegly_3
-}
-m
-{
-    asset trawa
+    asset labirynt_podloga
     mob
     {
-        mob soldier
+        mob skeleton
     }
+}
+eka
+{
+    asset cegly_deski_dl
+    passable 0
+}
+ekb
+{
+    asset cegly_deski_d
+    passable 0
+}
+ekc
+{
+    asset cegly_deski_dr
+    passable 0
+}
+ekd
+{
+    asset podloga_deski
+}
+eke
+{
+    asset cegly_deski_l
+    passable 0
+}
+ekf
+{
+    asset cegly_deski_ul
+    passable 0
+}
+ekg
+{
+    asset cegly_deski_u
+    passable 0
+}
+ekh
+{
+    asset cegly_deski_ur
+    passable 0
+}
+eki
+{
+    asset cegly_deski_r
+    passable 0
+}
+ekj
+{
+    asset podloga_deski_d
 }

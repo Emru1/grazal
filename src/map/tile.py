@@ -32,7 +32,10 @@ class Tile:
             self.ipassable = False
         else:
             self.ipassable = True
-        self.asset = token['asset']
+        if token['asset'] == '':
+            self.asset = 'test1'
+        else:
+            self.asset = token['asset']
         self.furn = token['furn']
         self.light = token['light']
         self.transparent = token['transparent']
