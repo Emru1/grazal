@@ -1,6 +1,7 @@
-from src.globals import maps
-from src.obj.obj import Potion, Weapon, Armor
 import random
+
+from src.obj.obj import Potion, Weapon, Armor
+from src.globals import maps
 
 
 class Mob:
@@ -25,19 +26,24 @@ class Mob:
         self.down = 0
         self.left = 0
         self.right = 0
-        self.dropable = [(Potion(self.x, self.y, self.mmap, 'potions0', 'Mikstura życia', 'Leczy gracza o 20 hp', 1, 20), 70),
-                        (Weapon(self.x, self.y, self.mmap, 'Miecz', 'Srebrny Miecz', 'Zwieksza sile ataku o 10',10),80),
-                        (Weapon(self.x, self.y, self.mmap, 'Czarny_miecz', 'Miecz czarnej skały', 'Zwieksza sile ataku o 20',20),50),
-                        (Weapon(self.x, self.y, self.mmap, 'Zloty_miecz', 'Zloty Miecz', 'Zwieksza sile ataku o 30',30),40),
-                        (Weapon(self.x, self.y, self.mmap, 'Czarny_kos', 'Miecz Czarnego Kosa', 'Zwieksza sile ataku o 40',40),30),
-                        (Weapon(self.x, self.y, self.mmap, 'Szabelka', 'Krótka Szabla', 'Zwieksza sile ataku o 15',15),80),
-                        (Weapon(self.x, self.y, self.mmap, 'Dluga_szabla', 'Długa Szabla', 'Zwieksza sile ataku o 25',25),70),
-                        (Weapon(self.x, self.y, self.mmap, 'Siekiera', 'Siekiera', 'Zwieksza sile ataku o 35',35),60),
-                        (Weapon(self.x, self.y, self.mmap, 'Mjolnir', 'StormBreaker', 'Zwieksza sile ataku o 50',50),80),
-                        (Armor(self.x,self.y, self.mmap, 'Zbroja_miedz', 'Miedziana Zbroja', 'Zwieksza obrone gracza o 10', 10),50),
-                        (Armor(self.x,self.y, self.mmap, 'Zbroja_diament', 'Diamentowa Zbroja', 'Zwieksza obrone gracza o 30', 30), 30),
-                        (Armor(self.x, self.y, self.mmap, 'Zbroja_jungla', 'Leśna Zbroja', 'Zwieksza obrone gracza o 5', 5), 80),
-                        (Armor(self.x, self.y, self.mmap, 'Zbroja_smoka', 'Smocza Zbroja', 'Zwieksza obrone gracza o 40', 40), 20)]
+        self.dropable = [
+            (Potion(self.x, self.y, self.mmap, 'potions0', 'Mikstura życia', 'Leczy gracza o 20 hp', 1, 20), 70),
+            (Weapon(self.x, self.y, self.mmap, 'Miecz', 'Srebrny Miecz', 'Zwieksza sile ataku o 10', 10), 80),
+            (Weapon(self.x, self.y, self.mmap, 'Czarny_miecz', 'Miecz czarnej skały', 'Zwieksza sile ataku o 20', 20),
+             50),
+            (Weapon(self.x, self.y, self.mmap, 'Zloty_miecz', 'Zloty Miecz', 'Zwieksza sile ataku o 30', 30), 40),
+            (
+            Weapon(self.x, self.y, self.mmap, 'Czarny_kos', 'Miecz Czarnego Kosa', 'Zwieksza sile ataku o 40', 40), 30),
+            (Weapon(self.x, self.y, self.mmap, 'Szabelka', 'Krótka Szabla', 'Zwieksza sile ataku o 15', 15), 80),
+            (Weapon(self.x, self.y, self.mmap, 'Dluga_szabla', 'Długa Szabla', 'Zwieksza sile ataku o 25', 25), 70),
+            (Weapon(self.x, self.y, self.mmap, 'Siekiera', 'Siekiera', 'Zwieksza sile ataku o 35', 35), 60),
+            (Weapon(self.x, self.y, self.mmap, 'Mjolnir', 'StormBreaker', 'Zwieksza sile ataku o 50', 50), 80),
+            (Armor(self.x, self.y, self.mmap, 'Zbroja_miedz', 'Miedziana Zbroja', 'Zwieksza obrone gracza o 10', 10),
+             50),
+            (Armor(self.x, self.y, self.mmap, 'Zbroja_diament', 'Diamentowa Zbroja', 'Zwieksza obrone gracza o 30', 30),
+             30),
+            (Armor(self.x, self.y, self.mmap, 'Zbroja_jungla', 'Leśna Zbroja', 'Zwieksza obrone gracza o 5', 5), 80),
+            (Armor(self.x, self.y, self.mmap, 'Zbroja_smoka', 'Smocza Zbroja', 'Zwieksza obrone gracza o 40', 40), 20)]
 
         if not asset:
             self.asset = "ludek"
@@ -55,9 +61,9 @@ class Mob:
     def lethal(self, logika):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
-        #losuj item 
+        # losuj item
         obj = random.choice(self.dropable)
-        number = random.randint(0,100)
+        number = random.randint(0, 100)
         if number <= obj[1]:
             maps.get(self.mmap).putobj(obj[0])
         logika.wrogowie.remove(self)
@@ -158,8 +164,8 @@ class Enemy(Mob):
             return True
 
     def action(self, player):
-        #calculate damage reduction
-        if player.armor_val >0:
+        # calculate damage reduction
+        if player.armor_val > 0:
             if self.attack - player.armor_val <= 0:
                 player.hp = player.hp - 1
             else:

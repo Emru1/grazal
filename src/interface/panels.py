@@ -123,7 +123,8 @@ class PlayerPanel(BasePanel):
         hpRec = hpRec3.move(16, 2)
         app.screen.blit(f.render("HP: %d / %d" % (logika.gracz.hp, logika.gracz.hp_max), True, (0, 0, 0), None), hpRec)
         app.screen.blit(f.render("Attack: %d" % logika.gracz.attack, True, (0, 0, 0), None), hpRec1.move(0, 16))
-        app.screen.blit(f.render("Armor: %d" % logika.gracz.armor_val, True, (0,0,0), None), hpRec1.move(0,32))
+        app.screen.blit(f.render("Armor: %d" % logika.gracz.armor_val, True, (0, 0, 0), None), hpRec1.move(0, 32))
+
     def resolve_hp(self, app, logika, r1, r2, r3):
         if logika.gracz.hp > 80:
             # blit 3 hp full
@@ -203,6 +204,7 @@ class WavePanel(BasePanel):
         else:
             self.name = None
             self.description = None
+
     def show_wave(self, app):
         def blit_text(surface, text, pos, font, color=pygame.Color('black')):
             words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
@@ -224,7 +226,7 @@ class WavePanel(BasePanel):
         self.blit_background(app, 6, 6, pygame.Rect(544, 544, 16, 16))
         textRec = pygame.Rect(544 + 5, 544 + 10, 32, 32)
         if self.name and self.description:
-            blit_text(app.screen, self.name + '\n'+'\n' + self.description, (549, 554), pygame.font.Font(None, 16),
+            blit_text(app.screen, self.name + '\n\n' + self.description, (549, 554), pygame.font.Font(None, 16),
                       (0, 0, 0))
         elif self.name and not self.description:
             blit_text(app.screen, self.name, (549, 554), pygame.font.Font(None, 16), (0, 0, 0))

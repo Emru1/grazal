@@ -1,0 +1,8 @@
+skeleton
+{
+    name Szkielet
+    asset ss
+    hp 50
+    attack 10
+    type enemy
+}

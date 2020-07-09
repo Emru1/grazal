@@ -4,6 +4,7 @@ class Maps:
 
     def add(self, name, mmap):
         self.maps[name] = mmap
+        mmap.name = name
         mmap.initmobs()
 
     def get(self, name):

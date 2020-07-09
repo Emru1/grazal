@@ -34,9 +34,7 @@ d
     asset s_trawa2
     mob
     {
-        name Andrzej
-        type enemy
-        asset ss
+        mob skeleton
     }
 }
 e
@@ -44,9 +42,7 @@ e
     asset trawa
     mob
     {
-        name Krzysiek
-        type enemy
-        asset ss
+        mob skeleton
     }
 }
 f

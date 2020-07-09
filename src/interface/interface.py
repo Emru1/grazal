@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 
-from src.globals import *
+from src.globals import maps, asset, timer
 from src.interface.damage_drawing import Draw_damage
 from src.interface.event_handler import Event_handler
 from src.interface.map_drawing import MapSurface
@@ -64,7 +64,7 @@ class App:
                     quit()
             self.screen.fill((255, 255, 255))
             self.button("Play", 640, 300, 100, 100, (255, 0, 0), (0, 255, 0), self.game_loop)
-            #self.button("Options", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0))
+            # self.button("Options", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0))
             self.button("Exit", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0), quit)
             pygame.display.update()
 
@@ -74,15 +74,15 @@ class App:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-            self.screen.fill((0,0,0))
-            textRec = pygame.Rect(640//2-50,320-150,32,32)
-            f = pygame.font.Font(None,32)
-            s = f.render("WASTED", True, (255,0,0), None)       
-            self.screen.blit(s,textRec)
-            #self.button("Main Menu", 440, 500, 100, 100, (255,0,0), (255,255,255), self.set_game_done)
-            self.button("Exit", 600, 500, 100, 100, (255,0,0), (0,255,255), pygame.quit)         
+            self.screen.fill((0, 0, 0))
+            textRec = pygame.Rect(640 // 2 - 50, 320 - 150, 32, 32)
+            f = pygame.font.Font(None, 32)
+            s = f.render("WASTED", True, (255, 0, 0), None)
+            self.screen.blit(s, textRec)
+            # self.button("Main Menu", 440, 500, 100, 100, (255,0,0), (255,255,255), self.set_game_done)
+            self.button("Exit", 600, 500, 100, 100, (255, 0, 0), (0, 255, 255), pygame.quit)
             pygame.display.flip()
-    
+
     def game_loop(self):
         while self.running:
             if self.logika.check_conditions():

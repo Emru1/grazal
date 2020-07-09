@@ -115,25 +115,6 @@ class Map:
                         line_mob_val = line_mob.split(' ')[1].rstrip('\n')
                         tmp_dict['mob'][line_mob_param] = line_mob_val
 
-                if param == 'area':
-                    for line_area in file:
-                        line_area = line_area.lstrip(' ')
-                        line_num += 1
-                        if line_area[0] == '#':
-                            continue
-                        if line_area[0] == '{':
-                            if in_area:
-                                log.log("MAP: Error when parsing map file " + file.name + " at line " + str(line_num))
-                            tmp_dict['area'] = {}
-                            in_obj = True
-                            continue
-                        if line_area[0] == '}':
-                            in_area = False
-                            break
-                        line_area_param = line_area.split(' ')[0]
-                        line_area_val = line_area.split(' ')[1].rstrip('\n')
-                        tmp_dict['area'][line_area_param] = line_area_val
-
                 if param == 'obj':
                     for line_obj in file:
                         line_obj = line_obj.lstrip(' ')
@@ -157,6 +138,7 @@ class Map:
     def __init__(self, path):
         line_num = 0
         self.path = path
+        self.name = ''
         plik_mapy = open("maps/" + self.path, "r")
         log.log("File " + path + " opened to read map")
         size = plik_mapy.readline()

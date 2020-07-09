@@ -59,7 +59,7 @@ ssprawo2 ssprawo2.png
 ssprawo3 ssprawo3.png
 # potion
 potions0 potions_0.png
-#bronie
+# bronie
 Miecz MedWep-1.png
 Czarny_miecz MedWep-2.png
 Zloty_miecz MedWep-3.png
@@ -68,7 +68,7 @@ Szabelka MedWep-5.png
 Dluga_szabla MedWep-6.png
 Siekiera MedWep-7.png
 Mjolnir MedWep-8.png
-#zbroje
+# zbroje
 Zbroja_miedz Armor-1.png
 Zbroja_diament Armor-2.png
 Zbroja_jungla Armor-3.png
