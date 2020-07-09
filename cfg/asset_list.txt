@@ -4,6 +4,7 @@ test1 test1.png
 test2 test2.png
 s_trawa1 hyptosis_80.png
 s_trawa2 hyptosis_81.png
+s_trawa_ld hyptosis_49.png
 zabka zabka.png
 serduszko_pelne 16/gui_32.png
 serduszko_23 16/gui_33.png
@@ -112,6 +113,9 @@ cegly_deski_r hyptosis_506.png
 cegly_deski_ul hyptosis_475.png
 cegly_deski_u hyptosis_476.png
 cegly_deski_ur hyptosis_477.png
+cegly_deski_dl_b hyptosis_534.png
+cegly_deski_d_b hyptosis_535.png
+cegly_deski_dr_b hyptosis_536.png
 kosz hyptosis_892.png
 # labirynt
 labirynt_pion hyptosis_185.png

@@ -5,11 +5,9 @@ from src.obj.obj import *
 class Tile:
 
     def __init__(self):
-        self.ipassable = bool
-        self.transparent = bool
-        self.light = int
-        self.asset = str
-        self.furn = str
+        self.ipassable = False
+        self.asset = ''
+        self.asset2 = ''
         self.mob = None
         self.obj = None
         self.area = {}
@@ -36,6 +34,7 @@ class Tile:
             self.asset = 'test1'
         else:
             self.asset = token['asset']
+        self.asset2 = token['asset2']
         self.furn = token['furn']
         self.light = token['light']
         self.transparent = token['transparent']

@@ -13,9 +13,9 @@ aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa 
 aaa aaa aaa aaa ekf ekg ekg ekg ekg ekg ekh aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
 aaa aaa aaa aaa eke ekd ekd ekj ekd ekd eki aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
 aaa aaa aaa aaa eke ekd ekd ekd ekd ekj eki aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
-aaa aaa aaa aaa eke ekd ekj ekd ekd ekd eki aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa eke ekd ekj ekd ekd ekd eki egd aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
 aaa aaa aaa aaa eke ekd ekd ekd ekd ekd eki aab aaa aaa aaa aaa aaa aaa aaa zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx zzx aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
-aaa aaa aaa aaa eka ekb ekc ekd eka ekb ekc aab aaa aaa aaa aaa aaa aaa aaa zzz yyy yyz yyy zzz yyz yyy yyz yyy yyy yyy yyy yyy zzx yyz yyy yyy yyz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
+aaa aaa aaa aaa eka ekb ekc ekd ega egb egc aab aaa aaa aaa aaa aaa aaa aaa zzz yyy yyz yyy zzz yyz yyy yyz yyy yyy yyy yyy yyy zzx yyz yyy yyy yyz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
 aaa aaa aaa aaa aaa aaa aac aab aab aab aab aab aaa aaa aaa aaa aaa aaa aaa zzz yyy zzz yyy zzz yyy zzx zzx zzx zzx zzx zzx yyz zzx yyy zzz yyy zzx yyz zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
 aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aab aab aaa aaa aaa aaa aaa aaa aaa zzz yyz zzz yyy zzz yyy yyy yyy yyy zzx zzx yyy yyy zzx yyy zzz yyy yyz yyy zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
 aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa zzz yyy zzz yyy zzz yyy zzx zzx yyy yyy yyy zzx zzx zzx yyy zzz yyy zzx zzx zzz aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa
@@ -148,4 +148,24 @@ aac
 {
     asset kosz
     passable 0
+}
+ega
+{
+    asset cegly_deski_dl_b
+    passable 0
+}
+egb
+{
+    asset cegly_deski_d_b
+    passable 0
+}
+egc
+{
+    asset cegly_deski_dr_b
+    passable 0
+}
+egd
+{
+    asset s_trawa1
+    asset2 s_trawa_ld
 }

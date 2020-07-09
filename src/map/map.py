@@ -60,6 +60,7 @@ class Map:
                     in_token = True
                     tmp_dict['passable'] = True
                     tmp_dict['asset'] = ""
+                    tmp_dict['asset2'] = ""
                     tmp_dict['furn'] = ""
                     tmp_dict['light'] = 0
                     tmp_dict['transparent'] = 1
@@ -93,6 +94,9 @@ class Map:
                     tmp_dict[param] = int(val)
                     continue
                 if param == 'asset':
+                    tmp_dict[param] = val
+                    continue
+                if param == 'asset2':
                     tmp_dict[param] = val
                     continue
 

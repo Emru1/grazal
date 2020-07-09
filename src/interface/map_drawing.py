@@ -29,8 +29,11 @@ class MapSurface:
         if self.map_grid[x][y]:
             img = asset.get(self.map_grid[x][y].asset)
         else:
-            img = "black"
+            img = asset.get("black")
         self.surface.blit(img, (x * config.tile_size, y * config.tile_size))
+        if self.map_grid[x][y].asset2 != '':
+            img = asset.get(self.map_grid[x][y].asset2)
+            self.surface.blit(img, (x * config.tile_size, y * config.tile_size))
 
     def draw(self, x, y):
         """
