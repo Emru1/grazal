@@ -8,5 +8,6 @@ skeleton
     droplist
     {
         health 100
+        sword 40
     }
 }

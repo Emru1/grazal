@@ -1,6 +1,5 @@
 import random
 
-from src.obj.obj import Potion, Weapon, Armor
 from src.globals import maps, objs
 
 
@@ -58,7 +57,6 @@ class Mob:
             self.name = name
 
         maps.get(self.mmap).get_tile(self.x, self.y).mob = self
-
 
     def lethal(self, logika):
         self.hp = 0

@@ -6,3 +6,26 @@ health
     desc Leczy gracza o 10 hp
     heal 10
 }
+sword
+{
+    type weapon
+    name Miecz
+    asset Miecz
+    desc Zwieksza sile ataku o 10
+    attack 10
+}
+#            (Weapon(self.x, self.y, self.mmap, 'Czarny_miecz', 'Miecz czarnej skały', 'Zwieksza sile ataku o 20', 20),
+#             50),
+#            (Weapon(self.x, self.y, self.mmap, 'Zloty_miecz', 'Zloty Miecz', 'Zwieksza sile ataku o 30', 30), 40),
+#            (
+#            Weapon(self.x, self.y, self.mmap, 'Czarny_kos', 'Miecz Czarnego Kosa', 'Zwieksza sile ataku o 40', 40), 30),
+#            (Weapon(self.x, self.y, self.mmap, 'Szabelka', 'Krótka Szabla', 'Zwieksza sile ataku o 15', 15), 80),
+#            (Weapon(self.x, self.y, self.mmap, 'Dluga_szabla', 'Długa Szabla', 'Zwieksza sile ataku o 25', 25), 70),
+#            (Weapon(self.x, self.y, self.mmap, 'Siekiera', 'Siekiera', 'Zwieksza sile ataku o 35', 35), 60),
+#            (Weapon(self.x, self.y, self.mmap, 'Mjolnir', 'StormBreaker', 'Zwieksza sile ataku o 50', 50), 80),
+#            (Armor(self.x, self.y, self.mmap, 'Zbroja_miedz', 'Miedziana Zbroja', 'Zwieksza obrone gracza o 10', 10),
+#             50),
+#            (Armor(self.x, self.y, self.mmap, 'Zbroja_diament', 'Diamentowa Zbroja', 'Zwieksza obrone gracza o 30', 30),
+#             30),
+#            (Armor(self.x, self.y, self.mmap, 'Zbroja_jungla', 'Leśna Zbroja', 'Zwieksza obrone gracza o 5', 5), 80),
+#            (Armor(self.x, self.y, self.mmap, 'Zbroja_smoka', 'Smocza Zbroja', 'Zwieksza obrone gracza o 40', 40), 20)]'''

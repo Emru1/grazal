@@ -266,7 +266,6 @@ class InventoryPanel(BasePanel):
         else:
             app.screen.blit(self.empty_inv, self.weapon_rec)
 
-
     def show_inventory(self, app, logika):
         self.blit_background(app, 6, 22, pygame.Rect(544, 640 - 544 + 16 * 6, 16, 16))
         f = pygame.font.Font(None, 19)
@@ -284,7 +283,6 @@ class InventoryPanel(BasePanel):
             first = first.move(2 * (-34), 34)
         for i in range(len(logika.gracz.eq)):
             app.screen.blit(asset.get(logika.gracz.eq[i].asset), self.inventory_rec[i])
-
 
     def resolve(self, app, logika, mouse):
         # sprawdz czy klikano lub najechano na jeden z elementow inwentarza

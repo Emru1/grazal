@@ -60,7 +60,6 @@ class Mobs:
                 if param == 'droplist':
                     for line_drop in file:
                         line_drop = line_drop.lstrip(' ').rstrip('\n')
-                        print(line_drop)
                         if line_drop[0] == '#':
                             continue
                         if line_drop[0] == '{':

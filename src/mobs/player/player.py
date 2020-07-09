@@ -24,7 +24,6 @@ class Player(Mob):
     def moveright(self):
         self.move_to(self.x + 1, self.y)
 
-
     def pick_item(self, item):
         self.eq.append(item)
         self.eq_count = self.eq_count + 1
