@@ -44,7 +44,6 @@ class Tile:
 
     def addmob(self, x, y, path):
         if self.tmob:
-            print(self.tmob)
             self.mob = mobs.get_mob(x, y, path, self.tmob['mob'])
 
     def addobj(self, x, y, path):

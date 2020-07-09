@@ -41,9 +41,9 @@ class App:
         self.draw_damage = Draw_damage(self.logika, self)
         self.event_handler = Event_handler(self, self.logika, self.panel)
         self.sfx = SFX()
-        self.sfx.start()
         timer.add(1000, self.draw_damage)
         timer.add(100, self.event_handler)
+        timer.add(1000, self.sfx)
 
     def button(self, msg, x, y, w, h, ic, ac, action=None):
         mous = pygame.mouse.get_pos()

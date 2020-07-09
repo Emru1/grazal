@@ -11,3 +11,7 @@ class SFX:
         pygame.mixer.music.load(music)
         pygame.mixer.music.play()
 
+    def timer_run(self):
+        if not pygame.mixer.music.get_busy():
+            self.start()
+
