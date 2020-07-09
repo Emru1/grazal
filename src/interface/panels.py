@@ -30,8 +30,8 @@ class RightPanel:
     def show_panels(self, app, logika):
         self.Pp.show_player(app, logika)
         self.wave_panel.show_wave(app)
-        self.inventory_panel.show_equiped_inventory(app, logika)
         self.inventory_panel.show_inventory(app, logika)
+        self.inventory_panel.show_equiped_inventory(app, logika)
         self.instructions.show_instruction(app)
         if not self.clicked_tile:
             self.R1.show_default(app, self.clicked_tile)
@@ -182,16 +182,16 @@ class WavePanel(BasePanel):
         if inwentory.armor_rec.collidepoint(mouse):
             # najechano myszka na armor
             if logika.gracz.armor:
-                self.name = inwentory.armor.name
-                self.description = inwentory.armor.description
+                self.name = logika.gracz.armor.name
+                self.description = logika.gracz.armor.description
             else:
                 self.name = None
                 self.description = None
         elif inwentory.weapon_rec.collidepoint(mouse):
             # najechano myszka na bron
             if logika.gracz.weapon:
-                self.name = inwentory.weapon.name
-                self.description = inwentory.weapon.description
+                self.name = logika.gracz.weapon.name
+                self.description = logika.gracz.weapon.description
             else:
                 self.name = None
                 self.description = None
@@ -252,7 +252,8 @@ class InventoryPanel(BasePanel):
         s = k.render("Armor", True, (0, 0, 0), None)
         app.screen.blit(s, ArmorText)
         if logika.gracz.armor:
-            pass
+            app.screen.blit(self.empty_inv, self.armor_rec)
+            app.screen.blit(asset.get(logika.gracz.armor.asset), self.armor_rec)
             # blit item
         else:
             app.screen.blit(self.empty_inv, self.armor_rec)
@@ -260,9 +261,11 @@ class InventoryPanel(BasePanel):
         s = k.render("Weapon", True, (0, 0, 0), None)
         app.screen.blit(s, WeaponText)
         if logika.gracz.weapon:
-            pass
+            app.screen.blit(self.empty_inv, self.armor_rec)
+            app.screen.blit(asset.get(logika.gracz.weapon.asset), self.weapon_rec)
         else:
             app.screen.blit(self.empty_inv, self.weapon_rec)
+
 
     def show_inventory(self, app, logika):
         self.blit_background(app, 6, 22, pygame.Rect(544, 640 - 544 + 16 * 6, 16, 16))
@@ -282,6 +285,7 @@ class InventoryPanel(BasePanel):
         for i in range(len(logika.gracz.eq)):
             app.screen.blit(asset.get(logika.gracz.eq[i].asset), self.inventory_rec[i])
 
+
     def resolve(self, app, logika, mouse):
         # sprawdz czy klikano lub najechano na jeden z elementow inwentarza
         # j esli gracz nie ma zadnego ekwipunku nie sprawdzaj
@@ -300,11 +304,15 @@ class InventoryPanel(BasePanel):
                         else:
                             temp = logika.gracz.eq[i]
                             if logika.gracz.eq[i].armor:
-                                logika.gracz.eq[i] = logika.gracz.armor
+                                logika.gracz.eq.append(logika.gracz.armor)
+                                logika.gracz.armor.unequip(logika.gracz)
                                 logika.gracz.armor = temp
+                                logika.gracz.armor.equip(logika.gracz)
                             elif logika.gracz.eq[i].weapon:
-                                logika.gracz.eq[i] = logika.gracz.weapon
+                                logika.gracz.eq.append(logika.gracz.weapon)
+                                logika.gracz.weapon.unequip(logika.gracz)
                                 logika.gracz.weapon = temp
+                                logika.gracz.weapon.equip(logika.gracz)
                         logika.gracz.eq.remove(logika.gracz.eq[i])
         if self.weapon_rec.collidepoint(mouse):
             # gracz klika na aktualna bron
