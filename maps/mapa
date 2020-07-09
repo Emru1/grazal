@@ -10,13 +10,13 @@ a f f g f f f f a a a a a a a a
 a a a a a a a a a a a a a a a a
 a a a a a a a b a a a a a a a a
 a a b b b b b a a a a a a a a a
-a a a a a a a a a a a a a a a a
+a a a a a a a m a a a a a a a a
 a a a a a a a a a a c c d a a a
 a e a a a b a a a a c c d a a a
 a a a a a a a a a a a a a a a a
 a a b a a a a a a a a b a a a a
 a a a a a a a a a a a a a a a a
-a a a a a a a a a a a a a a a a
+a a a a a a a a m a a a a a a a
 a
 {
     asset trawa
@@ -73,4 +73,12 @@ k
 l
 {
     asset podloga_cegly_3
+}
+m
+{
+    asset trawa
+    mob
+    {
+        mob soldier
+    }
 }

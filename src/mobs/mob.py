@@ -48,8 +48,8 @@ class Mob:
         if not asset:
             self.asset = "ludek"
         else:
-            self.asset = asset
-        self.asset_base = self.asset
+            self.asset = asset + "dol1"
+        self.asset_base = asset
 
         if not name:
             self.name = "Mob"
