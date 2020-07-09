@@ -52,6 +52,7 @@ class Mob:
 
         maps.get(self.mmap).get_tile(self.x, self.y).mob = self
 
+
     def lethal(self, logika):
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
