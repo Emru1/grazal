@@ -26,6 +26,9 @@ class Logic:
             self.gracz.interaction_pickup(tile.obj, self)
         panel.resolve(mouse, self, app)
 
+    def check_interactions_right_click(self, panel, app, mouse):
+            panel.inventory_panel.remove_obj(self, mouse)
+
     def set_enemies(self):
         for x in range(self.gracz.x - 7, self.gracz.x + 7):
             for y in range(self.gracz.y - 7, self.gracz.y + 7):

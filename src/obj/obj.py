@@ -20,25 +20,19 @@ class Object:
 
 class Weapon(Object):
     def __init__(self, pos_x, pos_y, path, asset, name, description, attack):
-        super().__init__(pos_x, pos_y, path, asset, description, name)
+        super().__init__(pos_x, pos_y, path, asset, name, description)
         self.attack_val = attack
         self.can_eq = True
         self.can_mv = True
         self.weapon = True
 
     def equip(self, mob):
-        if not mob.weapon:
-            mob.weapon = self
-            mob.attack = mob.attack + self.attack_val
-            return False
-        else:
-            # zamien itemki
-            return True
+        mob.weapon = self
+        mob.attack = mob.attack + self.attack_val
 
     def unequip(self, mob):
-        if mob.weapon:
-            mob.attack = mob.attack - self.attack_val
-            mob.weapon = None
+        mob.attack = mob.attack - self.attack_val
+        mob.weapon = None
 
 
 class Armor(Object):
@@ -50,13 +44,8 @@ class Armor(Object):
         self.can_mv = True
 
     def equip(self, mob):
-        if not mob.armor:
-            mob.armor = self
-            mob.armor_val = mob.armor_val + self.armor_val
-            return False
-        else:
-            # zamien itemki
-            return True
+        mob.armor = self
+        mob.armor_val = mob.armor_val + self.armor_val
 
     def unequip(self, mob):
         mob.armor_val = mob.armor_val - self.armor_val
