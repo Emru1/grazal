@@ -29,6 +29,8 @@ center_down /16/gui_150.png
 left_down /16/gui_149.png
 left_center /16/gui_133.png
 center /16/gui_134.png
+#
+shadow shadow.png
 # gracz
 zz zz.png
 zzdol1 zzdol1.png
