@@ -1,7 +1,7 @@
 import random
 
 from src.obj.obj import Potion, Weapon, Armor
-from src.globals import maps
+from src.globals import maps, objs
 
 
 class Mob:
@@ -10,7 +10,7 @@ class Mob:
     może to być postać gracza, przeciwnik lub NPC
     """
 
-    def __init__(self, x, y, mmap, hp, attack, movement, asset=None, name=None):
+    def __init__(self, x, y, mmap, hp, attack, movement, asset=None, name=None, drop=[]):
         self.x = x
         random.seed()
         self.y = y
@@ -26,7 +26,8 @@ class Mob:
         self.down = 0
         self.left = 0
         self.right = 0
-        self.dropable = [
+        self.drop = drop
+        '''self.dropable = [
             (Potion(self.x, self.y, self.mmap, 'potions0', 'Mikstura życia', 'Leczy gracza o 20 hp', 1, 20), 70),
             (Weapon(self.x, self.y, self.mmap, 'Miecz', 'Srebrny Miecz', 'Zwieksza sile ataku o 10', 10), 80),
             (Weapon(self.x, self.y, self.mmap, 'Czarny_miecz', 'Miecz czarnej skały', 'Zwieksza sile ataku o 20', 20),
@@ -43,7 +44,7 @@ class Mob:
             (Armor(self.x, self.y, self.mmap, 'Zbroja_diament', 'Diamentowa Zbroja', 'Zwieksza obrone gracza o 30', 30),
              30),
             (Armor(self.x, self.y, self.mmap, 'Zbroja_jungla', 'Leśna Zbroja', 'Zwieksza obrone gracza o 5', 5), 80),
-            (Armor(self.x, self.y, self.mmap, 'Zbroja_smoka', 'Smocza Zbroja', 'Zwieksza obrone gracza o 40', 40), 20)]
+            (Armor(self.x, self.y, self.mmap, 'Zbroja_smoka', 'Smocza Zbroja', 'Zwieksza obrone gracza o 40', 40), 20)]'''
 
         if not asset:
             self.asset = "ludek"
@@ -63,10 +64,10 @@ class Mob:
         self.hp = 0
         maps.get(self.mmap).get_tile(self.x, self.y).mob = None
         # losuj item
-        obj = random.choice(self.dropable)
+        obj = random.choice(self.drop)
         number = random.randint(0, 100)
-        if number <= obj[1]:
-            maps.get(self.mmap).putobj(obj[0])
+        if number <= int(obj[1]):
+            maps.get(self.mmap).putobj(objs.get_item(self.x, self.y, self.mmap, obj[0]))
         logika.wrogowie.remove(self)
         del self
 
@@ -153,8 +154,8 @@ class Mob:
 
 
 class Enemy(Mob):
-    def __init__(self, x, y, mmap, hp, attack, movement, asset=None, name=None):
-        super().__init__(x, y, mmap, hp, attack, movement, asset, name)
+    def __init__(self, x, y, mmap, hp, attack, movement, asset=None, name=None, drop=[]):
+        super().__init__(x, y, mmap, hp, attack, movement, asset, name, drop)
         self.agressive = False
         self.attacked = False
         self.able_to_attack = False

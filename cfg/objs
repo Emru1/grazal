@@ -1,0 +1,8 @@
+health
+{
+    type potion
+    name Mikstura Zycia
+    asset potions0
+    desc Leczy gracza o 10 hp
+    heal 10
+}

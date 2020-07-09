@@ -64,26 +64,12 @@ class Mobs:
                         if line_drop[0] == '#':
                             continue
                         if line_drop[0] == '{':
-                            tmp_dict['drop'] = {}
+                            tmp_dict['drop'] = []
                             continue
                         if line_drop[0] == '}':
                             break
-                        name = line_drop
-                        for line_item in file:
-                            line_item = line_item.lstrip(' ').rstrip('\n')
-                            if line_item[0] == '#':
-                                continue
-                            if line_item[0] == '{':
-                                tmp_dict['drop'][name] = {}
-                                continue
-                            if line_item[0] == '}':
-                                break
-                            item_param = line_item.split(' ')[0]
-                            item_val = line_item.split(' ')[1]
-                            tmp_dict['drop'][name][item_param] = item_val
+                        tmp_dict['drop'].append((line_drop.split(' ')[0], line_drop.split(' ')[1]))
         file.close()
-        print(self.mobs)
-
 
     def get_mob(self, x, y, mmap, name):
         from src.mobs.mob import Mob, Enemy
@@ -94,7 +80,8 @@ class Mobs:
                         asset=mob['asset'],
                         attack=mob['attack'],
                         name=mob['name'],
-                        movement=1
+                        movement=1,
+                        drop=mob['drop'],
                         )
         else:
             ret = Mob(x, y, mmap,
@@ -102,6 +89,7 @@ class Mobs:
                       asset=mob['asset'],
                       attack=mob['attack'],
                       name=mob['name'],
-                      movement=1
+                      movement=1,
+                      drop=mob['drop'],
                       )
         return ret

@@ -3,6 +3,7 @@ from src.logic.timer import Timer
 from src.logs.logs import Logs
 from src.map.maps_repo import Maps
 from src.mobs.mobs_repo import Mobs
+from src.obj.objs_repo import Objs
 
 
 class Config:
@@ -16,6 +17,7 @@ class Config:
         # rozmiar grafik
         self.tile_size = 32
         self.mob_path = 'cfg/mobs'
+        self.obj_path = 'cfg/objs'
 
 
 log = Logs()
@@ -24,3 +26,4 @@ config = Config()
 maps = Maps()
 timer = Timer()
 mobs = Mobs(config.mob_path)
+objs = Objs(config.obj_path)

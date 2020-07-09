@@ -5,4 +5,8 @@ skeleton
     hp 50
     attack 10
     type enemy
+    droplist
+    {
+        health 100
+    }
 }
