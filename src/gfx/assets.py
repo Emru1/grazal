@@ -10,6 +10,8 @@ class Asset:
             line_num += 1
             line = line.splitlines()[0]
             line = line.lstrip(' ')
+            if not line:
+                continue
             if line[0] == '#':
                 continue
             self.imgs[str(line.split(' ')[0])] = pygame.image.load("img/" + str(line.split(' ')[1]))

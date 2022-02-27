@@ -50,6 +50,8 @@ class Map:
             line_num += 1
             line = line.splitlines()[0]
             line = line.lstrip(' ')
+            if not line:
+                continue
             if line[0] == '#':
                 continue
             if line[0] == '{':

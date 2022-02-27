@@ -11,6 +11,8 @@ class Objs:
         for line in file:
             line = line.splitlines()[0]
             line = line.lstrip(' ')
+            if not line:
+                continue
             if line[0] == '#':
                 continue
             if line[0] == '{':
