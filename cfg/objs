@@ -53,3 +53,4 @@ copper_armor
 #             30),
 #            (Armor(self.x, self.y, self.mmap, 'Zbroja_jungla', 'Leśna Zbroja', 'Zwieksza obrone gracza o 5', 5), 80),
 #            (Armor(self.x, self.y, self.mmap, 'Zbroja_smoka', 'Smocza Zbroja', 'Zwieksza obrone gracza o 40', 40), 20)]'''
+
