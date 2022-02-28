@@ -1,20 +1,30 @@
 import pygame
 
-from src.globals import *
+from src.globals import config, asset
 from src.map.tile import Tile
 
 
 class ObjSurface:
     """
-    Powierzchnia o wymiarach obliczonych z configu.
-    Funkcja draw(x, y) przyjmuje pozycje wyrazona w koordynatach mapy na srodek ekranu,
-    nastepnie przygotowywuje i zwraca powierzchnie z dorysowanymi przedmiotami
+    Powierzchnia o wymiarach obliczonych z configu. Funkcja draw(x, y)
+    przyjmuje pozycje wyrazona w koordynatach mapy na srodek
+    ekranu, nastepnie przygotowywuje i zwraca powierzchnie
+    z dorysowanymi przedmiotami
     """
 
     def __init__(self, mapa):
-        self.map_grid = [[Tile() for _ in range(config.grid_x)] for _ in range(config.grid_y)]
+        self.map_grid = [
+            [
+                Tile() for _ in range(config.grid_x)
+            ] for _ in range(config.grid_y)
+        ]
         self.mapa = mapa
-        self.surface = pygame.Surface((config.grid_x * config.tile_size, config.grid_y * config.tile_size))
+        self.surface = pygame.Surface(
+            (
+                config.grid_x * config.tile_size,
+                config.grid_y * config.tile_size
+            )
+        )
 
     def __get_tiles(self, x, y):
         x = x - int(config.grid_x / 2)

@@ -1,20 +1,30 @@
 import pygame
 
-from src.globals import *
+from src.globals import config, asset
 from src.map.tile import Tile
 
 
 class MapSurface:
     """
-    Powierzchnia o wymiarach obliczonych z configu.
-    Funkcja draw(x, y) przyjmuje pozycje wyrazona w koordynatach mapy na srodek ekranu,
-    nastepnie przygotowywuje i zwraca powierzchnie do narysowania na ekranie
+    Powierzchnia o wymiarach obliczonych z configu. Funkcja draw(x, y)
+    przyjmuje pozycje wyrazona w koordynatach mapy na srodek
+    ekranu, nastepnie przygotowywuje i zwraca powierzchnie do
+    narysowania na ekranie
     """
 
     def __init__(self, mapa):
-        self.map_grid = [[Tile() for _ in range(config.grid_x)] for _ in range(config.grid_y)]
+        self.map_grid = [
+            [
+                Tile() for _ in range(config.grid_x)
+            ] for _ in range(config.grid_y)
+        ]
         self.mapa = mapa
-        self.surface = pygame.Surface((config.grid_x * config.tile_size, config.grid_y * config.tile_size))
+        self.surface = pygame.Surface(
+            (
+                config.grid_x * config.tile_size,
+                config.grid_y * config.tile_size
+            )
+        )
         self.lx = -1
         self.ly = -1
 
@@ -33,7 +43,10 @@ class MapSurface:
         self.surface.blit(img, (x * config.tile_size, y * config.tile_size))
         if self.map_grid[x][y].asset2 != '':
             img = asset.get(self.map_grid[x][y].asset2)
-            self.surface.blit(img, (x * config.tile_size, y * config.tile_size))
+            self.surface.blit(
+                img,
+                (x * config.tile_size, y * config.tile_size)
+            )
 
     def draw(self, x, y):
         """

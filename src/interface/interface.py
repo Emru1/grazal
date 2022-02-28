@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+from pygame.locals import RESIZABLE
 
 from src.globals import maps, asset, timer
 from src.interface.damage_drawing import Draw_damage
@@ -67,9 +67,26 @@ class App:
                     pygame.quit()
                     quit()
             self.screen.fill((255, 255, 255))
-            self.button("Play", 640, 300, 100, 100, (255, 0, 0), (0, 255, 0), self.game_loop)
-            # self.button("Options", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0))
-            self.button("Exit", 640, 500, 100, 100, (255, 0, 0), (0, 255, 0), quit)
+            self.button(
+                "Play",
+                640,
+                300,
+                100,
+                100,
+                (255, 0, 0),
+                (0, 255, 0),
+                self.game_loop
+            )
+            self.button(
+                "Exit",
+                640,
+                500,
+                100,
+                100,
+                (255, 0, 0),
+                (0, 255, 0),
+                quit
+            )
             pygame.display.update()
 
     def game_over(self):
@@ -83,20 +100,40 @@ class App:
             f = pygame.font.Font(None, 32)
             s = f.render("WASTED", True, (255, 0, 0), None)
             self.screen.blit(s, textRec)
-            # self.button("Main Menu", 440, 500, 100, 100, (255,0,0), (255,255,255), self.set_game_done)
-            self.button("Exit", 600, 500, 100, 100, (255, 0, 0), (0, 255, 255), pygame.quit)
+            self.button(
+                "Exit",
+                600,
+                500,
+                100,
+                100,
+                (255, 0, 0),
+                (0, 255, 255),
+                pygame.quit
+            )
             pygame.display.flip()
 
     def game_loop(self):
         while self.running:
             if self.logika.check_conditions():
-                self.screen.blit(self.map_screen.draw(self.logika.gracz.x, self.logika.gracz.y), (0, 0))
-                self.screen = self.obj_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
-                self.screen = self.mob_screen.draw(self.screen, self.logika.gracz.x, self.logika.gracz.y)
+                self.screen.blit(
+                    self.map_screen.draw(
+                        self.logika.gracz.x,
+                        self.logika.gracz.y
+                    ),
+                    (0, 0)
+                )
+                self.screen = self.obj_screen.draw(
+                    self.screen,
+                    self.logika.gracz.x,
+                    self.logika.gracz.y
+                )
+                self.screen = self.mob_screen.draw(
+                    self.screen,
+                    self.logika.gracz.x,
+                    self.logika.gracz.y
+                )
                 self.screen.blit(self.draw_damage.draw_into(), (0, 0))
                 self.panel.show_panels(self, self.logika)
-                # self.mob_panel(maps.get(logika.gracz.mmap).get_tile(int(pygame.mouse.get_pos()[0]/32)-1,int(pygame.mouse.get_pos()[1]/32)-1))
-                # event_handler(self, self.logika, maps.get("mapa"), self.panel)
                 # EVENT LOOP FUNCTION HERE
                 self.clock.tick(60)
                 self.event_handler.check_move()

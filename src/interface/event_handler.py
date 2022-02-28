@@ -1,6 +1,6 @@
 import pygame
 
-from src.globals import *
+from src.globals import maps
 
 
 class Event_handler:
@@ -48,12 +48,27 @@ class Event_handler:
                 quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    self.logika.check_interactions(maps.get(self.logika.gracz.mmap).get_tile(
-                        int(mouse[0] / 32) - 8 + self.logika.gracz.x, int(mouse[1] / 32) - 8 + self.logika.gracz.y),
-                        self.panel, self.app, mouse)
+                    self.logika.check_interactions(
+                        maps.get(
+                            self.logika.gracz.mmap
+                        ).get_tile(
+                            int(
+                                mouse[0] / 32) - 8 + self.logika.gracz.x,
+                            int(mouse[1] / 32) - 8 + self.logika.gracz.y
+                        ),
+                        self.panel, self.app, mouse
+                    )
 
                 elif event.button == 3:
-                    '''right mouse button'''
-                    self.logika.check_interactions_right_click(self.panel, self.app, mouse)
-            elif event.type == pygame.MOUSEMOTION:  # or self.panel.inventory_panel.rec.collidepoint(pygame.mouse.get_pos()):
-                self.panel.wave_panel.resolve_hover(self.app, self.logika, self.panel.inventory_panel, mouse)
+                    self.logika.check_interactions_right_click(
+                        self.panel,
+                        self.app,
+                        mouse
+                    )
+            elif event.type == pygame.MOUSEMOTION:
+                self.panel.wave_panel.resolve_hover(
+                    self.app,
+                    self.logika,
+                    self.panel.inventory_panel,
+                    mouse
+                )
