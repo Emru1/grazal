@@ -1,11 +1,8 @@
 /venv/
 /.idea/
 /idea/
-/src/__pycache__/
-/__pycache__/
+__pycache__
 /log.txt
 log.txt
 /tmp/
-/src/*/__pycache__/
 *.pyc
-.gitignore
